@@ -67,7 +67,7 @@ nav a {
 
 /* Effetto evidenziatore moderno sui link del menu */
 nav a:hover {
-    color: var(--primary);
+    color:#4338ca;
     background-color: #f0f0ff;
 }
 
@@ -81,7 +81,7 @@ main {
 }
 
 section {
-    background-color: var(--bg-card);
+    background-color:#111827;
     padding: 2.5rem;
     margin-bottom: 2rem;
     border-radius: var(--radius);
@@ -99,7 +99,7 @@ section:hover {
 
 /* Stile ricercato per i titoli delle sezioni */
 section h2 {
-    color: var(--text-dark);
+    color:#e8eefc;
     font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: -0.03em;
@@ -122,7 +122,7 @@ section h2::after {
 
 section p {
     font-size: 1.05rem;
-    color: var(--text-muted);
+    color:#111827;
 }
 
 /* ==========================================================================
