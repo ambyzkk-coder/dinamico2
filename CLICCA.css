@@ -1,160 +1,176 @@
 
-:root {
-    --bg-main: #f3f4f6;          /* Grigio chiarissimo e caldo per lo sfondo generale */
-    --bg-card: #ffffff;          /* Bianco puro per i box di contenuto */
-    --primary: #4f46e5;          /* Blu elettrico/Indaco moderno per gli accenti importanti */
-    --primary-hover: #4338ca;    /* Varianta più scura per l'effetto hover */
-    --text-dark: #111827;        /* Grigio quasi nero per la massima leggibilità dei titoli */
-    --text-muted: #4b5563;       /* Grigio medio per i testi dei paragrafi */
-    --border-color: #e5e7eb;     /* Grigio leggero per i bordi sottili */
-    --radius: 12px;              /* Arrotondamento moderno per gli angoli */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Animazione fluida */
-}
-
-
-*, *::before, *::after {
-    box-sizing: border-box;
+/* ==========================================
+   1. RESET E STILI GENERALI 
+   ========================================== */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-image: url('zampe\ \(2\).jpg');
-    color:#04c510;
-    line-height: 1.7;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
 }
 
-/* ==========================================================================
-   3. INTESTAZIONE (Header & Navigation)
-   ========================================================================== */
+/* ==========================================
+   2. HEADER (Con Immagine di Sfondo)
+   ========================================== */
 header {
-    
-    border-bottom: 10px solid aqua;
-    padding: 1.5rem 2rem;
-    position: sticky; /* Rimane fisso in alto mentre scorri la pagina */
-    top: 0;
-    z-index: 100;
+    /* Crea una sfumatura scura sopra l'immagine per rendere il testo leggibile */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                      url('https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Effetto parallasse durante lo scroll */
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
 }
-
-
 
 header h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    color:#1a0cb1;
-    letter-spacing: -0.05em;
-    margin-bottom: 1.2rem;
-    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ==========================================
+   3. NAVIGAZIONE (Barra fissa in alto)
+   ========================================== */
+nav {
+    background-color: #2c3e50;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    flex-wrap: wrap; /* Permette di andare a capo sui telefoni */
 }
 
-nav a {
-    color:#4338ca;
-    font-weight: 555;
-    font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition:var(--text-muted);
-}
-
-/* Effetto evidenziatore moderno sui link del menu */
-nav a:hover {
-    color:#4338ca;
-    background-color: #f0f0ff;
-}
-
-/* ==========================================================================
-   4. CONTENUTO PRINCIPALE (Main & Cards)
-   ========================================================================== */
-main {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-}
-
-section {
-    background-color:#111827;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    /* Ombra morbida stile Apple/Stripe */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-    transition: var(--transition);
-}
-
-/* Effetto interattivo: la sezione si solleva leggermente quando ci passi sopra */
-section:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.08);
-}
-
-/* Stile ricercato per i titoli delle sezioni */
-section h2 {
-    color:#e8eefc;
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-    display: inline-block;
-    position: relative;
-}
-
-/* Una linea colorata di accento sotto al titolo */
-section h2::after {
-    content: '';
+nav ul li a {
     display: block;
-    width: 40px;
-    height: 4px;
-    background-color: var(--primary);
-    border-radius: 2px;
-    margin-top: 6px;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
 }
 
-
-section p {
-    font-size: 1.05rem;
-    color:#111827;
+/* Effetto al passaggio del mouse sul menu */
+nav ul li a:hover {
+    background-color: #1abc9c;
+    color: #2c3e50;
 }
 
-/* ==========================================================================
-   5. PIÈ DI PAGINA (Footer)
-   ========================================================================== */
-footer {
-    text-align: center;
-    padding: 2.5rem 1.5rem;
-    margin-top: 5rem;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--bg-card);
+/* ==========================================
+   4. STRUTTURA CONTENUTI E SEZIONI
+   ========================================== */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.category-section {
+    margin-bottom: 60px;
+    scroll-margin-top: 70px; /* Evita che il menu fisso copra i titoli quando usi le ancore */
+}
+
+.category-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    border-left: 5px solid #1abc9c; /* Linea verticale colorata a sinistra del titolo */
+    padding-left: 15px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+   5. GRIGLIA RESPONSIVA E CARD ANIMALI
+   ========================================== */
+.image-grid {
+    display: grid;
+    /* Crea colonne dinamiche: minimo 300px, massimo si spartiscono lo spazio */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.animal-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden; /* Taglia l'immagine se supera i bordi arrotondati della card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effetto sollevamento quando si passa sopra la card */
+.animal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.animal-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Mantiene le proporzioni dell'immagine ritagliandola a misura */
+    display: block;
+}
+
+.animal-info {
+    padding: 20px;
+}
+
+.animal-info h3 {
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.animal-info p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* ==========================================
+   6. BOTTONI E FOOTER
+   ========================================== */
+.btn-view {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: white;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 25px;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    font-weight: 600;
+    transition: background 0.2s;
 }
 
-/* ==========================================================================
-   6. RESPONSIVITÀ (Desktop Optimization)
-   ========================================================================== */
-@media (min-width: 768px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.2rem 4rem;
-    }
+.btn-view:hover {
+    background-color: #16a085;
+}
 
-    header h1 {
-        margin-bottom: 0;
-        font-size: 1.7rem;
-    }
-    
-    nav ul {
-        gap: 0.5rem;
-    }
+footer {
+    background-color: #2c3e50;
+    color: #bdc3c7;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 80px;
+}
+
+footer p {
+    font-size: 0.9rem;
 }
