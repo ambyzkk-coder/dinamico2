@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisica - Guida Completa</title>
+    <title>MAST Interattivo - Matematica, Geometria e Fisica</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,46 +21,32 @@
         }
         
         header {
-            background: #000;
+            background: linear-gradient(135deg, #ff3366 0%, #ff6b6b 50%, #ffa502 100%);
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 8px solid #ff3366;
+            border-bottom: 8px solid #000;
             position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 2px,
-                rgba(255,255,255,0.03) 2px,
-                rgba(255,255,255,0.03) 4px
-            );
         }
         
         h1 { 
             font-family: 'Bangers', cursive;
             color: #fff;
             font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 
-                4px 4px 0 #ff3366,
-                -2px -2px 0 #00d4ff;
+            text-shadow: 4px 4px 0 #000;
             letter-spacing: 3px;
-            position: relative;
+            animation: titlePulse 2s ease-in-out infinite;
         }
         
-        header p {
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .subtitle {
             color: #fff;
-            font-size: 1.3em;
-            position: relative;
+            font-size: 1.5em;
+            margin-top: 10px;
+            text-shadow: 2px 2px 0 #000;
         }
         
         nav { 
@@ -69,7 +55,6 @@
             justify-content: center; 
             gap: 15px; 
             margin-top: 25px;
-            position: relative;
         }
         
         nav a {
@@ -81,22 +66,29 @@
             font-size: 1.1em;
             border: 4px solid #000;
             box-shadow: 5px 5px 0 #000;
-            transition: all 0.1s;
-            position: relative;
+            transition: all 0.2s;
         }
         
         nav a::before {
-            content: '★';
-            margin-right: 5px;
-            color: #ff3366;
+            content: '▶ ';
         }
         
         nav a:hover { 
             transform: translate(3px, 3px);
             box-shadow: 2px 2px 0 #000;
-            background: #ff3366;
-            color: #fff;
         }
+        
+        .nav-math { border-color: #ff3366; }
+        .nav-math:hover { background: #ff3366; color: #fff; }
+        
+        .nav-geo { border-color: #00d4ff; }
+        .nav-geo:hover { background: #00d4ff; color: #fff; }
+        
+        .nav-fisica { border-color: #00c853; }
+        .nav-fisica:hover { background: #00c853; color: #fff; }
+        
+        .nav-quiz { border-color: #ffdd00; }
+        .nav-quiz:hover { background: #ffdd00; }
         
         .container {
             max-width: 1200px;
@@ -104,43 +96,23 @@
             padding: 40px 20px;
         }
         
-        .intro {
-            background: #fff;
-            padding: 30px;
-            margin-bottom: 40px;
-            border: 5px solid #000;
-            box-shadow: 8px 8px 0 #000;
-            position: relative;
-        }
-        
-        .intro::before {
-            content: '★ MANGA PHYSICS ★';
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: #ff3366;
-            color: #fff;
-            padding: 5px 15px;
-            font-weight: bold;
-            border: 3px solid #000;
-        }
-        
-        .intro h2 { 
+        .section-title {
             font-family: 'Bangers', cursive;
-            color: #000;
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-        
-        .intro p {
-            font-size: 1.1em;
-            line-height: 1.8;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+            background: #000;
+            color: #fff;
+            padding: 15px;
+            display: inline-block;
+            width: 100%;
         }
         
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 50px;
         }
         
         .card {
@@ -148,19 +120,19 @@
             padding: 25px;
             border: 5px solid #000;
             box-shadow: 8px 8px 0 #000;
-            position: relative;
             transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
         }
         
-        .card::after {
+        .card::before {
             content: '';
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #ff3366 30%, transparent 30%);
-            background-size: 10px 10px;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.3) 50%);
         }
         
         .card:hover {
@@ -170,46 +142,71 @@
         
         .card h3 { 
             font-family: 'Bangers', cursive;
-            color: #000;
-            margin-bottom: 15px;
             font-size: 1.8em;
-            background: #ffdd00;
+            margin-bottom: 15px;
+            padding: 10px;
             display: inline-block;
-            padding: 5px 15px;
-            border: 3px solid #000;
-            transform: rotate(-2deg);
         }
         
-        .card p { 
-            color: #333;
+        .card-math h3 { background: #ff3366; color: #fff; border: 3px solid #000; }
+        .card-geo h3 { background: #00d4ff; color: #000; border: 3px solid #000; }
+        .card-fisica h3 { background: #00c853; color: #fff; border: 3px solid #000; }
+        
+        .card p {
             line-height: 1.7;
+            margin-bottom: 15px;
             font-size: 1.05em;
         }
         
-        .formula {
+        .card a {
+            display: inline-block;
+            padding: 10px 25px;
             background: #000;
             color: #fff;
-            padding: 15px;
-            margin: 20px 0;
-            font-family: 'Courier New', monospace;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid #000;
+            transition: all 0.2s;
+        }
+        
+        .card a:hover {
+            background: #fff;
+            color: #000;
+        }
+        
+        .features {
+            background: #000;
+            padding: 40px;
+            margin-top: 40px;
+            border: 5px solid #ff3366;
+        }
+        
+        .features h2 {
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 2.5em;
             text-align: center;
-            font-size: 1.4em;
-            border: 3px solid #00d4ff;
-            position: relative;
+            margin-bottom: 30px;
         }
         
-        .formula::before {
-            content: '⚡';
-            position: absolute;
-            left: 10px;
-            color: #ffdd00;
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
         
-        .formula::after {
-            content: '⚡';
-            position: absolute;
-            right: 10px;
-            color: #ffdd00;
+        .feature-item {
+            background: #fff;
+            padding: 20px;
+            border: 4px solid #ff3366;
+            text-align: center;
+        }
+        
+        .feature-item h4 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.5em;
+            color: #ff3366;
+            margin-bottom: 10px;
         }
         
         footer {
@@ -217,107 +214,105 @@
             padding: 30px;
             background: #000;
             color: #fff;
-            margin-top: 50px;
             border-top: 8px solid #ff3366;
             font-size: 1.2em;
         }
         
-        .manga-effect {
+        .mascot {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            background: 
-                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.03) 49%, rgba(0,0,0,0.03) 51%, transparent 52%);
-            background-size: 8px 8px;
+            bottom: 20px;
+            right: 20px;
+            font-size: 4em;
+            animation: bounce 1s ease-in-out infinite;
+            cursor: pointer;
+            z-index: 1000;
         }
         
-        .speech-bubble {
-            background: #fff;
-            border: 4px solid #000;
-            border-radius: 20px;
-            padding: 15px 20px;
-            position: relative;
-            margin: 20px 0;
-        }
-        
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 30px;
-            border: 15px solid transparent;
-            border-top-color: #000;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
     </style>
 </head>
 <body>
-    <div class="manga-effect"></div>
-    
     <header>
-        <h1>IL MONDO DELLA FISICA</h1>
-        <p>★ Scopri le leggi che governano l'universo! ★</p>
+        <h1>MAST INTERATTIVO!</h1>
+        <p class="subtitle">★ Matematica • Geometria • Fisica ★</p>
         <nav>
-            <a href="meccanica.html">Meccanica</a>
-            <a href="termodinamica.html">Termodinamica</a>
-            <a href="elettromagnetismo.html">Elettromagnetismo</a>
-            <a href="ottica.html">Ottica</a>
-            <a href="moderna.html">Fisica Moderna</a>
+            <a href="matematica.html" class="nav-math">MATEMATICA</a>
+            <a href="geometria.html" class="nav-geo">GEOMETRIA</a>
+            <a href="fisica-interattiva.html" class="nav-fisica">FISICA</a>
+            <a href="quiz.html" class="nav-quiz">QUIZ!</a>
         </nav>
     </header>
 
     <div class="container">
-        <div class="intro">
-            <h2>★ Benvenuto nel mondo della Fisica! ★</h2>
-            <div class="speech-bubble">
-                <p>La fisica è la scienza che studia la materia, l'energia e le loro interazioni! 
-                Attraverso leggi matematiche e principi fondamentali, ci aiuta a comprendere 
-                come funziona l'universo, dal più piccolo atomo alle più grandi galassie!</p>
+        <h2 class="section-title">★ ESPLORA LE SCIENZE! ★</h2>
+        
+        <div class="cards">
+            <div class="card card-math">
+                <h3>MATEMATICA</h3>
+                <p>Calcolatori interattivi per equazioni, sistemi, derivate e integrali! 
+                Risolvi problemi passo dopo passo!</p>
+                <a href="matematica.html">CALCOLA →</a>
+            </div>
+
+            <div class="card card-geo">
+                <h3>GEOMETRIA</h3>
+                <p>Visualizza forme 2D e 3D! Calcola aree, volumi e perimetri in modo interattivo!</p>
+                <a href="geometria.html">ESPLORA →</a>
+            </div>
+
+            <div class="card card-fisica">
+                <h3>FISICA</h3>
+                <p>Simulazioni di moto, forze ed energia! Visualizza i principi della fisica in azione!</p>
+                <a href="fisica-interattiva.html">SPERIMENTA →</a>
             </div>
         </div>
 
-        <div class="cards">
-            <div class="card">
-                <h3>Meccanica</h3>
-                <p>Studio del movimento e delle forze! Dalle leggi di Newton alla dinamica dei corpi!</p>
-                <div class="formula">F = m × a</div>
-            </div>
-
-            <div class="card">
-                <h3>Termodinamica</h3>
-                <p>Calore, temperatura e energia! I principi che governano i sistemi termici!</p>
-                <div class="formula">Q = m × c × ΔT</div>
-            </div>
-
-            <div class="card">
-                <h3>Elettromagnetismo</h3>
-                <p>Elettricità, magnetismo e onde elettromagnetiche! Le forze che muovono la tecnologia!</p>
-                <div class="formula">V = R × I</div>
-            </div>
-
-            <div class="card">
-                <h3>Ottica</h3>
-                <p>La luce e la sua interazione con la materia! Specchi, lenti e colori!</p>
-                <div class="formula">n = c / v</div>
-            </div>
-
-            <div class="card">
-                <h3>Fisica Moderna</h3>
-                <p>Relatività e meccanica quantistica! La fisica del XX secolo!</p>
-                <div class="formula">E = m × c²</div>
-            </div>
-
-            <div class="card">
-                <h3>Storia della Fisica</h3>
-                <p>Da Galileo a Einstein! I grandi scienziati che hanno cambiato il mondo!</p>
+        <div class="features">
+            <h2>★ FUNZIONALITÀ INTERATTIVE ★</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>🧮 CALCOLATORI</h4>
+                    <p>Risolvi automaticamente equazioni e problemi!</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📊 VISUALIZZAZIONI</h4>
+                    <p>Vedi le forme e i grafici prendere vita!</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🎮 QUIZ</h4>
+                    <p>Metti alla prova le tue conoscenze!</p>
+                </div>
+                <div class="feature-item">
+                    <h4>🔬 SIMULAZIONI</h4>
+                    <p>Esperimenti virtuali interattivi!</p>
+                </div>
             </div>
         </div>
     </div>
 
+    <div class="mascot" title="Cliccami!" onclick="showTip()">🤖</div>
+
     <footer>
-        <p>★ MAST 2026 - Corso di Fisica ★</p>
+        <p>★ MAST 2026 - Impara divertendoti! ★</p>
     </footer>
+
+    <script>
+        const tips = [
+            "💡 Sai che la matematica è ovunque? Anche in questo sito!",
+            "💡 La geometria era usata dagli antichi Egizi per costruire le piramidi!",
+            "💡 Einstein disse: 'La fantasia è più importante della conoscenza!'",
+            "💡 Prova i nostri quiz per testare le tue abilità!",
+            "💡 Un cerchio ha infinite linee di simmetria!",
+            "💡 La velocità della luce è circa 300.000 km/s!"
+        ];
+        
+        function showTip() {
+            const tip = tips[Math.floor(Math.random() * tips.length)];
+            alert(tip);
+        }
+    </script>
 </body>
 </html>

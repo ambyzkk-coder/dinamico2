@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fisica Interattiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: #00c853;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 8px solid #000;
+        }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
+        .back { 
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.2s;
+        }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ffdd00;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .nav-tabs button {
+            padding: 12px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-family: 'Bangers', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .nav-tabs button.active {
+            background: #00c853;
+            color: #fff;
+        }
+        
+        .nav-tabs button:hover {
+            background: #ffdd00;
+        }
+        
+        .tool {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+        }
+        
+        .tool h2 { 
+            font-family: 'Bangers', cursive;
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: #00c853;
+            color: #fff;
+            padding: 10px 20px;
+            display: inline-block;
+            border: 3px solid #000;
+        }
+        
+        .tool label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 8px;
+            font-size: 1.1em;
+        }
+        
+        .tool input, .tool select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 3px solid #000;
+            font-family: inherit;
+        }
+        
+        .tool button {
+            margin-top: 15px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-family: 'Bangers', cursive;
+            background: #000;
+            color: #fff;
+            border: 4px solid #000;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 2px;
+        }
+        
+        .tool button:hover {
+            background: #00c853;
+            transform: scale(1.05);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            border: 4px solid #00c853;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .canvas-container {
+            background: #fff;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .canvas-container h2 { 
+            font-family: 'Bangers', cursive;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            background: #ffdd00;
+            color: #000;
+            padding: 10px 20px;
+            display: inline-block;
+            border: 3px solid #000;
+        }
+        
+        canvas {
+            border: 3px solid #000;
+            background: #f9f9f9;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .slider-group {
+            margin: 20px 0;
+        }
+        
+        .slider-group input[type="range"] {
+            width: 100%;
+            height: 25px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        
+        .slider-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 30px;
+            height: 30px;
+            background: #00c853;
+            border: 3px solid #000;
+            cursor: pointer;
+            border-radius: 0;
+        }
+        
+        .value-display {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 8px;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+        }
+        
+        .formula-box {
+            background: #e8f5e9;
+            padding: 15px;
+            border: 3px solid #000;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .input-group input {
+            flex: 1;
+            min-width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FISICA INTERATTIVA!</h1>
+        <p style="color: #fff; font-size: 1.3em; margin-top: 10px;">★ Simulazioni e Calcolatori ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('moto')" class="active" id="btn-moto">MOTO</button>
+            <button onclick="showTab('forze')" id="btn-forze">FORZE</button>
+            <button onclick="showTab('energia')" id="btn-energia">ENERGIA</button>
+            <button onclick="showTab('termo')" id="btn-termo">TERMODINAMICA</button>
+            <button onclick="showTab('elettro')" id="btn-elettro">ELETTROMAGNETISMO</button>
+        </div>
+
+        <div id="moto" class="tab-content active">
+            <div class="canvas-container">
+                <h2>SIMULAZIONE MOTO</h2>
+                <canvas id="motoCanvas" width="600" height="300"></canvas>
+                <div class="controls">
+                    <div class="slider-group">
+                        <label>Velocità (m/s):</label>
+                        <input type="range" id="velocita" min="0" max="20" value="5" oninput="updateMoto()">
+                        <div class="value-display" id="vel-value">5 m/s</div>
+                    </div>
+                    <div class="slider-group">
+                        <label>Accelerazione (m/s²):</label>
+                        <input type="range" id="accelerazione" min="0" max="5" step="0.5" value="0" oninput="updateMoto()">
+                        <div class="value-display" id="acc-value">0 m/s²</div>
+                    </div>
+                </div>
+                <button onclick="startMoto()" style="width: 100%; padding: 15px; font-size: 1.2em; font-family: 'Bangers'; background: #00c853; color: #fff; border: 4px solid #000; cursor: pointer;">▶ AVVIA SIMULAZIONE</button>
+                <div class="result" id="moto-risultato" style="margin-top: 15px;">
+                    Posizione: 0 m<br>
+                    Tempo: 0 s<br>
+                    Velocità attuale: 5 m/s
+                </div>
+            </div>
+
+            <div class="tool">
+                <h2>CALCOLATORE MOTO RETTILINEO</h2>
+                <label>Velocità iniziale v₀ (m/s):</label>
+                <input type="number" id="mr-v0" placeholder="Es: 10">
+                <label>Accelerazione a (m/s²):</label>
+                <input type="number" id="mr-a" placeholder="Es: 2">
+                <label>Tempo t (s):</label>
+                <input type="number" id="mr-t" placeholder="Es: 5">
+                <button onclick="calcolaMoto()">CALCOLA</button>
+                <div id="mr-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">
+                    s = v₀t + ½at²<br>
+                    v = v₀ + at
+                </div>
+            </div>
+
+            <div class="tool">
+                <h2>CADUTA LIBERA</h2>
+                <label>Altezza iniziale (m):</label>
+                <input type="number" id="cad-altezza" placeholder="Es: 50">
+                <button onclick="calcolaCaduta()">CALCOLA</button>
+                <div id="cad-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">
+                    g ≈ 9.81 m/s²<br>
+                    t = √(2h/g)<br>
+                    v = gt
+                </div>
+            </div>
+        </div>
+
+        <div id="forze" class="tab-content">
+            <div class="tool">
+                <h2>SECONDA LEGGE DI NEWTON</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Massa (kg):</label>
+                        <input type="number" id="f-massa" placeholder="Es: 10">
+                    </div>
+                    <div>
+                        <label>Accelerazione (m/s²):</label>
+                        <input type="number" id="f-acc" placeholder="Es: 5">
+                    </div>
+                </div>
+                <button onclick="calcolaForza()">CALCOLA FORZA</button>
+                <div id="f-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">F = m × a</div>
+            </div>
+
+            <div class="tool">
+                <h2>FORZA PESO</h2>
+                <label>Massa (kg):</label>
+                <input type="number" id="peso-massa" placeholder="Es: 70">
+                <label>Pianeta:</label>
+                <select id="pianeta" onchange="calcolaPeso()">
+                    <option value="9.81">Terra (g = 9.81 m/s²)</option>
+                    <option value="1.62">Luna (g = 1.62 m/s²)</option>
+                    <option value="3.72">Marte (g = 3.72 m/s²)</option>
+                    <option value="24.79">Giove (g = 24.79 m/s²)</option>
+                    <option value="274">Sole (g = 274 m/s²)</option>
+                </select>
+                <button onclick="calcolaPeso()">CALCOLA PESO</button>
+                <div id="peso-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">P = m × g</div>
+            </div>
+
+            <div class="tool">
+                <h2>FORZA ELASTICA (HOOKE)</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Costante elastica k (N/m):</label>
+                        <input type="number" id="hook-k" placeholder="Es: 100">
+                    </div>
+                    <div>
+                        <label>Allungamento x (m):</label>
+                        <input type="number" id="hook-x" placeholder="Es: 0.1">
+                    </div>
+                </div>
+                <button onclick="calcolaHooke()">CALCOLA</button>
+                <div id="hook-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">F = k × x</div>
+            </div>
+        </div>
+
+        <div id="energia" class="tab-content">
+            <div class="tool">
+                <h2>ENERGIA CINETICA</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Massa (kg):</label>
+                        <input type="number" id="ec-massa" placeholder="Es: 1000">
+                    </div>
+                    <div>
+                        <label>Velocità (m/s):</label>
+                        <input type="number" id="ec-vel" placeholder="Es: 20">
+                    </div>
+                </div>
+                <button onclick="calcolaEnergiaCinetica()">CALCOLA</button>
+                <div id="ec-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">Ec = ½mv²</div>
+            </div>
+
+            <div class="tool">
+                <h2>ENERGIA POTENZIALE GRAVITAZIONALE</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Massa (kg):</label>
+                        <input type="number" id="ep-massa" placeholder="Es: 50">
+                    </div>
+                    <div>
+                        <label>Altezza (m):</label>
+                        <input type="number" id="ep-altezza" placeholder="Es: 10">
+                    </div>
+                </div>
+                <button onclick="calcolaEnergiaPotenziale()">CALCOLA</button>
+                <div id="ep-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">Ep = mgh</div>
+            </div>
+
+            <div class="tool">
+                <h2>LAVORO</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Forza (N):</label>
+                        <input type="number" id="lav-forza" placeholder="Es: 100">
+                    </div>
+                    <div>
+                        <label>Spostamento (m):</label>
+                        <input type="number" id="lav-spist" placeholder="Es: 5">
+                    </div>
+                </div>
+                <button onclick="calcolaLavoro()">CALCOLA</button>
+                <div id="lav-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">L = F × d</div>
+            </div>
+
+            <div class="tool">
+                <h2>POTENZA</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Lavoro (J):</label>
+                        <input type="number" id="pot-lavoro" placeholder="Es: 1000">
+                    </div>
+                    <div>
+                        <label>Tempo (s):</label>
+                        <input type="number" id="pot-tempo" placeholder="Es: 10">
+                    </div>
+                </div>
+                <button onclick="calcolaPotenza()">CALCOLA</button>
+                <div id="pot-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">P = L / t (Watt)</div>
+            </div>
+        </div>
+
+        <div id="termo" class="tab-content">
+            <div class="tool">
+                <h2>CALORE SPECIFICO</h2>
+                <div class="controls">
+                    <div>
+                        <label>Massa (kg):</label>
+                        <input type="number" id="cal-massa" placeholder="Es: 2">
+                    </div>
+                    <div>
+                        <label>Calore specifico (J/kg·K):</label>
+                        <input type="number" id="cal-c" placeholder="Acqua: 4186" value="4186">
+                    </div>
+                    <div>
+                        <label>ΔT (K o °C):</label>
+                        <input type="number" id="cal-dt" placeholder="Es: 20">
+                    </div>
+                </div>
+                <button onclick="calcolaCalore()">CALCOLA CALORE</button>
+                <div id="cal-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">Q = m × c × ΔT</div>
+            </div>
+
+            <div class="tool">
+                <h2>EQUAZIONE DEI GAS PERFETTI</h2>
+                <div class="controls">
+                    <div>
+                        <label>Pressione (Pa):</label>
+                        <input type="number" id="gas-p" placeholder="Es: 101325">
+                    </div>
+                    <div>
+                        <label>Volume (m³):</label>
+                        <input type="number" id="gas-v" placeholder="Es: 0.0224">
+                    </div>
+                    <div>
+                        <label>Temperatura (K):</label>
+                        <input type="number" id="gas-t" placeholder="Es: 273">
+                    </div>
+                </div>
+                <button onclick="calcolaGas()">CALCOLA MOLI</button>
+                <div id="gas-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">PV = nRT<br>R = 8.314 J/(mol·K)</div>
+            </div>
+
+            <div class="tool">
+                <h2>CONVERSIONE TEMPERATURA</h2>
+                <label>Temperatura:</label>
+                <input type="number" id="temp-val" placeholder="Es: 100">
+                <label>Da:</label>
+                <select id="temp-da">
+                    <option value="C">Celsius</option>
+                    <option value="K">Kelvin</option>
+                    <option value="F">Fahrenheit</option>
+                </select>
+                <label>A:</label>
+                <select id="temp-a">
+                    <option value="K">Kelvin</option>
+                    <option value="C">Celsius</option>
+                    <option value="F">Fahrenheit</option>
+                </select>
+                <button onclick="convertiTemperatura()">CONVERTI</button>
+                <div id="temp-risultato" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="elettro" class="tab-content">
+            <div class="tool">
+                <h2>LEGGE DI OHM</h2>
+                <div style="margin-bottom: 15px;">
+                    <label>Calcola:</label>
+                    <select id="ohm-calc" onchange="aggiornaOhm()">
+                        <option value="v">Tensione V</option>
+                        <option value="i">Corrente I</option>
+                        <option value="r">Resistenza R</option>
+                    </select>
+                </div>
+                <div id="ohm-inputs"></div>
+                <button onclick="calcolaOhm()">CALCOLA</button>
+                <div id="ohm-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">V = R × I</div>
+            </div>
+
+            <div class="tool">
+                <h2>POTENZA ELETTRICA</h2>
+                <div class="input-group">
+                    <div>
+                        <label>Tensione V (Volt):</label>
+                        <input type="number" id="pel-v" placeholder="Es: 220">
+                    </div>
+                    <div>
+                        <label>Corrente I (Ampere):</label>
+                        <input type="number" id="pel-i" placeholder="Es: 5">
+                    </div>
+                </div>
+                <button onclick="calcolaPotenzaElettrica()">CALCOLA</button>
+                <div id="pel-risultato" class="result" style="display: none;"></div>
+                <div class="formula-box">P = V × I (Watt)</div>
+            </div>
+
+            <div class="tool">
+                <h2>COSTO ELETTRICITÀ</h2>
+                <div class="controls">
+                    <div>
+                        <label>Potenza (Watt):</label>
+                        <input type="number" id="costo-pot" placeholder="Es: 100">
+                    </div>
+                    <div>
+                        <label>Ore di utilizzo:</label>
+                        <input type="number" id="costo-ore" placeholder="Es: 24">
+                    </div>
+                    <div>
+                        <label>Costo al kWh (€):</label>
+                        <input type="number" id="costo-prezzo" placeholder="Es: 0.25" step="0.01" value="0.25">
+                    </div>
+                </div>
+                <button onclick="calcolaCostoElettricita()">CALCOLA COSTO</button>
+                <div id="costo-risultato" class="result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+
+        const canvas = document.getElementById('motoCanvas');
+        const ctx = canvas.getContext('2d');
+        let posizione = 50;
+        let tempo = 0;
+        let animazione = null;
+        let velAttuale = 5;
+
+        function updateMoto() {
+            const vel = parseFloat(document.getElementById('velocita').value);
+            const acc = parseFloat(document.getElementById('accelerazione').value);
+            document.getElementById('vel-value').textContent = vel + ' m/s';
+            document.getElementById('acc-value').textContent = acc + ' m/s²';
+        }
+
+        function drawMoto() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            for (let i = 0; i <= canvas.width; i += 50) {
+                ctx.beginPath();
+                ctx.moveTo(i, canvas.height - 30);
+                ctx.lineTo(i, canvas.height - 35);
+                ctx.stroke();
+                ctx.fillText(Math.round(i / 10) + 'm', i - 10, canvas.height - 15);
+            }
+            
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height - 30);
+            ctx.lineTo(canvas.width, canvas.height - 30);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#00c853';
+            ctx.beginPath();
+            ctx.arc(posizione, canvas.height - 60, 25, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 20px Comic Neue';
+            ctx.fillText('●', posizione - 6, canvas.height - 55);
+        }
+
+        function startMoto() {
+            if (animazione) {
+                cancelAnimationFrame(animazione);
+                animazione = null;
+            }
+            
+            posizione = 50;
+            tempo = 0;
+            velAttuale = parseFloat(document.getElementById('velocita').value);
+            const acc = parseFloat(document.getElementById('accelerazione').value);
+            
+            function animate() {
+                tempo += 0.05;
+                velAttuale = parseFloat(document.getElementById('velocita').value) + acc * tempo;
+                posizione += velAttuale * 2;
+                
+                if (posizione > canvas.width - 25) {
+                    posizione = 50;
+                }
+                
+                drawMoto();
+                
+                document.getElementById('moto-risultato').innerHTML = 
+                    `Posizione: ${(posizione/10).toFixed(1)} m<br>` +
+                    `Tempo: ${tempo.toFixed(2)} s<br>` +
+                    `Velocità attuale: ${velAttuale.toFixed(2)} m/s`;
+                
+                animazione = requestAnimationFrame(animate);
+            }
+            
+            animate();
+        }
+
+        drawMoto();
+
+        function calcolaMoto() {
+            const v0 = parseFloat(document.getElementById('mr-v0').value);
+            const a = parseFloat(document.getElementById('mr-a').value);
+            const t = parseFloat(document.getElementById('mr-t').value);
+            
+            if (isNaN(v0) || isNaN(a) || isNaN(t)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            const s = v0 * t + 0.5 * a * t * t;
+            const v = v0 + a * t;
+            
+            document.getElementById('mr-risultato').style.display = 'block';
+            document.getElementById('mr-risultato').innerHTML = 
+                `Spazio percorso: ${s.toFixed(2)} m<br>` +
+                `Velocità finale: ${v.toFixed(2)} m/s`;
+        }
+
+        function calcolaCaduta() {
+            const h = parseFloat(document.getElementById('cad-altezza').value);
+            if (isNaN(h) || h <= 0) { alert('Inserisci un\'altezza valida!'); return; }
+            
+            const g = 9.81;
+            const t = Math.sqrt(2 * h / g);
+            const v = g * t;
+            
+            document.getElementById('cad-risultato').style.display = 'block';
+            document.getElementById('cad-risultato').innerHTML = 
+                `Tempo di caduta: ${t.toFixed(3)} s<br>` +
+                `Velocità d\'impatto: ${v.toFixed(2)} m/s<br>` +
+                `(${(v * 3.6).toFixed(2)} km/h)`;
+        }
+
+        function calcolaForza() {
+            const m = parseFloat(document.getElementById('f-massa').value);
+            const a = parseFloat(document.getElementById('f-acc').value);
+            if (isNaN(m) || isNaN(a)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const F = m * a;
+            document.getElementById('f-risultato').style.display = 'block';
+            document.getElementById('f-risultato').innerHTML = `F = ${F.toFixed(2)} Newton`;
+        }
+
+        function calcolaPeso() {
+            const m = parseFloat(document.getElementById('peso-massa').value);
+            const g = parseFloat(document.getElementById('pianeta').value);
+            if (isNaN(m)) { alert('Inserisci la massa!'); return; }
+            
+            const P = m * g;
+            const pianetaNome = document.getElementById('pianeta').options[document.getElementById('pianeta').selectedIndex].text;
+            document.getElementById('peso-risultato').style.display = 'block';
+            document.getElementById('peso-risultato').innerHTML = 
+                `Peso su ${pianetaNome.split('(')[0]}: ${P.toFixed(2)} N`;
+        }
+
+        function calcolaHooke() {
+            const k = parseFloat(document.getElementById('hook-k').value);
+            const x = parseFloat(document.getElementById('hook-x').value);
+            if (isNaN(k) || isNaN(x)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const F = k * x;
+            document.getElementById('hook-risultato').style.display = 'block';
+            document.getElementById('hook-risultato').innerHTML = `F = ${F.toFixed(2)} N`;
+        }
+
+        function calcolaEnergiaCinetica() {
+            const m = parseFloat(document.getElementById('ec-massa').value);
+            const v = parseFloat(document.getElementById('ec-vel').value);
+            if (isNaN(m) || isNaN(v)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const Ec = 0.5 * m * v * v;
+            document.getElementById('ec-risultato').style.display = 'block';
+            document.getElementById('ec-risultato').innerHTML = 
+                `Energia cinetica: ${Ec.toFixed(2)} J<br>` +
+                `(${(Ec/1000).toFixed(4)} kJ)`;
+        }
+
+        function calcolaEnergiaPotenziale() {
+            const m = parseFloat(document.getElementById('ep-massa').value);
+            const h = parseFloat(document.getElementById('ep-altezza').value);
+            if (isNaN(m) || isNaN(h)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const g = 9.81;
+            const Ep = m * g * h;
+            document.getElementById('ep-risultato').style.display = 'block';
+            document.getElementById('ep-risultato').innerHTML = 
+                `Energia potenziale: ${Ep.toFixed(2)} J<br>` +
+                `(${(Ep/1000).toFixed(4)} kJ)`;
+        }
+
+        function calcolaLavoro() {
+            const F = parseFloat(document.getElementById('lav-forza').value);
+            const d = parseFloat(document.getElementById('lav-spist').value);
+            if (isNaN(F) || isNaN(d)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const L = F * d;
+            document.getElementById('lav-risultato').style.display = 'block';
+            document.getElementById('lav-risultato').innerHTML = `Lavoro: ${L.toFixed(2)} J`;
+        }
+
+        function calcolaPotenza() {
+            const L = parseFloat(document.getElementById('pot-lavoro').value);
+            const t = parseFloat(document.getElementById('pot-tempo').value);
+            if (isNaN(L) || isNaN(t) || t === 0) { alert('Inserisci valori validi!'); return; }
+            
+            const P = L / t;
+            document.getElementById('pot-risultato').style.display = 'block';
+            document.getElementById('pot-risultato').innerHTML = 
+                `Potenza: ${P.toFixed(2)} W<br>` +
+                `(${(P/1000).toFixed(4)} kW)`;
+        }
+
+        function calcolaCalore() {
+            const m = parseFloat(document.getElementById('cal-massa').value);
+            const c = parseFloat(document.getElementById('cal-c').value);
+            const dt = parseFloat(document.getElementById('cal-dt').value);
+            if (isNaN(m) || isNaN(c) || isNaN(dt)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const Q = m * c * dt;
+            document.getElementById('cal-risultato').style.display = 'block';
+            document.getElementById('cal-risultato').innerHTML = 
+                `Calore: ${Q.toFixed(2)} J<br>` +
+                `(${(Q/1000).toFixed(4)} kJ)`;
+        }
+
+        function calcolaGas() {
+            const P = parseFloat(document.getElementById('gas-p').value);
+            const V = parseFloat(document.getElementById('gas-v').value);
+            const T = parseFloat(document.getElementById('gas-t').value);
+            if (isNaN(P) || isNaN(V) || isNaN(T)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const R = 8.314;
+            const n = (P * V) / (R * T);
+            document.getElementById('gas-risultato').style.display = 'block';
+            document.getElementById('gas-risultato').innerHTML = 
+                `Moli: ${n.toFixed(4)} mol<br>` +
+                `Molecole: ${(n * 6.022e23).toExponential(2)}`;
+        }
+
+        function convertiTemperatura() {
+            const val = parseFloat(document.getElementById('temp-val').value);
+            const da = document.getElementById('temp-da').value;
+            const a = document.getElementById('temp-a').value;
+            if (isNaN(val)) { alert('Inserisci un valore!'); return; }
+            
+            let celsius;
+            if (da === 'C') celsius = val;
+            else if (da === 'K') celsius = val - 273.15;
+            else celsius = (val - 32) * 5/9;
+            
+            let risultato;
+            if (a === 'C') risultato = celsius;
+            else if (a === 'K') risultato = celsius + 273.15;
+            else risultato = celsius * 9/5 + 32;
+            
+            document.getElementById('temp-risultato').style.display = 'block';
+            document.getElementById('temp-risultato').innerHTML = 
+                `${val} ${da} = ${risultato.toFixed(2)} ${a}`;
+        }
+
+        function aggiornaOhm() {
+            const calc = document.getElementById('ohm-calc').value;
+            const inputsDiv = document.getElementById('ohm-inputs');
+            
+            if (calc === 'v') {
+                inputsDiv.innerHTML = `
+                    <label>Resistenza R (Ω):</label>
+                    <input type="number" id="ohm-r" placeholder="Es: 100">
+                    <label>Corrente I (A):</label>
+                    <input type="number" id="ohm-i" placeholder="Es: 0.5">
+                `;
+            } else if (calc === 'i') {
+                inputsDiv.innerHTML = `
+                    <label>Tensione V (V):</label>
+                    <input type="number" id="ohm-v" placeholder="Es: 12">
+                    <label>Resistenza R (Ω):</label>
+                    <input type="number" id="ohm-r" placeholder="Es: 100">
+                `;
+            } else {
+                inputsDiv.innerHTML = `
+                    <label>Tensione V (V):</label>
+                    <input type="number" id="ohm-v" placeholder="Es: 12">
+                    <label>Corrente I (A):</label>
+                    <input type="number" id="ohm-i" placeholder="Es: 0.5">
+                `;
+            }
+        }
+
+        function calcolaOhm() {
+            const calc = document.getElementById('ohm-calc').value;
+            let risultato;
+            
+            if (calc === 'v') {
+                const r = parseFloat(document.getElementById('ohm-r').value);
+                const i = parseFloat(document.getElementById('ohm-i').value);
+                if (isNaN(r) || isNaN(i)) { alert('Inserisci tutti i valori!'); return; }
+                risultato = r * i;
+                document.getElementById('ohm-risultato').innerHTML = `V = ${risultato.toFixed(2)} Volt`;
+            } else if (calc === 'i') {
+                const v = parseFloat(document.getElementById('ohm-v').value);
+                const r = parseFloat(document.getElementById('ohm-r').value);
+                if (isNaN(v) || isNaN(r) || r === 0) { alert('Inserisci valori validi!'); return; }
+                risultato = v / r;
+                document.getElementById('ohm-risultato').innerHTML = `I = ${risultato.toFixed(4)} Ampere`;
+            } else {
+                const v = parseFloat(document.getElementById('ohm-v').value);
+                const i = parseFloat(document.getElementById('ohm-i').value);
+                if (isNaN(v) || isNaN(i) || i === 0) { alert('Inserisci valori validi!'); return; }
+                risultato = v / i;
+                document.getElementById('ohm-risultato').innerHTML = `R = ${risultato.toFixed(2)} Ohm`;
+            }
+            
+            document.getElementById('ohm-risultato').style.display = 'block';
+        }
+
+        aggiornaOhm();
+
+        function calcolaPotenzaElettrica() {
+            const v = parseFloat(document.getElementById('pel-v').value);
+            const i = parseFloat(document.getElementById('pel-i').value);
+            if (isNaN(v) || isNaN(i)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const p = v * i;
+            document.getElementById('pel-risultato').style.display = 'block';
+            document.getElementById('pel-risultato').innerHTML = 
+                `Potenza: ${p.toFixed(2)} W<br>` +
+                `(${(p/1000).toFixed(4)} kW)`;
+        }
+
+        function calcolaCostoElettricita() {
+            const pot = parseFloat(document.getElementById('costo-pot').value);
+            const ore = parseFloat(document.getElementById('costo-ore').value);
+            const prezzo = parseFloat(document.getElementById('costo-prezzo').value);
+            if (isNaN(pot) || isNaN(ore) || isNaN(prezzo)) { alert('Inserisci tutti i valori!'); return; }
+            
+            const kwh = (pot / 1000) * ore;
+            const costo = kwh * prezzo;
+            
+            document.getElementById('costo-risultato').style.display = 'block';
+            document.getElementById('costo-risultato').innerHTML = 
+                `Consumo: ${kwh.toFixed(2)} kWh<br>` +
+                `Costo totale: € ${costo.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

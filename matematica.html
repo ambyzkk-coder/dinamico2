@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matematica Interattiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: #ff3366;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 8px solid #000;
+        }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
+        .back { 
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.2s;
+        }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ffdd00;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .tool {
+            background: #fff;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+        }
+        
+        .tool h2 { 
+            font-family: 'Bangers', cursive;
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: #ff3366;
+            color: #fff;
+            padding: 10px 20px;
+            display: inline-block;
+            border: 3px solid #000;
+        }
+        
+        .tool label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 8px;
+            font-size: 1.1em;
+        }
+        
+        .tool input, .tool select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 3px solid #000;
+            font-family: inherit;
+        }
+        
+        .tool input:focus, .tool select:focus {
+            outline: none;
+            border-color: #ff3366;
+            box-shadow: 0 0 10px rgba(255,51,102,0.3);
+        }
+        
+        .tool button {
+            margin-top: 15px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-family: 'Bangers', cursive;
+            background: #000;
+            color: #fff;
+            border: 4px solid #000;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 2px;
+        }
+        
+        .tool button:hover {
+            background: #ff3366;
+            transform: scale(1.05);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #000;
+            color: #fff;
+            border: 4px solid #ff3366;
+            font-size: 1.3em;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .formula-display {
+            background: #ffdd00;
+            padding: 15px;
+            border: 3px solid #000;
+            text-align: center;
+            font-size: 1.5em;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+        }
+        
+        .steps {
+            background: #f0f0f0;
+            padding: 15px;
+            border: 2px solid #000;
+            margin-top: 15px;
+        }
+        
+        .steps h4 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ff3366;
+        }
+        
+        .steps p {
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .nav-tabs button {
+            padding: 10px 20px;
+            background: #fff;
+            border: 3px solid #000;
+            font-family: 'Bangers', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .nav-tabs button.active {
+            background: #ff3366;
+            color: #fff;
+        }
+        
+        .nav-tabs button:hover {
+            background: #ffdd00;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MATEMATICA INTERATTIVA!</h1>
+        <p style="color: #fff; font-size: 1.3em; margin-top: 10px;">★ Calcolatori e Risolutori ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('equazioni')" class="active" id="btn-equazioni">EQUAZIONI</button>
+            <button onclick="showTab('sistemi')" id="btn-sistemi">SISTEMI</button>
+            <button onclick="showTab('potenze')" id="btn-potenze">POTENZE</button>
+            <button onclick="showTab('percentuali')" id="btn-percentuali">PERCENTUALI</button>
+        </div>
+
+        <div id="equazioni" class="tab-content active">
+            <div class="tool">
+                <h2>RISOLUTORE EQUAZIONI DI 1° GRADO</h2>
+                <p style="margin-bottom: 20px;">Risolve equazioni nella forma ax + b = 0</p>
+                
+                <label>Coefficiente a:</label>
+                <input type="number" id="eq-a" placeholder="Es: 2" step="any">
+                
+                <label>Coefficiente b:</label>
+                <input type="number" id="eq-b" placeholder="Es: -8" step="any">
+                
+                <button onclick="risolviEquazione()">RISOLVI!</button>
+                
+                <div id="eq-risultato" class="result" style="display: none;"></div>
+                <div id="eq-passaggi" class="steps" style="display: none;"></div>
+            </div>
+            
+            <div class="tool">
+                <h2>EQUAZIONE DI 2° GRADO</h2>
+                <p style="margin-bottom: 20px;">Risolve ax² + bx + c = 0</p>
+                
+                <label>Coefficiente a:</label>
+                <input type="number" id="eq2-a" placeholder="Es: 1" step="any">
+                
+                <label>Coefficiente b:</label>
+                <input type="number" id="eq2-b" placeholder="Es: -5" step="any">
+                
+                <label>Coefficiente c:</label>
+                <input type="number" id="eq2-c" placeholder="Es: 6" step="any">
+                
+                <button onclick="risolviEquazione2()">RISOLVI!</button>
+                
+                <div id="eq2-risultato" class="result" style="display: none;"></div>
+                <div id="eq2-passaggi" class="steps" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="sistemi" class="tab-content">
+            <div class="tool">
+                <h2>SISTEMA DI DUE EQUAZIONI</h2>
+                <p style="margin-bottom: 20px;">Risolve sistemi lineari 2x2</p>
+                
+                <div style="background: #f0f0f0; padding: 15px; border: 2px solid #000; margin-bottom: 20px;">
+                    <p style="font-family: 'Courier New', monospace; font-size: 1.2em;">
+                        a₁x + b₁y = c₁<br>
+                        a₂x + b₂y = c₂
+                    </p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div>
+                        <label>a₁:</label>
+                        <input type="number" id="sis-a1" step="any">
+                        <label>b₁:</label>
+                        <input type="number" id="sis-b1" step="any">
+                        <label>c₁:</label>
+                        <input type="number" id="sis-c1" step="any">
+                    </div>
+                    <div>
+                        <label>a₂:</label>
+                        <input type="number" id="sis-a2" step="any">
+                        <label>b₂:</label>
+                        <input type="number" id="sis-b2" step="any">
+                        <label>c₂:</label>
+                        <input type="number" id="sis-c2" step="any">
+                    </div>
+                </div>
+                
+                <button onclick="risolviSistema()">RISOLVI!</button>
+                
+                <div id="sis-risultato" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="potenze" class="tab-content">
+            <div class="tool">
+                <h2>CALCOLATORE POTENZE</h2>
+                
+                <label>Base:</label>
+                <input type="number" id="pot-base" placeholder="Es: 2" step="any">
+                
+                <label>Esponente:</label>
+                <input type="number" id="pot-exp" placeholder="Es: 3" step="any">
+                
+                <button onclick="calcolaPotenza()">CALCOLA!</button>
+                
+                <div id="pot-risultato" class="result" style="display: none;"></div>
+            </div>
+            
+            <div class="tool">
+                <h2>RADICI</h2>
+                
+                <label>Numero:</label>
+                <input type="number" id="rad-num" placeholder="Es: 16" step="any">
+                
+                <label>Indice della radice:</label>
+                <input type="number" id="rad-ind" placeholder="Es: 2 (radice quadrata)" step="any" value="2">
+                
+                <button onclick="calcolaRadice()">CALCOLA!</button>
+                
+                <div id="rad-risultato" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="percentuali" class="tab-content">
+            <div class="tool">
+                <h2>CALCOLATORE PERCENTUALI</h2>
+                
+                <label>Calcola il % di un numero:</label>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <input type="number" id="perc-val" placeholder="%" style="width: 100px;">
+                    <span>% di</span>
+                    <input type="number" id="perc-tot" placeholder="Numero" style="width: 150px;">
+                </div>
+                <button onclick="calcolaPercentuale()">CALCOLA!</button>
+                <div id="perc-risultato" class="result" style="display: none;"></div>
+            </div>
+            
+            <div class="tool">
+                <h2>AUMENTO/DIMINUZIONE %</h2>
+                
+                <label>Numero iniziale:</label>
+                <input type="number" id="var-num" step="any">
+                
+                <label>Percentuale di variazione:</label>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <input type="number" id="var-perc" step="any" style="width: 100px;">
+                    <select id="var-tipo">
+                        <option value="aumento">AUMENTO (+)</option>
+                        <option value="diminuzione">DIMINUZIONE (-)</option>
+                    </select>
+                </div>
+                
+                <button onclick="calcolaVariazione()">CALCOLA!</button>
+                
+                <div id="var-risultato" class="result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            document.getElementById('btn-' + tabName).classList.add('active');
+        }
+        
+        function risolviEquazione() {
+            const a = parseFloat(document.getElementById('eq-a').value);
+            const b = parseFloat(document.getElementById('eq-b').value);
+            
+            if (isNaN(a) || isNaN(b)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            if (a === 0) {
+                alert('Il coefficiente a non può essere zero!');
+                return;
+            }
+            
+            const x = -b / a;
+            
+            const risultato = document.getElementById('eq-risultato');
+            const passaggi = document.getElementById('eq-passaggi');
+            
+            risultato.style.display = 'block';
+            risultato.innerHTML = `x = ${x.toFixed(4)}`;
+            
+            passaggi.style.display = 'block';
+            passaggi.innerHTML = `
+                <h4>PASSAGGI:</h4>
+                <p>${a}x + (${b}) = 0</p>
+                <p>${a}x = ${-b}</p>
+                <p>x = ${-b} / ${a}</p>
+                <p>x = ${x.toFixed(4)}</p>
+            `;
+        }
+        
+        function risolviEquazione2() {
+            const a = parseFloat(document.getElementById('eq2-a').value);
+            const b = parseFloat(document.getElementById('eq2-b').value);
+            const c = parseFloat(document.getElementById('eq2-c').value);
+            
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            if (a === 0) {
+                alert('Il coefficiente a non può essere zero!');
+                return;
+            }
+            
+            const delta = b * b - 4 * a * c;
+            const risultato = document.getElementById('eq2-risultato');
+            const passaggi = document.getElementById('eq2-passaggi');
+            
+            risultato.style.display = 'block';
+            passaggi.style.display = 'block';
+            
+            let html = '<h4>PASSAGGI:</h4>';
+            html += `<p>Equazione: ${a}x² + (${b})x + (${c}) = 0</p>`;
+            html += `<p>Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = ${delta.toFixed(4)}</p>`;
+            
+            if (delta > 0) {
+                const x1 = (-b + Math.sqrt(delta)) / (2 * a);
+                const x2 = (-b - Math.sqrt(delta)) / (2 * a);
+                risultato.innerHTML = `x₁ = ${x1.toFixed(4)}<br>x₂ = ${x2.toFixed(4)}`;
+                html += `<p>Δ > 0 → Due soluzioni reali distinte</p>`;
+                html += `<p>x₁ = (-b + √Δ) / 2a = ${x1.toFixed(4)}</p>`;
+                html += `<p>x₂ = (-b - √Δ) / 2a = ${x2.toFixed(4)}</p>`;
+            } else if (delta === 0) {
+                const x = -b / (2 * a);
+                risultato.innerHTML = `x = ${x.toFixed(4)} (due soluzioni coincidenti)`;
+                html += `<p>Δ = 0 → Due soluzioni reali coincidenti</p>`;
+                html += `<p>x = -b / 2a = ${x.toFixed(4)}</p>`;
+            } else {
+                risultato.innerHTML = `Nessuna soluzione reale (Δ < 0)`;
+                html += `<p>Δ < 0 → Nessuna soluzione reale</p>`;
+            }
+            
+            passaggi.innerHTML = html;
+        }
+        
+        function risolviSistema() {
+            const a1 = parseFloat(document.getElementById('sis-a1').value);
+            const b1 = parseFloat(document.getElementById('sis-b1').value);
+            const c1 = parseFloat(document.getElementById('sis-c1').value);
+            const a2 = parseFloat(document.getElementById('sis-a2').value);
+            const b2 = parseFloat(document.getElementById('sis-b2').value);
+            const c2 = parseFloat(document.getElementById('sis-c2').value);
+            
+            if ([a1, b1, c1, a2, b2, c2].some(isNaN)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            const det = a1 * b2 - a2 * b1;
+            const risultato = document.getElementById('sis-risultato');
+            risultato.style.display = 'block';
+            
+            if (det === 0) {
+                risultato.innerHTML = 'Sistema indeterminato o impossibile!';
+            } else {
+                const x = (c1 * b2 - c2 * b1) / det;
+                const y = (a1 * c2 - a2 * c1) / det;
+                risultato.innerHTML = `x = ${x.toFixed(4)}<br>y = ${y.toFixed(4)}`;
+            }
+        }
+        
+        function calcolaPotenza() {
+            const base = parseFloat(document.getElementById('pot-base').value);
+            const exp = parseFloat(document.getElementById('pot-exp').value);
+            
+            if (isNaN(base) || isNaN(exp)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            const risultato = Math.pow(base, exp);
+            const risultatoDiv = document.getElementById('pot-risultato');
+            risultatoDiv.style.display = 'block';
+            risultatoDiv.innerHTML = `${base}<sup>${exp}</sup> = ${risultato}`;
+        }
+        
+        function calcolaRadice() {
+            const num = parseFloat(document.getElementById('rad-num').value);
+            const ind = parseFloat(document.getElementById('rad-ind').value);
+            
+            if (isNaN(num) || isNaN(ind)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            if (num < 0 && ind % 2 === 0) {
+                alert('Impossibile calcolare radice pari di numero negativo!');
+                return;
+            }
+            
+            const risultato = Math.pow(num, 1/ind);
+            const risultatoDiv = document.getElementById('rad-risultato');
+            risultatoDiv.style.display = 'block';
+            risultatoDiv.innerHTML = `<sup>${ind}</sup>√${num} = ${risultato.toFixed(6)}`;
+        }
+        
+        function calcolaPercentuale() {
+            const perc = parseFloat(document.getElementById('perc-val').value);
+            const tot = parseFloat(document.getElementById('perc-tot').value);
+            
+            if (isNaN(perc) || isNaN(tot)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            const risultato = (perc / 100) * tot;
+            const risultatoDiv = document.getElementById('perc-risultato');
+            risultatoDiv.style.display = 'block';
+            risultatoDiv.innerHTML = `${perc}% di ${tot} = ${risultato.toFixed(4)}`;
+        }
+        
+        function calcolaVariazione() {
+            const num = parseFloat(document.getElementById('var-num').value);
+            const perc = parseFloat(document.getElementById('var-perc').value);
+            const tipo = document.getElementById('var-tipo').value;
+            
+            if (isNaN(num) || isNaN(perc)) {
+                alert('Inserisci tutti i valori!');
+                return;
+            }
+            
+            const variazione = (perc / 100) * num;
+            const risultato = tipo === 'aumento' ? num + variazione : num - variazione;
+            const segno = tipo === 'aumento' ? '+' : '-';
+            
+            const risultatoDiv = document.getElementById('var-risultato');
+            risultatoDiv.style.display = 'block';
+            risultatoDiv.innerHTML = `
+                ${segno}${perc}% di ${num} = ${segno}${variazione.toFixed(4)}<br>
+                Risultato: ${risultato.toFixed(4)}
+            `;
+        }
+    </script>
+</body>
+</html>
