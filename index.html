@@ -4,96 +4,261 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fisica - Guida Completa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
             min-height: 100vh;
         }
+        
         header {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
+            background: #000;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid #00d9ff;
+            border-bottom: 8px solid #ff3366;
+            position: relative;
+            overflow: hidden;
         }
-        h1 { color: #00d9ff; font-size: 2.5em; margin-bottom: 10px; }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(255,255,255,0.03) 2px,
+                rgba(255,255,255,0.03) 4px
+            );
+        }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 
+                4px 4px 0 #ff3366,
+                -2px -2px 0 #00d4ff;
+            letter-spacing: 3px;
+            position: relative;
+        }
+        
+        header p {
+            color: #fff;
+            font-size: 1.3em;
+            position: relative;
+        }
+        
         nav { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
             gap: 15px; 
-            margin-top: 20px; 
+            margin-top: 25px;
+            position: relative;
         }
+        
         nav a {
-            background: #00d9ff;
-            color: #1a1a2e;
-            padding: 12px 25px;
+            background: #fff;
+            color: #000;
+            padding: 15px 30px;
             text-decoration: none;
-            border-radius: 25px;
             font-weight: bold;
-            transition: all 0.3s;
+            font-size: 1.1em;
+            border: 4px solid #000;
+            box-shadow: 5px 5px 0 #000;
+            transition: all 0.1s;
+            position: relative;
         }
+        
+        nav a::before {
+            content: '★';
+            margin-right: 5px;
+            color: #ff3366;
+        }
+        
         nav a:hover { 
-            background: #fff; 
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,217,255,0.4);
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ff3366;
+            color: #fff;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         .intro {
-            background: rgba(255,255,255,0.1);
+            background: #fff;
             padding: 30px;
-            border-radius: 15px;
             margin-bottom: 40px;
-            border-left: 5px solid #00d9ff;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+            position: relative;
         }
-        .intro h2 { color: #00d9ff; margin-bottom: 15px; }
+        
+        .intro::before {
+            content: '★ MANGA PHYSICS ★';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #ff3366;
+            color: #fff;
+            padding: 5px 15px;
+            font-weight: bold;
+            border: 3px solid #000;
+        }
+        
+        .intro h2 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+        
+        .intro p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
+        
         .card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
+            background: #fff;
             padding: 25px;
-            transition: all 0.3s;
-            border: 1px solid rgba(0,217,255,0.2);
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+            position: relative;
+            transition: all 0.2s;
         }
+        
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #ff3366 30%, transparent 30%);
+            background-size: 10px 10px;
+        }
+        
         .card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.1);
-            border-color: #00d9ff;
+            transform: translate(3px, 3px);
+            box-shadow: 5px 5px 0 #000;
         }
-        .card h3 { color: #00d9ff; margin-bottom: 10px; font-size: 1.4em; }
-        .card p { color: #bbb; line-height: 1.6; }
+        
+        .card h3 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            background: #ffdd00;
+            display: inline-block;
+            padding: 5px 15px;
+            border: 3px solid #000;
+            transform: rotate(-2deg);
+        }
+        
+        .card p { 
+            color: #333;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        
         .formula {
-            background: rgba(0,217,255,0.1);
+            background: #000;
+            color: #fff;
             padding: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
+            margin: 20px 0;
             font-family: 'Courier New', monospace;
             text-align: center;
-            font-size: 1.2em;
-            color: #fff;
+            font-size: 1.4em;
+            border: 3px solid #00d4ff;
+            position: relative;
         }
+        
+        .formula::before {
+            content: '⚡';
+            position: absolute;
+            left: 10px;
+            color: #ffdd00;
+        }
+        
+        .formula::after {
+            content: '⚡';
+            position: absolute;
+            right: 10px;
+            color: #ffdd00;
+        }
+        
         footer {
             text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.3);
-            margin-top: 40px;
+            padding: 30px;
+            background: #000;
+            color: #fff;
+            margin-top: 50px;
+            border-top: 8px solid #ff3366;
+            font-size: 1.2em;
+        }
+        
+        .manga-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: 
+                linear-gradient(45deg, transparent 48%, rgba(0,0,0,0.03) 49%, rgba(0,0,0,0.03) 51%, transparent 52%);
+            background-size: 8px 8px;
+        }
+        
+        .speech-bubble {
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 20px;
+            padding: 15px 20px;
+            position: relative;
+            margin: 20px 0;
+        }
+        
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 30px;
+            border: 15px solid transparent;
+            border-top-color: #000;
         }
     </style>
 </head>
 <body>
+    <div class="manga-effect"></div>
+    
     <header>
-        <h1>Il Mondo della Fisica</h1>
-        <p>Scopri le leggi che governano l'universo</p>
+        <h1>IL MONDO DELLA FISICA</h1>
+        <p>★ Scopri le leggi che governano l'universo! ★</p>
         <nav>
             <a href="meccanica.html">Meccanica</a>
             <a href="termodinamica.html">Termodinamica</a>
@@ -105,52 +270,54 @@
 
     <div class="container">
         <div class="intro">
-            <h2>Benvenuto nel mondo della Fisica</h2>
-            <p>La fisica è la scienza che studia la materia, l'energia e le loro interazioni. 
-            Attraverso leggi matematiche e principi fondamentali, ci aiuta a comprendere 
-            come funziona l'universo, dal più piccolo atomo alle più grandi galassie.</p>
+            <h2>★ Benvenuto nel mondo della Fisica! ★</h2>
+            <div class="speech-bubble">
+                <p>La fisica è la scienza che studia la materia, l'energia e le loro interazioni! 
+                Attraverso leggi matematiche e principi fondamentali, ci aiuta a comprendere 
+                come funziona l'universo, dal più piccolo atomo alle più grandi galassie!</p>
+            </div>
         </div>
 
         <div class="cards">
             <div class="card">
                 <h3>Meccanica</h3>
-                <p>Studio del movimento e delle forze. Dalle leggi di Newton alla dinamica dei corpi.</p>
+                <p>Studio del movimento e delle forze! Dalle leggi di Newton alla dinamica dei corpi!</p>
                 <div class="formula">F = m × a</div>
             </div>
 
             <div class="card">
                 <h3>Termodinamica</h3>
-                <p>Calore, temperatura e energia. I principi che governano i sistemi termici.</p>
+                <p>Calore, temperatura e energia! I principi che governano i sistemi termici!</p>
                 <div class="formula">Q = m × c × ΔT</div>
             </div>
 
             <div class="card">
                 <h3>Elettromagnetismo</h3>
-                <p>Elettricità, magnetismo e onde elettromagnetiche. Le forze che muovono la tecnologia.</p>
+                <p>Elettricità, magnetismo e onde elettromagnetiche! Le forze che muovono la tecnologia!</p>
                 <div class="formula">V = R × I</div>
             </div>
 
             <div class="card">
                 <h3>Ottica</h3>
-                <p>La luce e la sua interazione con la materia. Specchi, lenti e colori.</p>
+                <p>La luce e la sua interazione con la materia! Specchi, lenti e colori!</p>
                 <div class="formula">n = c / v</div>
             </div>
 
             <div class="card">
                 <h3>Fisica Moderna</h3>
-                <p>Relatività e meccanica quantistica. La fisica del XX secolo.</p>
+                <p>Relatività e meccanica quantistica! La fisica del XX secolo!</p>
                 <div class="formula">E = m × c²</div>
             </div>
 
             <div class="card">
                 <h3>Storia della Fisica</h3>
-                <p>Da Galileo a Einstein. I grandi scienziati che hanno cambiato il mondo.</p>
+                <p>Da Galileo a Einstein! I grandi scienziati che hanno cambiato il mondo!</p>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>MAST 2026 - Corso di Fisica</p>
+        <p>★ MAST 2026 - Corso di Fisica ★</p>
     </footer>
 </body>
 </html>

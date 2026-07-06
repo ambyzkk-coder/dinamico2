@@ -3,82 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ottica - Fisica</title>
+    <title>Ottica - Fisica Manga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
             min-height: 100vh;
         }
+        
         header {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
+            background: #9c27b0;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid #a55eea;
+            border-bottom: 8px solid #000;
+            position: relative;
         }
-        h1 { color: #a55eea; font-size: 2.5em; margin-bottom: 10px; }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
         .back { 
             display: inline-block;
-            color: #fff;
+            color: #000;
             text-decoration: none;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.1s;
         }
-        .back:hover { background: rgba(255,255,255,0.2); }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ffdd00;
+        }
+        
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         section {
-            background: rgba(255,255,255,0.05);
+            background: #fff;
             padding: 30px;
-            border-radius: 15px;
             margin-bottom: 30px;
-            border-left: 4px solid #a55eea;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
         }
-        h2 { color: #a55eea; margin-bottom: 15px; }
-        h3 { color: #ff6b6b; margin: 20px 0 10px; }
-        p { line-height: 1.8; margin-bottom: 15px; }
-        .formula {
-            background: rgba(165,94,234,0.15);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+        
+        h2 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: #ffdd00;
+            display: inline-block;
+            padding: 5px 20px;
+            border: 3px solid #000;
+            transform: rotate(-1deg);
+        }
+        
+        h3 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
             font-size: 1.5em;
+            margin: 25px 0 15px;
+            border-left: 6px solid #9c27b0;
+            padding-left: 15px;
+        }
+        
+        p { 
+            line-height: 1.8; 
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .formula {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.6em;
             font-family: 'Courier New', monospace;
+            border: 4px solid #9c27b0;
         }
+        
         .phenomenon {
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
+            background: #f3e5f5;
+            padding: 20px;
+            border: 4px solid #000;
+            margin: 20px 0;
+            box-shadow: 5px 5px 0 #000;
         }
-        .phenomenon h4 { color: #ffa502; margin-bottom: 8px; }
-        ul { margin-left: 20px; line-height: 2; }
+        
+        .phenomenon h4 { 
+            font-family: 'Bangers', cursive;
+            color: #9c27b0;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            background: #000;
+            display: inline-block;
+            padding: 3px 15px;
+            color: #fff;
+        }
+        
+        ul { 
+            margin-left: 25px; 
+            line-height: 2;
+            font-size: 1.1em;
+        }
+        
+        li strong {
+            color: #9c27b0;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Ottica</h1>
-        <p>Lo studio della luce e dei fenomeni luminosi</p>
-        <a href="index.html" class="back">← Torna alla Home</a>
+        <h1>OTTICA!</h1>
+        <p style="color: #fff; font-size: 1.3em;">★ Lo studio della luce e dei fenomeni luminosi! ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
         <section>
             <h2>Cos'è l'Ottica?</h2>
-            <p>L'ottica studia la luce, la sua propagazione e l'interazione con la materia. 
-            Si divide in ottica geometrica (raggi) e ottica fisica (onde).</p>
+            <p>L'ottica studia la <strong>luce</strong>, la sua propagazione e l'interazione con la materia! 
+            Si divide in <strong>ottica geometrica</strong> (raggi) e <strong>ottica fisica</strong> (onde).</p>
         </section>
 
         <section>
-            <h2>Propagazione della Luce</h2>
+            <h2>Propagazione della Luce!</h2>
             
             <h3>Velocità della Luce</h3>
             <p>Nel vuoto la luce viaggia a velocità costante:</p>
@@ -91,23 +165,23 @@
 
             <h3>Esempi di Indici di Rifrazione</h3>
             <ul>
-                <li>Aria: n ≈ 1.0003</li>
-                <li>Acqua: n ≈ 1.33</li>
-                <li>Vetro: n ≈ 1.5</li>
-                <li>Diamante: n ≈ 2.42</li>
+                <li><strong>Aria:</strong> n ≈ 1.0003</li>
+                <li><strong>Acqua:</strong> n ≈ 1.33</li>
+                <li><strong>Vetro:</strong> n ≈ 1.5</li>
+                <li><strong>Diamante:</strong> n ≈ 2.42</li>
             </ul>
         </section>
 
         <section>
-            <h2>Riflessione</h2>
-            <p>La luce rimbalza su una superficie.</p>
+            <h2>Riflessione!</h2>
+            <p>La luce <strong>rimbalza</strong> su una superficie!</p>
             
             <h3>Legge della Riflessione</h3>
             <div class="formula">θᵢ = θᵣ</div>
-            <p>L'angolo di incidenza uguaglia l'angolo di riflessione</p>
+            <p>L'angolo di incidenza uguaglia l'angolo di riflessione!</p>
 
             <div class="phenomenon">
-                <h4>Tipi di Specchi</h4>
+                <h4>★ TIPI DI SPECCHI ★</h4>
                 <ul>
                     <li><strong>Piano:</strong> Immagine virtuale, dritta, stessa dimensione</li>
                     <li><strong>Concavo:</strong> Convergente, può formare immagini reali</li>
@@ -117,31 +191,31 @@
         </section>
 
         <section>
-            <h2>Rifrazione</h2>
-            <p>La luce cambia direzione passando tra mezzi diversi.</p>
+            <h2>Rifrazione!</h2>
+            <p>La luce cambia <strong>direzione</strong> passando tra mezzi diversi!</p>
             
             <h3>Legge di Snell</h3>
             <div class="formula">n₁ × sen(θ₁) = n₂ × sen(θ₂)</div>
 
             <div class="phenomenon">
-                <h4>Angolo Limite e Riflessione Totale</h4>
+                <h4>★ ANGOLO LIMITE ★</h4>
                 <p>Quando la luce passa da un mezzo più denso a uno meno denso con un angolo 
-                superiore all'angolo limite, avviene la riflessione totale.</p>
+                superiore all'angolo limite, avviene la <strong>riflessione totale</strong>!</p>
                 <div class="formula">sen(θᶫ) = n₂ / n₁</div>
             </div>
         </section>
 
         <section>
-            <h2>Lenti</h2>
+            <h2>Lenti!</h2>
             
             <div class="phenomenon">
-                <h4>Lenti Convergenti (Convesse)</h4>
-                <p>Accorciano i raggi luminosi. Usate negli occhiali per correggere l'ipermetropia.</p>
+                <h4>★ LENTI CONVERGENTI (CONVESSE) ★</h4>
+                <p>Accorciano i raggi luminosi! Usate negli occhiali per correggere l'ipermetropia.</p>
             </div>
 
             <div class="phenomenon">
-                <h4>Lenti Divergenti (Concave)</h4>
-                <p>Allontanano i raggi luminosi. Usate negli occhiali per correggere la miopia.</p>
+                <h4>★ LENTI DIVERGENTI (CONCAVE) ★</h4>
+                <p>Allontanano i raggi luminosi! Usate negli occhiali per correggere la miopia.</p>
             </div>
 
             <h3>Equazione delle Lenti</h3>
@@ -150,21 +224,21 @@
         </section>
 
         <section>
-            <h2>Fenomeni Onde</h2>
+            <h2>Fenomeni Onde!</h2>
             
             <div class="phenomenon">
-                <h4>Diffrazione</h4>
-                <p>La luce si "piega" intorno agli ostacoli o passa attraverso fessure strette.</p>
+                <h4>★ DIFFRAZIONE ★</h4>
+                <p>La luce si "piega" intorno agli ostacoli o passa attraverso fessure strette!</p>
             </div>
 
             <div class="phenomenon">
-                <h4>Interferenza</h4>
-                <p>Due onde luminose si sovrappongono creando figure di interferenza (frange chiare e scure).</p>
+                <h4>★ INTERFERENZA ★</h4>
+                <p>Due onde luminose si sovrappongono creando figure di interferenza (frange chiare e scure)!</p>
             </div>
 
             <div class="phenomenon">
-                <h4>Polarizzazione</h4>
-                <p>La luce oscilla in un piano specifico. Usata negli occhiali da sole polarizzati.</p>
+                <h4>★ POLARIZZAZIONE ★</h4>
+                <p>La luce oscilla in un piano specifico! Usata negli occhiali da sole polarizzati.</p>
             </div>
         </section>
     </div>

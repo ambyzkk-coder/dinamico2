@@ -3,112 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termodinamica - Fisica</title>
+    <title>Termodinamica - Fisica Manga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
             min-height: 100vh;
         }
+        
         header {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
+            background: #ff9500;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid #ffa502;
+            border-bottom: 8px solid #000;
+            position: relative;
         }
-        h1 { color: #ffa502; font-size: 2.5em; margin-bottom: 10px; }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
         .back { 
             display: inline-block;
-            color: #fff;
+            color: #000;
             text-decoration: none;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.1s;
         }
-        .back:hover { background: rgba(255,255,255,0.2); }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ffdd00;
+        }
+        
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         section {
-            background: rgba(255,255,255,0.05);
+            background: #fff;
             padding: 30px;
-            border-radius: 15px;
             margin-bottom: 30px;
-            border-left: 4px solid #ffa502;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
+            position: relative;
         }
-        h2 { color: #ffa502; margin-bottom: 15px; }
-        h3 { color: #ff6b6b; margin: 20px 0 10px; }
-        p { line-height: 1.8; margin-bottom: 15px; }
-        .formula {
-            background: rgba(255,165,2,0.15);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+        
+        h2 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: #ffdd00;
+            display: inline-block;
+            padding: 5px 20px;
+            border: 3px solid #000;
+            transform: rotate(-1deg);
+        }
+        
+        h3 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
             font-size: 1.5em;
-            font-family: 'Courier New', monospace;
+            margin: 25px 0 15px;
+            border-left: 6px solid #ff9500;
+            padding-left: 15px;
         }
-        .law {
-            background: rgba(255,107,107,0.1);
+        
+        p { 
+            line-height: 1.8; 
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .formula {
+            background: #000;
+            color: #fff;
             padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.6em;
+            font-family: 'Courier New', monospace;
+            border: 4px solid #ff9500;
         }
-        .law h4 { color: #ff6b6b; margin-bottom: 10px; }
-        ul { margin-left: 20px; line-height: 2; }
+        
+        .law {
+            background: #fff3e0;
+            padding: 20px;
+            border: 4px solid #000;
+            margin: 20px 0;
+            box-shadow: 5px 5px 0 #000;
+        }
+        
+        .law h4 { 
+            font-family: 'Bangers', cursive;
+            color: #ff9500;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            background: #000;
+            display: inline-block;
+            padding: 3px 15px;
+            color: #fff;
+        }
+        
+        ul { 
+            margin-left: 25px; 
+            line-height: 2;
+            font-size: 1.1em;
+        }
+        
+        li strong {
+            color: #ff9500;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Termodinamica</h1>
-        <p>Lo studio del calore e dell'energia</p>
-        <a href="index.html" class="back">← Torna alla Home</a>
+        <h1>TERMODINAMICA!</h1>
+        <p style="color: #fff; font-size: 1.3em;">★ Lo studio del calore e dell'energia! ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
         <section>
             <h2>Cos'è la Termodinamica?</h2>
-            <p>La termodinamica studia le trasformazioni energetiche, il calore e le loro relazioni con le proprietà della materia. 
-            È fondamentale per capire motori, refrigerazione e processi chimici.</p>
+            <p>La termodinamica studia le <strong>trasformazioni energetiche</strong>, il calore e le loro relazioni con le proprietà della materia! 
+            È fondamentale per capire motori, refrigerazione e processi chimici!</p>
         </section>
 
         <section>
-            <h2>I Quattro Principi della Termodinamica</h2>
+            <h2>I Quattro Principi della Termodinamica!</h2>
             
             <div class="law">
-                <h4>Principio Zero</h4>
-                <p>Se due sistemi sono in equilibrio termico con un terzo, sono in equilibrio tra loro. 
-                Definisce il concetto di temperatura.</p>
+                <h4>★ PRINCIPIO ZERO ★</h4>
+                <p>Se due sistemi sono in equilibrio termico con un terzo, sono in equilibrio tra loro! 
+                Definisce il concetto di <strong>temperatura</strong>.</p>
             </div>
 
             <div class="law">
-                <h4>Primo Principio</h4>
-                <p>L'energia non può essere creata né distrutta, solo trasformata. 
+                <h4>★ PRIMO PRINCIPIO ★</h4>
+                <p>L'energia non può essere creata né distrutta, solo <strong>trasformata</strong>! 
                 La variazione di energia interna uguaglia il calore meno il lavoro.</p>
                 <div class="formula">ΔU = Q - L</div>
             </div>
 
             <div class="law">
-                <h4>Secondo Principio</h4>
-                <p>Il calore fluisce spontaneamente da un corpo caldo a uno freddo, mai il contrario. 
-                Introduce il concetto di entropia.</p>
+                <h4>★ SECONDO PRINCIPIO ★</h4>
+                <p>Il calore fluisce spontaneamente da un corpo caldo a uno freddo, mai il contrario! 
+                Introduce il concetto di <strong>entropia</strong>.</p>
                 <div class="formula">ΔS ≥ 0</div>
-                <p>L'entropia dell'universo tende sempre ad aumentare.</p>
+                <p>L'entropia dell'universo tende sempre ad aumentare!</p>
             </div>
 
             <div class="law">
-                <h4>Terzo Principio</h4>
-                <p>È impossibile raggiungere lo zero assoluto (0 K = -273.15°C).</p>
+                <h4>★ TERZO PRINCIPIO ★</h4>
+                <p>È impossibile raggiungere lo <strong>zero assoluto</strong> (0 K = -273.15°C)!</p>
             </div>
         </section>
 
         <section>
-            <h2>Formule Fondamentali</h2>
+            <h2>Formule Fondamentali!</h2>
             
             <h3>Calore Specifico</h3>
             <div class="formula">Q = m × c × ΔT</div>
@@ -124,7 +199,7 @@
         </section>
 
         <section>
-            <h2>Scale di Temperatura</h2>
+            <h2>Scale di Temperatura!</h2>
             <ul>
                 <li><strong>Celsius (°C):</strong> 0°C = punto congelamento acqua, 100°C = ebollizione</li>
                 <li><strong>Kelvin (K):</strong> Scala assoluta, 0 K = zero assoluto</li>

@@ -3,86 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fisica Moderna - Fisica</title>
+    <title>Fisica Moderna - Fisica Manga</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #eee;
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #fff;
+            background-image: 
+                radial-gradient(circle, #000 1px, transparent 1px),
+                radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            color: #000;
             min-height: 100vh;
         }
+        
         header {
-            background: rgba(0,0,0,0.3);
-            padding: 20px;
+            background: #00c853;
+            padding: 30px 20px;
             text-align: center;
-            border-bottom: 3px solid #26de81;
+            border-bottom: 8px solid #000;
+            position: relative;
         }
-        h1 { color: #26de81; font-size: 2.5em; margin-bottom: 10px; }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
         .back { 
             display: inline-block;
-            color: #fff;
+            color: #000;
             text-decoration: none;
-            margin-top: 10px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.1s;
         }
-        .back:hover { background: rgba(255,255,255,0.2); }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+            background: #ffdd00;
+        }
+        
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
+        
         section {
-            background: rgba(255,255,255,0.05);
+            background: #fff;
             padding: 30px;
-            border-radius: 15px;
             margin-bottom: 30px;
-            border-left: 4px solid #26de81;
+            border: 5px solid #000;
+            box-shadow: 8px 8px 0 #000;
         }
-        h2 { color: #26de81; margin-bottom: 15px; }
-        h3 { color: #ff6b6b; margin: 20px 0 10px; }
-        p { line-height: 1.8; margin-bottom: 15px; }
-        .formula {
-            background: rgba(38,222,129,0.15);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            text-align: center;
+        
+        h2 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
+            font-size: 2em;
+            margin-bottom: 20px;
+            background: #ffdd00;
+            display: inline-block;
+            padding: 5px 20px;
+            border: 3px solid #000;
+            transform: rotate(-1deg);
+        }
+        
+        h3 { 
+            font-family: 'Bangers', cursive;
+            color: #000;
             font-size: 1.5em;
-            font-family: 'Courier New', monospace;
+            margin: 25px 0 15px;
+            border-left: 6px solid #00c853;
+            padding-left: 15px;
         }
-        .scientist {
-            background: rgba(0,0,0,0.2);
+        
+        p { 
+            line-height: 1.8; 
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .formula {
+            background: #000;
+            color: #fff;
             padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
+            margin: 25px 0;
+            text-align: center;
+            font-size: 1.6em;
+            font-family: 'Courier New', monospace;
+            border: 4px solid #00c853;
         }
-        .scientist h4 { color: #ffa502; margin-bottom: 10px; font-size: 1.2em; }
-        ul { margin-left: 20px; line-height: 2; }
+        
+        .scientist {
+            background: #e8f5e9;
+            padding: 20px;
+            border: 4px solid #000;
+            margin: 20px 0;
+            box-shadow: 5px 5px 0 #000;
+        }
+        
+        .scientist h4 { 
+            font-family: 'Bangers', cursive;
+            color: #00c853;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+            background: #000;
+            display: inline-block;
+            padding: 3px 15px;
+            color: #fff;
+        }
+        
+        ul { 
+            margin-left: 25px; 
+            line-height: 2;
+            font-size: 1.1em;
+        }
+        
+        li strong {
+            color: #00c853;
+        }
+        
+        .special-formula {
+            font-size: 2em;
+            background: linear-gradient(45deg, #000, #333);
+            padding: 25px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Fisica Moderna</h1>
-        <p>Relatività e Meccanica Quantistica</p>
-        <a href="index.html" class="back">← Torna alla Home</a>
+        <h1>FISICA MODERNA!</h1>
+        <p style="color: #fff; font-size: 1.3em;">★ Relatività e Meccanica Quantistica! ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
         <section>
-            <h2>La Rivoluzione del XX Secolo</h2>
+            <h2>La Rivoluzione del XX Secolo!</h2>
             <p>All'inizio del Novecento, due nuove teorie hanno rivoluzionato la nostra comprensione dell'universo: 
-            la Relatività di Einstein e la Meccanica Quantistica.</p>
+            la <strong>Relatività di Einstein</strong> e la <strong>Meccanica Quantistica</strong>!</p>
         </section>
 
         <section>
-            <h2>Relatività Ristretta (1905)</h2>
+            <h2>Relatività Ristretta (1905)!</h2>
             
             <div class="scientist">
-                <h4>Albert Einstein (1879-1955)</h4>
-                <p>Fisico tedesco, Premio Nobel 1921. Ha trasformato la nostra comprensione di spazio, tempo ed energia.</p>
+                <h4>★ ALBERT EINSTEIN (1879-1955) ★</h4>
+                <p>Fisico tedesco, Premio Nobel 1921! Ha trasformato la nostra comprensione di spazio, tempo ed energia!</p>
             </div>
 
             <h3>Postulati Fondamentali</h3>
@@ -92,8 +172,8 @@
             </ul>
 
             <h3>Equivalenza Massa-Energia</h3>
-            <div class="formula">E = m × c²</div>
-            <p>La massa è una forma di energia! Una piccola quantità di massa può liberare enormi quantità di energia.</p>
+            <div class="formula special-formula">E = m × c²</div>
+            <p>La massa è una forma di energia! Una piccola quantità di massa può liberare enormi quantità di energia!</p>
 
             <h3>Conseguenze</h3>
             <ul>
@@ -104,8 +184,8 @@
         </section>
 
         <section>
-            <h2>Relatività Generale (1915)</h2>
-            <p>La gravità non è una forza, ma una curvatura dello spaziotempo causata dalla massa.</p>
+            <h2>Relatività Generale (1915)!</h2>
+            <p>La gravità non è una forza, ma una <strong>curvatura dello spaziotempo</strong> causata dalla massa!</p>
             
             <div class="formula">Spaziotempo curvo = Gravità</div>
 
@@ -119,16 +199,16 @@
         </section>
 
         <section>
-            <h2>Meccanica Quantistica</h2>
+            <h2>Meccanica Quantistica!</h2>
             
             <h3>Costante di Planck</h3>
             <div class="formula">E = h × f</div>
             <p>h = 6.626 × 10⁻³⁴ J·s (costante di Planck)</p>
-            <p>L'energia è quantizzata: esiste in "pacchetti" discreti chiamati quanti.</p>
+            <p>L'energia è quantizzata: esiste in "pacchetti" discreti chiamati <strong>quanti</strong>!</p>
 
             <h3>Principio di Indeterminazione di Heisenberg</h3>
             <div class="formula">Δx × Δp ≥ h/4π</div>
-            <p>È impossibile conoscere contemporaneamente con precisione assoluta posizione e quantità di moto.</p>
+            <p>È impossibile conoscere contemporaneamente con precisione assoluta posizione e quantità di moto!</p>
 
             <h3>Principi Fondamentali</h3>
             <ul>
@@ -139,21 +219,21 @@
         </section>
 
         <section>
-            <h2>Modelllo Atomico</h2>
+            <h2>Modello Atomico!</h2>
             
             <h3>Livelli Energetici</h3>
-            <p>Gli elettroni orbitano attorno al nucleo in livelli energetici discreti.</p>
+            <p>Gli elettroni orbitano attorno al nucleo in livelli energetici discreti!</p>
             <div class="formula">Eₙ = -13.6 eV / n²</div>
             <p>n = numero quantico principale (1, 2, 3...)</p>
 
             <h3>Effetto Fotoelettrico</h3>
-            <p>La luce può espellere elettroni da un metallo. Spiegato da Einstein nel 1905, 
-            dimostra che la luce è composta da fotoni.</p>
+            <p>La luce può espellere elettroni da un metallo! Spiegato da Einstein nel 1905, 
+            dimostra che la luce è composta da <strong>fotoni</strong>!</p>
             <div class="formula">E_fotone = h × f</div>
         </section>
 
         <section>
-            <h2>Applicazioni</h2>
+            <h2>Applicazioni!</h2>
             <ul>
                 <li><strong>GPS:</strong> Correzioni relativistiche per precisione</li>
                 <li><strong>Energia nucleare:</strong> Fissione e fusione (E=mc²)</li>
