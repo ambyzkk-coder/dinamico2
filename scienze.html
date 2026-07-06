@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scienze - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #16a085; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #16a085; border-bottom: 2px solid #16a085; padding-bottom: 10px; }
+        .science-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #16a085; }
+        .science-card h3 { color: #16a085; margin-bottom: 10px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #16a085; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .element { display: inline-block; width: 60px; height: 60px; background: #16a085; color: #fff; text-align: center; padding: 10px 5px; margin: 3px; font-weight: bold; }
+        .element:hover { background: #1abc9c; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SCIENZE</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Biologia, Chimica e Scienze della Terra</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('biologia')" class="active">BIOLOGIA</button>
+            <button onclick="showTab('chimica')">CHIMICA</button>
+            <button onclick="showTab('terra')">SCIENZE DELLA TERRA</button>
+        </div>
+
+        <div id="biologia" class="tab-content active">
+            <div class="section">
+                <h2>LA CELLULA</h2>
+                <div class="science-card">
+                    <h3>Cellula Eucariote</h3>
+                    <p><strong>Membrana cellulare:</strong> avvolge la cellula, regola gli scambi</p>
+                    <p><strong>Nucleo:</strong> contiene il DNA, centro di controllo</p>
+                    <p><strong>Mitochondri:</strong> produzione di energia (ATP)</p>
+                    <p><strong>Ribosomi:</strong> sintesi proteica</p>
+                    <p><strong>Reticolo endoplasmatico:</strong> trasporto interno</p>
+                </div>
+                
+                <div class="science-card">
+                    <h3>DNA e RNA</h3>
+                    <p><strong>DNA:</strong> Doppia elica, basi A-T-C-G. Codice genetico.</p>
+                    <p><strong>RNA:</strong> Singola elica, basi A-U-C-G. Trasporta informazioni.</p>
+                    <p><strong>Replicazione:</strong> Il DNA si duplica prima della divisione cellulare.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="chimica" class="tab-content">
+            <div class="section">
+                <h2>TAVOLA PERIODICA (Elementi principali)</h2>
+                <div style="text-align: center;">
+                    <div class="element">H</div>
+                    <div class="element" style="background: #e74c3c;">Li</div>
+                    <div class="element" style="background: #e74c3c;">Na</div>
+                    <div class="element" style="background: #e74c3c;">K</div>
+                    <br>
+                    <div class="element" style="background: #3498db;">Be</div>
+                    <div class="element" style="background: #3498db;">Mg</div>
+                    <div class="element" style="background: #3498db;">Ca</div>
+                    <br>
+                    <div class="element" style="background: #2ecc71;">C</div>
+                    <div class="element" style="background: #2ecc71;">N</div>
+                    <div class="element" style="background: #2ecc71;">O</div>
+                    <div class="element" style="background: #f1c40f;">F</div>
+                    <div class="element" style="background: #f1c40f;">Cl</div>
+                    <br>
+                    <div class="element" style="background: #9b59b6;">Fe</div>
+                    <div class="element" style="background: #9b59b6;">Cu</div>
+                    <div class="element" style="background: #9b59b6;">Au</div>
+                </div>
+                
+                <div class="science-card" style="margin-top: 20px;">
+                    <h3>Leggi di base</h3>
+                    <p><strong>Legge di conservazione della massa:</strong> La massa non si crea né si distrugge.</p>
+                    <p><strong>Legge di Proust:</strong> Un composto ha sempre la stessa composizione ponderale.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="terra" class="tab-content">
+            <div class="section">
+                <h2>IL PIANETA TERRA</h2>
+                <div class="science-card">
+                    <h3>Struttura della Terra</h3>
+                    <p><strong>Core (nucleo):</strong> 5150-6370 km, ferro e nichel</p>
+                    <p><strong>Mantello:</strong> 35-2900 km, silicati</p>
+                    <p><strong>Crosta:</strong> 0-35 km, rocce superficiali</p>
+                </div>
+                
+                <div class="science-card">
+                    <h3>Tettonica a Placche</h3>
+                    <p>La litosfera è divisa in placche che si muovono.</p>
+                    <p><strong>Margini divergenti:</strong> le placche si allontanano</p>
+                    <p><strong>Margini convergenti:</strong> le placche si scontrano (vulcani, montagne)</p>
+                    <p><strong>Faglie trasformi:</strong> le placche scivolano lateralmente</p>
+                </div>
+                
+                <div class="science-card">
+                    <h3>Il Ciclo dell'Acqua</h3>
+                    <p><strong>Evaporazione:</strong> acqua dai mari → vapore</p>
+                    <p><strong>Condensazione:</strong> vapore → nuvole</p>
+                    <p><strong>Precipitazione:</strong> pioggia, neve</p>
+                    <p><strong>Scorrimento:</strong> acqua torna ai mari</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

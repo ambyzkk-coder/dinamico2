@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arte - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #c0392b; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #c0392b; border-bottom: 2px solid #c0392b; padding-bottom: 10px; }
+        .art-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #c0392b; }
+        .art-card h3 { color: #c0392b; margin-bottom: 10px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #c0392b; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .color-demo { width: 100%; height: 50px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ARTE</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Storia dell'Arte e Tecniche</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('periodi')" class="active">PERIODI</button>
+            <button onclick="showTab('tecnica')">TECNICA</button>
+            <button onclick="showTab('artisti')">ARTISTI</button>
+        </div>
+
+        <div id="periodi" class="tab-content active">
+            <div class="section">
+                <h2>STORIA DELL'ARTE</h2>
+                
+                <div class="art-card">
+                    <h3>Arte Greca</h3>
+                    <p>Armonia, proporzione, bellezza ideale. Ordini architettonici: dorico, ionico, corinzio.</p>
+                    <p><strong>Opere celebri:</strong> Partenone, Venere di Milo</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Arte Romana</h3>
+                    <p>Pragmatismo, ritratto realistico, architettura monumentale.</p>
+                    <p><strong>Innovazioni:</strong> Arco, volta, cupola, acquedotti</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Rinascimento</h3>
+                    <p>Riscoperta dell'antico, prospettiva, uomo al centro. Italia, XV-XVI secolo.</p>
+                    <p><strong>Maestri:</strong> Leonardo, Michelangelo, Raffaello</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Barocco</h3>
+                    <p>Drammaticità, movimento, contrasti luce-ombra. XVII secolo.</p>
+                    <p><strong>Artisti:</strong> Caravaggio, Bernini, Rembrandt</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Impressionismo</h3>
+                    <p>Luce, colore, en plein air. Francia, fine XIX secolo.</p>
+                    <p><strong>Artisti:</strong> Monet, Renoir, Degas</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tecnica" class="tab-content">
+            <div class="section">
+                <h2>TECNICHE ARTISTICHE</h2>
+                
+                <div class="art-card">
+                    <h3>Prospettiva</h3>
+                    <p>Creare profondità su superficie piana.</p>
+                    <p><strong>Prospettiva lineare:</strong> Punto di fuga centrale</p>
+                    <p><strong>Prospettiva aerea:</strong> Colori più chiari e sfumati in lontananza</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Teoria dei Colori</h3>
+                    <p><strong>Primari:</strong> Rosso, Giallo, Blu</p>
+                    <p><strong>Secondari:</strong> Arancio, Verde, Viola</p>
+                    <p><strong>Complementari:</strong> Colori opposti nel cerchio cromatico</p>
+                    <div style="display: flex; gap: 10px; margin-top: 10px;">
+                        <div style="width: 50px; height: 50px; background: #e74c3c;"></div>
+                        <div style="width: 50px; height: 50px; background: #f1c40f;"></div>
+                        <div style="width: 50px; height: 50px; background: #3498db;"></div>
+                    </div>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Tecniche pittoriche</h3>
+                    <p><strong>Affresco:</strong> Pigmenti su intonaco fresco</p>
+                    <p><strong>Tempera:</strong> Pigmenti + legante (uovo)</p>
+                    <p><strong>Olio:</strong> Pigmenti + oli vegetali</p>
+                    <p><strong>Acquerello:</strong> Pigmenti + acqua, trasparenza</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="artisti" class="tab-content">
+            <div class="section">
+                <h2>GRANDI MAESTRI</h2>
+                
+                <div class="art-card">
+                    <h3>Leonardo da Vinci</h3>
+                    <p>1452-1519. Artista, scienziato, inventore.</p>
+                    <p><strong>Opere:</strong> Gioconda, Ultima Cena, Uomo Vitruviano</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Michelangelo Buonarroti</h3>
+                    <p>1475-1564. Scultore, pittore, architetto.</p>
+                    <p><strong>Opere:</strong> David, Cappella Sistina, Pietà</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Caravaggio</h3>
+                    <p>1571-1610. Maestro della luce e del contrasto.</p>
+                    <p><strong>Opere:</strong> Vocazione di Matteo, Bacco</p>
+                </div>
+                
+                <div class="art-card">
+                    <h3>Vincent Van Gogh</h3>
+                    <p>1853-1890. Post-impressionismo, colori vibranti.</p>
+                    <p><strong>Opere:</strong> Notte stellata, Girasoli</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

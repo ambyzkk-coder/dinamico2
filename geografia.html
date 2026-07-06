@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geografia - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #27ae60; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; transition: all 0.2s; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; transition: all 0.2s; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #27ae60; color: #fff; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #27ae60; border-bottom: 2px solid #27ae60; padding-bottom: 10px; }
+        .continent-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #27ae60; }
+        .continent-card h3 { color: #27ae60; margin-bottom: 10px; font-size: 1.3em; }
+        .quiz-btn { padding: 12px 25px; background: #333; color: #fff; border: none; cursor: pointer; font-weight: bold; margin: 10px 5px 10px 0; }
+        .quiz-btn:hover { background: #27ae60; }
+        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #27ae60; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input { padding: 12px; font-size: 1em; border: 2px solid #ddd; width: 100%; max-width: 300px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GEOGRAFIA</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Continenti, Stati e Ambiente</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('continenti')" class="active">CONTINENTI</button>
+            <button onclick="showTab('italia')">ITALIA</button>
+            <button onclick="showTab('quiz')">QUIZ CAPITALI</button>
+        </div>
+
+        <div id="continenti" class="tab-content active">
+            <div class="section">
+                <h2>I CONTINENTI</h2>
+                
+                <div class="continent-card">
+                    <h3>🌍 Africa</h3>
+                    <p>Secondo continente per popolazione. Sahara, Nilo, savane. 54 stati.</p>
+                    <p><strong>Principali stati:</strong> Nigeria, Egitto, Sudafrica, Etiopia</p>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>🌏 Asia</h3>
+                    <p>Il più grande continente. Himalaya, Gange, Muro di Cina. 49 stati.</p>
+                    <p><strong>Principali stati:</strong> Cina, India, Giappone, Indonesia</p>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>🌍 Europa</h3>
+                    <p>Continente più piccolo. Alpi, Danubio, Mediterraneo. 44 stati.</p>
+                    <p><strong>Principali stati:</strong> Germania, Francia, Italia, Spagna</p>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>🌎 America del Nord</h3>
+                    <p>Rocciose, Mississippi, Grand Canyon. 23 stati.</p>
+                    <p><strong>Principali stati:</strong> USA, Canada, Messico</p>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>🌎 America del Sud</h3>
+                    <p>Ande, Amazzonia, Amazonas. 12 stati.</p>
+                    <p><strong>Principali stati:</strong> Brasile, Argentina, Colombia, Perù</p>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>🌏 Oceania</h3>
+                    <p>Isola più grande: Australia. 14 stati principali.</p>
+                    <p><strong>Principali stati:</strong> Australia, Nuova Zelanda</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="italia" class="tab-content">
+            <div class="section">
+                <h2>L'ITALIA</h2>
+                <div class="continent-card">
+                    <h3>Dati principali</h3>
+                    <ul>
+                        <li><strong>Capitale:</strong> Roma</li>
+                        <li><strong>Regione:</strong> 20 regioni</li>
+                        <li><strong>Province:</strong> 107 province</li>
+                        <li><strong>Comuni:</strong> circa 7.900 comuni</li>
+                        <li><strong>Popolazione:</strong> circa 59 milioni</li>
+                        <li><strong>Superficie:</strong> 301.340 km²</li>
+                    </ul>
+                </div>
+                
+                <div class="continent-card">
+                    <h3>Regioni d'Italia</h3>
+                    <p><strong>Nord-Ovest:</strong> Piemonte, Valle d'Aosta, Lombardia, Liguria</p>
+                    <p><strong>Nord-Est:</strong> Trentino-Alto Adige, Veneto, Friuli-Venezia Giulia, Emilia-Romagna</p>
+                    <p><strong>Centro:</strong> Toscana, Umbria, Marche, Lazio</p>
+                    <p><strong>Sud:</strong> Abruzzo, Molise, Campania, Puglia, Basilicata, Calabria</p>
+                    <p><strong>Isole:</strong> Sicilia, Sardegna</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="quiz" class="tab-content">
+            <div class="section">
+                <h2>QUIZ CAPITALI</h2>
+                <p><strong>Qual è la capitale della Francia?</strong></p>
+                <button class="quiz-btn" onclick="checkAnswer(1, false)">Londra</button>
+                <button class="quiz-btn" onclick="checkAnswer(1, true)">Parigi</button>
+                <button class="quiz-btn" onclick="checkAnswer(1, false)">Berlino</button>
+                <div id="answer1" class="result" style="display: none;"></div>
+                
+                <p style="margin-top: 20px;"><strong>Qual è la capitale del Giappone?</strong></p>
+                <button class="quiz-btn" onclick="checkAnswer(2, false)">Pechino</button>
+                <button class="quiz-btn" onclick="checkAnswer(2, false)">Seul</button>
+                <button class="quiz-btn" onclick="checkAnswer(2, true)">Tokyo</button>
+                <div id="answer2" class="result" style="display: none;"></div>
+                
+                <p style="margin-top: 20px;"><strong>Qual è la capitale dell'Egitto?</strong></p>
+                <button class="quiz-btn" onclick="checkAnswer(3, true)">Il Cairo</button>
+                <button class="quiz-btn" onclick="checkAnswer(3, false)">Alessandria</button>
+                <button class="quiz-btn" onclick="checkAnswer(3, false)">Rabat</button>
+                <div id="answer3" class="result" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function checkAnswer(num, correct) {
+            const div = document.getElementById('answer' + num);
+            div.style.display = 'block';
+            if (correct) {
+                div.innerHTML = '✓ Corretto!';
+                div.style.background = '#d4edda';
+                div.style.borderColor = '#28a745';
+            } else {
+                div.innerHTML = '✗ Sbagliato!';
+                div.style.background = '#f8d7da';
+                div.style.borderColor = '#dc3545';
+            }
+        }
+    </script>
+</body>
+</html>

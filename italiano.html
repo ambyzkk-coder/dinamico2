@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Italiano - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #8e44ad; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; transition: all 0.2s; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; transition: all 0.2s; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #8e44ad; color: #fff; }
+        .tool { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .tool h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #8e44ad; border-bottom: 2px solid #8e44ad; padding-bottom: 10px; }
+        .tool label { display: block; font-weight: bold; margin: 15px 0 8px; }
+        .tool input, .tool select, .tool textarea { width: 100%; padding: 12px; font-size: 1em; border: 2px solid #ddd; font-family: inherit; }
+        .tool button { margin-top: 15px; padding: 12px 25px; font-size: 1.1em; font-family: 'Bangers', cursive; background: #333; color: #fff; border: none; cursor: pointer; transition: all 0.2s; }
+        .tool button:hover { background: #8e44ad; }
+        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #8e44ad; }
+        .example { background: #f9f9f9; padding: 15px; border-left: 4px solid #8e44ad; margin: 15px 0; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ITALIANO</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Grammatica, Analisi e Letteratura</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('grammatica')" class="active">GRAMMATICA</button>
+            <button onclick="showTab('analisi')">ANALISI</button>
+            <button onclick="showTab('letteratura')">LETTERATURA</button>
+            <button onclick="showTab('scrittura')">SCRITTURA</button>
+        </div>
+
+        <div id="grammatica" class="tab-content active">
+            <div class="tool">
+                <h2>CONIUGATORE VERBI</h2>
+                <label>Verbo:</label>
+                <input type="text" id="verbo" placeholder="Es: amare">
+                <label>Tempo:</label>
+                <select id="tempo">
+                    <option value="presente">Presente</option>
+                    <option value="imperfetto">Imperfetto</option>
+                    <option value="passato_prossimo">Passato Prossimo</option>
+                    <option value="futuro">Futuro Semplice</option>
+                </select>
+                <button onclick="coniuga()">CONIUGA</button>
+                <div id="coniugazione" class="result" style="display: none;"></div>
+            </div>
+
+            <div class="tool">
+                <h2>TIPI DI FRASE</h2>
+                <p>Inserisci una frase per analizzarne il tipo:</p>
+                <label>Frase:</label>
+                <input type="text" id="frase-tipo" placeholder="Es: Come stai?">
+                <button onclick="analizzaFrase()">ANALIZZA</button>
+                <div id="tipo-frase" class="result" style="display: none;"></div>
+                
+                <div class="example">
+                    <h4>Tipi di Frase:</h4>
+                    <ul>
+                        <li><strong>Dichiarativa:</strong> afferma qualcosa (Mario mangia)</li>
+                        <li><strong>Interrogativa:</strong> fa una domanda (Come stai?)</li>
+                        <li><strong>Esclamativa:</strong> esprime un'emozione (Che bello!)</li>
+                        <li><strong>Imperativa:</strong> dà un ordine (Mangia!)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="analisi" class="tab-content">
+            <div class="tool">
+                <h2>ANALISI GRAMMATICALE</h2>
+                <label>Parola da analizzare:</label>
+                <input type="text" id="parola" placeholder="Es: bellissimi">
+                <button onclick="analisiGrammaticale()">ANALIZZA</button>
+                <div id="analisi-gramm" class="result" style="display: none;"></div>
+            </div>
+
+            <div class="tool">
+                <h2>ANALISI LOGICA</h2>
+                <div class="example">
+                    <h4>Elementi principali:</h4>
+                    <ul>
+                        <li><strong>Soggetto:</strong> chi compie l'azione</li>
+                        <li><strong>Predicato:</strong> verbo (azione)</li>
+                        <li><strong>Oggetto:</strong> subisce l'azione</li>
+                        <li><strong>Complementi:</strong> specificano circostanze</li>
+                    </ul>
+                </div>
+                <label>Frase:</label>
+                <input type="text" id="frase-logica" placeholder="Es: Mario mangia la mela">
+                <button onclick="analisiLogica()">ANALIZZA</button>
+                <div id="analisi-log" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="letteratura" class="tab-content">
+            <div class="tool">
+                <h2>FIGURE RETORICHE</h2>
+                <label>Seleziona una figura retorica:</label>
+                <select id="figura" onchange="mostraFigura()">
+                    <option value="">Scegli...</option>
+                    <option value="metafora">Metafora</option>
+                    <option value="similitudine">Similitudine</option>
+                    <option value="metonimia">Metonimia</option>
+                    <option value="ossimoro">Ossimoro</option>
+                    <option value="iperbole">Iperbole</option>
+                    <option value="allitterazione">Allitterazione</option>
+                    <option value="anafora">Anafora</option>
+                    <option value="personificazione">Personificazione</option>
+                </select>
+                <div id="figura-info" class="result" style="display: none;"></div>
+            </div>
+
+            <div class="tool">
+                <h2>PERIODI LETTERARI</h2>
+                <div class="example">
+                    <h4>Cronologia:</h4>
+                    <ul>
+                        <li><strong>Duecento:</strong> Scuola Siciliana, Dolce Stil Novo</li>
+                        <li><strong>Trecento:</strong> Dante, Petrarca, Boccaccio</li>
+                        <li><strong>Umanesimo:</strong> 1400-1500</li>
+                        <li><strong>Rinascimento:</strong> 1500-1600</li>
+                        <li><strong>Barocco:</strong> 1600</li>
+                        <li><strong>Illuminismo:</strong> 1700</li>
+                        <li><strong>Romanticismo:</strong> 1800</li>
+                        <li><strong>Decadentismo:</strong> fine 1800</li>
+                        <li><strong>Modernismo:</strong> 1900</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="scrittura" class="tab-content">
+            <div class="tool">
+                <h2>GENERATORE DI IDEE</h2>
+                <label>Tipo di testo:</label>
+                <select id="tipo-testo">
+                    <option value="narrativo">Testo Narrativo</option>
+                    <option value="descrittivo">Testo Descrittivo</option>
+                    <option value="argomentativo">Testo Argomentativo</option>
+                    <option value="espositivo">Testo Espositivo</option>
+                </select>
+                <button onclick="generaIdea()">GENERA IDEA</button>
+                <div id="idea" class="result" style="display: none;"></div>
+            </div>
+
+            <div class="tool">
+                <h2>SCHEMA TESTO ARGOMENTATIVO</h2>
+                <div class="example">
+                    <h4>Struttura:</h4>
+                    <ol>
+                        <li><strong>Introduzione:</strong> Presenta l'argomento</li>
+                        <li><strong>Tesi:</strong> La tua opinione</li>
+                        <li><strong>Argomenti PRO:</strong> A favore della tesi</li>
+                        <li><strong>Argomenti CONTRO:</strong> Antitesi (da confutare)</li>
+                        <li><strong>Conclusione:</strong> Rafforza la tesi</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function coniuga() {
+            const verbo = document.getElementById('verbo').value.toLowerCase().trim();
+            const tempo = document.getElementById('tempo').value;
+            
+            if (!verbo) { alert('Inserisci un verbo!'); return; }
+            
+            const coniugazioni = {
+                'amare': {
+                    presente: ['io amo', 'tu ami', 'egli ama', 'noi amiamo', 'voi amate', 'essi amano'],
+                    imperfetto: ['io amavo', 'tu amavi', 'egli amava', 'noi amavamo', 'voi amavate', 'essi amavano'],
+                    passato_prossimo: ['io ho amato', 'tu hai amato', 'egli ha amato', 'noi abbiamo amato', 'voi avete amato', 'essi hanno amato'],
+                    futuro: ['io amerò', 'tu amerai', 'egli amerà', 'noi ameremo', 'voi amerete', 'essi ameranno']
+                },
+                'temere': {
+                    presente: ['io temo', 'tu temi', 'egli teme', 'noi temiamo', 'voi temete', 'essi temono'],
+                    imperfetto: ['io temevo', 'tu temevi', 'egli temeva', 'noi temevamo', 'voi temevate', 'essi temevano'],
+                    passato_prossimo: ['io ho temuto', 'tu hai temuto', 'egli ha temuto', 'noi abbiamo temuto', 'voi avete temuto', 'essi hanno temuto'],
+                    futuro: ['io temerò', 'tu temerai', 'egli temerà', 'noi temeremo', 'voi temerete', 'essi temeranno']
+                },
+                'partire': {
+                    presente: ['io parto', 'tu parti', 'egli parte', 'noi partiamo', 'voi partite', 'essi partono'],
+                    imperfetto: ['io partivo', 'tu partivi', 'egli partiva', 'noi partivamo', 'voi partivate', 'essi partivano'],
+                    passato_prossimo: ['io sono partito', 'tu sei partito', 'egli è partito', 'noi siamo partiti', 'voi siete partiti', 'essi sono partiti'],
+                    futuro: ['io partirò', 'tu partirai', 'egli partirà', 'noi partiremo', 'voi partirete', 'essi partiranno']
+                }
+            };
+            
+            let coniugato = coniugazioni[verbo];
+            if (coniugato) {
+                document.getElementById('coniugazione').style.display = 'block';
+                document.getElementById('coniugazione').innerHTML = 
+                    `<strong>${tempo.replace('_', ' ').toUpperCase()}:</strong><br>` +
+                    coniugato[tempo].join('<br>');
+            } else {
+                document.getElementById('coniugazione').style.display = 'block';
+                document.getElementById('coniugazione').innerHTML = 
+                    'Verbo non trovato. Esempi disponibili: amare, temere, partire';
+            }
+        }
+
+        function analizzaFrase() {
+            const frase = document.getElementById('frase-tipo').value.trim();
+            if (!frase) { alert('Inserisci una frase!'); return; }
+            
+            let tipo = 'Dichiarativa';
+            if (frase.includes('?')) tipo = 'Interrogativa';
+            else if (frase.includes('!')) tipo = 'Esclamativa';
+            else if (frase.split(' ').length <= 3 && !frase.includes('.')) tipo = 'Possibilmente Imperativa';
+            
+            document.getElementById('tipo-frase').style.display = 'block';
+            document.getElementById('tipo-frase').innerHTML = `<strong>Tipo:</strong> ${tipo}`;
+        }
+
+        function analisiGrammaticale() {
+            const parola = document.getElementById('parola').value.toLowerCase().trim();
+            if (!parola) { alert('Inserisci una parola!'); return; }
+            
+            const analisi = {
+                'bellissimi': 'Aggettivo qualificativo, grado superlativo assoluto, maschile plurale',
+                'libro': 'Sostantivo comune, maschile singolare',
+                'correndo': 'Verbo, correre, modo gerundio, presente',
+                'velocemente': 'Avverbio di modo',
+                'casa': 'Sostantivo comune, femminile singolare',
+                'bello': 'Aggettivo qualificativo, grado positivo, maschile singolare'
+            };
+            
+            document.getElementById('analisi-gramm').style.display = 'block';
+            document.getElementById('analisi-gramm').innerHTML = analisi[parola] || 
+                'Parola non presente nel database. Esempi: bellissimi, libro, correndo, velocemente, casa, bello';
+        }
+
+        function analisiLogica() {
+            const frase = document.getElementById('frase-logica').value.trim();
+            if (!frase) { alert('Inserisci una frase!'); return; }
+            
+            const parti = frase.split(' ');
+            if (parti.length < 3) {
+                document.getElementById('analisi-log').style.display = 'block';
+                document.getElementById('analisi-log').innerHTML = 'La frase è troppo corta per un\'analisi completa.';
+                return;
+            }
+            
+            document.getElementById('analisi-log').style.display = 'block';
+            document.getElementById('analisi-log').innerHTML = `
+                <strong>Analisi approssimativa:</strong><br>
+                <span style="color: #8e44ad;">Soggetto:</span> ${parti[0]}<br>
+                <span style="color: #27ae60;">Predicato:</span> ${parti[1]}<br>
+                <span style="color: #e74c3c;">Oggetto:</span> ${parti.slice(2).join(' ')}<br>
+                <br><em>(Analisi semplificata - può variare)</em>
+            `;
+        }
+
+        function mostraFigura() {
+            const figura = document.getElementById('figura').value;
+            if (!figura) return;
+            
+            const info = {
+                metafora: {
+                    def: 'Identificazione tra due termini sulla base di una somiglianza.',
+                    es: 'Il cuore di pietra (= insensibile)'
+                },
+                similitudine: {
+                    def: 'Confronto esplicito tra due termini usando "come" o "simile a".',
+                    es: 'Era veloce come il vento'
+                },
+                metonimia: {
+                    def: 'Sostituzione di un termine con un altro che ha relazione con esso.',
+                    es: 'Leggere Dante (= le opere di Dante)'
+                },
+                ossimoro: {
+                    def: 'Accostamento di due termini contrastanti.',
+                    es: 'Silenzio assordante, dolce amaro'
+                },
+                iperbole: {
+                    def: 'Esagerazione per enfasi.',
+                    es: 'Ho aspettato un\'eternità'
+                },
+                allitterazione: {
+                    def: 'Ripetizione di suoni iniziali.',
+                    es: 'Il mare mosso muove mille moti'
+                },
+                anafora: {
+                    def: 'Ripetizione di parole all\'inizio di versi o frasi.',
+                    es: 'Per me si va... Per me si va...'
+                },
+                personificazione: {
+                    def: 'Attribuzione di qualità umane a oggetti o animali.',
+                    es: 'Il vento sussurrava tra gli alberi'
+                }
+            };
+            
+            const f = info[figura];
+            document.getElementById('figura-info').style.display = 'block';
+            document.getElementById('figura-info').innerHTML = `
+                <strong>Definizione:</strong> ${f.def}<br><br>
+                <strong>Esempio:</strong> <em>"${f.es}"</em>
+            `;
+        }
+
+        const ideeNarrative = [
+            'Un ragazzo scopre di poter viaggiare nel tempo, ma solo all\'indietro di 5 minuti.',
+            'L\'ultimo abitante di un villaggio di montagna riceve una lettera misteriosa.',
+            'Due amici ritrovano un vecchio diario che cambia il loro passato.',
+            'Un animale domestico racconta la sua vita con una famiglia particolare.',
+            'Una città dove i sogni diventano realtà al risveglio.'
+        ];
+
+        function generaIdea() {
+            const tipo = document.getElementById('tipo-testo').value;
+            let idea = '';
+            
+            if (tipo === 'narrativo') {
+                idea = ideeNarrative[Math.floor(Math.random() * ideeNarrative.length)];
+            } else if (tipo === 'descrittivo') {
+                const luoghi = ['Una vecchia biblioteca abbandonata', 'Una piazza di un piccolo paese', 'Una spiaggia all\'alba', 'Una stanza piena di ricordi'];
+                idea = `Descrivi: ${luoghi[Math.floor(Math.random() * luoghi.length)]}`;
+            } else if (tipo === 'argomentativo') {
+                const temi = ['L\'importanza dello sport a scuola', 'I social network: opportunità o rischio?', 'La tecnologia nella vita quotidiana', 'L\'ambiente e le nostre scelte'];
+                idea = `Argomenta su: "${temi[Math.floor(Math.random() * temi.length)]}"`;
+            } else {
+                const argomenti = ['La storia della tua città', 'Come funziona un vulcano', 'Il ciclo dell\'acqua', 'Le tradizioni del Natale'];
+                idea = `Esponi: ${argomenti[Math.floor(Math.random() * argomenti.length)]}`;
+            }
+            
+            document.getElementById('idea').style.display = 'block';
+            document.getElementById('idea').innerHTML = `<strong>Idea per il tuo testo:</strong><br>${idea}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musica - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #8e44ad; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #8e44ad; border-bottom: 2px solid #8e44ad; padding-bottom: 10px; }
+        .music-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #8e44ad; }
+        .music-card h3 { color: #8e44ad; margin-bottom: 10px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #8e44ad; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .note { font-family: 'Times New Roman', serif; font-size: 2em; letter-spacing: 10px; }
+        .piano { display: flex; justify-content: center; gap: 2px; margin: 20px 0; }
+        .key { width: 40px; height: 120px; background: #fff; border: 2px solid #333; cursor: pointer; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 10px; font-weight: bold; }
+        .key:hover { background: #f0f0f0; }
+        .key.black { background: #333; color: #fff; height: 80px; width: 30px; margin: 0 -15px; z-index: 1; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MUSICA</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Teoria, Strumenti e Storia</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('teoria')" class="active">TEORIA</button>
+            <button onclick="showTab('strumenti')">STRUMENTI</button>
+            <button onclick="showTab('storia')">STORIA</button>
+        </div>
+
+        <div id="teoria" class="tab-content active">
+            <div class="section">
+                <h2>LE BASI DELLA MUSICA</h2>
+                
+                <div class="music-card">
+                    <h3>Le Note Musicali</h3>
+                    <p class="note">DO RE MI FA SOL LA SI</p>
+                    <p>Sette note naturali + 5 alterazioni (diesis ♯ e bemolle ♭)</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Chiavi Musicali</h3>
+                    <p><strong>Chiave di Violino (Sol):</strong> Note acute, usata per violino, flauto, mano destra pianoforte</p>
+                    <p><strong>Chiave di Basso (Fa):</strong> Note gravi, usata per basso, violoncello, mano sinistra pianoforte</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Valori delle Note</h3>
+                    <p><strong>Semibreve:</strong> 4/4 (intero)</p>
+                    <p><strong>Minima:</strong> 2/4 (metà)</p>
+                    <p><strong>Semiminima:</strong> 1/4 (un tempo)</p>
+                    <p><strong>Croma:</strong> 1/8 (mezzo tempo)</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Scale Musicali</h3>
+                    <p><strong>Scala Maggiore:</strong> Tono-Tono-Semitono-Tono-Tono-Tono-Semitono</p>
+                    <p><strong>Scala Minore:</strong> Struttura diversa, suono più malinconico</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="strumenti" class="tab-content">
+            <div class="section">
+                <h2>GLI STRUMENTI MUSICALI</h2>
+                
+                <div class="music-card">
+                    <h3>Corda</h3>
+                    <p>Vibrazione di corde</p>
+                    <p><strong>Archi:</strong> Violino, Viola, Violoncello, Contrabbasso</p>
+                    <p><strong>Pizzicati:</strong> Chitarra, Arpa, Liuto</p>
+                    <p><strong>Tastiere:</strong> Pianoforte, Clavicembalo</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Fiato</h3>
+                    <p>Vibrazione di aria in una colonna</p>
+                    <p><strong>Legni:</strong> Flauto, Clarinetto, Oboe, Fagotto, Sassofono</p>
+                    <p><strong>Ottoni:</strong> Tromba, Trombone, Corno, Tuba</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Percussione</h3>
+                    <p>Percussione o scuotimento</p>
+                    <p><strong>A suono determinato:</strong> Timpani, Xilofono, Marimba</p>
+                    <p><strong>A suono indeterminato:</strong> Tamburo, Piatti, Triangolo</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="storia" class="tab-content">
+            <div class="section">
+                <h2>EPOCHE MUSICALI</h2>
+                
+                <div class="music-card">
+                    <h3>Medioevo (500-1400)</h3>
+                    <p>Musica sacra, canto gregoriano, polifonia primitiva.</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Rinascimento (1400-1600)</h3>
+                    <p>Polifonia elaborata, madrigali, musica profana.</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Barocco (1600-1750)</h3>
+                    <p>Contrappunto, opera lirica, concerto.</p>
+                    <p><strong>Compositori:</strong> Bach, Vivaldi, Händel</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Classico (1750-1820)</h3>
+                    <p>Equilibrio, forma-sonata, sinfonia.</p>
+                    <p><strong>Compositori:</strong> Mozart, Haydn, Beethoven</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>Romantico (1820-1900)</h3>
+                    <p>Emozione, libertà espressiva, program music.</p>
+                    <p><strong>Compositori:</strong> Chopin, Liszt, Brahms, Verdi</p>
+                </div>
+                
+                <div class="music-card">
+                    <h3>XX Secolo</h3>
+                    <p>Jazz, Rock, Pop, Elettronica, Contemporary.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inglese - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #2980b9; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #2980b9; border-bottom: 2px solid #2980b9; padding-bottom: 10px; }
+        .eng-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #2980b9; }
+        .eng-card h3 { color: #2980b9; margin-bottom: 10px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #2980b9; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        input, select { padding: 12px; font-size: 1em; border: 2px solid #ddd; width: 100%; max-width: 400px; margin: 5px 0; }
+        button { padding: 12px 25px; background: #333; color: #fff; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #2980b9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ENGLISH</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Grammar, Vocabulary and Exercises</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('grammar')" class="active">GRAMMAR</button>
+            <button onclick="showTab('vocabulary')">VOCABULARY</button>
+            <button onclick="showTab('verbs')">VERBS</button>
+        </div>
+
+        <div id="grammar" class="tab-content active">
+            <div class="section">
+                <h2>PRESENT SIMPLE</h2>
+                <div class="eng-card">
+                    <h3>Form</h3>
+                    <p><strong>Positive:</strong> Subject + Verb (s/es for he/she/it)</p>
+                    <p><strong>Negative:</strong> Subject + don't/doesn't + Verb</p>
+                    <p><strong>Question:</strong> Do/Does + Subject + Verb?</p>
+                </div>
+                <div class="eng-card">
+                    <h3>Examples</h3>
+                    <p>I <strong>play</strong> tennis every Sunday.</p>
+                    <p>She <strong>plays</strong> tennis every Sunday.</p>
+                    <p>They <strong>don't play</strong> tennis.</p>
+                    <p><strong>Does</strong> he <strong>play</strong> tennis?</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>PRESENT CONTINUOUS</h2>
+                <div class="eng-card">
+                    <h3>Form</h3>
+                    <p><strong>Positive:</strong> Subject + am/is/are + Verb-ing</p>
+                    <p><strong>Negative:</strong> Subject + am/is/are + not + Verb-ing</p>
+                </div>
+                <div class="eng-card">
+                    <h3>Examples</h3>
+                    <p>I <strong>am reading</strong> a book now.</p>
+                    <p>She <strong>is watching</strong> TV.</p>
+                    <p>They <strong>are playing</strong> football.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="vocabulary" class="tab-content">
+            <div class="section">
+                <h2>COMMON VOCABULARY</h2>
+                
+                <div class="eng-card">
+                    <h3>Numbers (1-20)</h3>
+                    <p>one, two, three, four, five, six, seven, eight, nine, ten</p>
+                    <p>eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty</p>
+                </div>
+                
+                <div class="eng-card">
+                    <h3>Days of the Week</h3>
+                    <p>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</p>
+                </div>
+                
+                <div class="eng-card">
+                    <h3>Months</h3>
+                    <p>January, February, March, April, May, June, July, August, September, October, November, December</p>
+                </div>
+                
+                <div class="eng-card">
+                    <h3>Colors</h3>
+                    <p>red, blue, green, yellow, orange, purple, pink, black, white, grey, brown</p>
+                </div>
+                
+                <div class="eng-card">
+                    <h3>Family</h3>
+                    <p>mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="verbs" class="tab-content">
+            <div class="section">
+                <h2>IRREGULAR VERBS</h2>
+                <div class="eng-card">
+                    <h3>Most Common</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: #2980b9; color: #fff;">
+                            <th style="padding: 10px; border: 1px solid #333;">Infinitive</th>
+                            <th style="padding: 10px; border: 1px solid #333;">Past Simple</th>
+                            <th style="padding: 10px; border: 1px solid #333;">Past Participle</th>
+                        </tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">be</td><td style="padding: 8px; border: 1px solid #ddd;">was/were</td><td style="padding: 8px; border: 1px solid #ddd;">been</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">have</td><td style="padding: 8px; border: 1px solid #ddd;">had</td><td style="padding: 8px; border: 1px solid #ddd;">had</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">do</td><td style="padding: 8px; border: 1px solid #ddd;">did</td><td style="padding: 8px; border: 1px solid #ddd;">done</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">go</td><td style="padding: 8px; border: 1px solid #ddd;">went</td><td style="padding: 8px; border: 1px solid #ddd;">gone</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">see</td><td style="padding: 8px; border: 1px solid #ddd;">saw</td><td style="padding: 8px; border: 1px solid #ddd;">seen</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">take</td><td style="padding: 8px; border: 1px solid #ddd;">took</td><td style="padding: 8px; border: 1px solid #ddd;">taken</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">come</td><td style="padding: 8px; border: 1px solid #ddd;">came</td><td style="padding: 8px; border: 1px solid #ddd;">come</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">eat</td><td style="padding: 8px; border: 1px solid #ddd;">ate</td><td style="padding: 8px; border: 1px solid #ddd;">eaten</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">write</td><td style="padding: 8px; border: 1px solid #ddd;">wrote</td><td style="padding: 8px; border: 1px solid #ddd;">written</td></tr>
+                        <tr><td style="padding: 8px; border: 1px solid #ddd;">speak</td><td style="padding: 8px; border: 1px solid #ddd;">spoke</td><td style="padding: 8px; border: 1px solid #ddd;">spoken</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

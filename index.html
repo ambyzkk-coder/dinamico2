@@ -3,95 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAST Interattivo - Matematica, Geometria e Fisica</title>
+    <title>MAST - Portale Scolastico Interattivo</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
             font-family: 'Comic Neue', cursive, sans-serif;
-            background: #fff;
-            background-image: 
-                radial-gradient(circle, #000 1px, transparent 1px),
-                radial-gradient(circle, #000 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            color: #000;
+            background: #f5f5f5;
+            color: #333;
             min-height: 100vh;
         }
         
         header {
-            background: linear-gradient(135deg, #ff3366 0%, #ff6b6b 50%, #ffa502 100%);
+            background: #2c3e50;
             padding: 30px 20px;
             text-align: center;
-            border-bottom: 8px solid #000;
-            position: relative;
+            border-bottom: 4px solid #34495e;
         }
         
         h1 { 
             font-family: 'Bangers', cursive;
             color: #fff;
-            font-size: 3.5em;
-            text-shadow: 4px 4px 0 #000;
+            font-size: 3em;
             letter-spacing: 3px;
-            animation: titlePulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
         }
         
         .subtitle {
-            color: #fff;
-            font-size: 1.5em;
+            color: #bdc3c7;
+            font-size: 1.2em;
             margin-top: 10px;
-            text-shadow: 2px 2px 0 #000;
         }
         
         nav { 
             display: flex; 
             flex-wrap: wrap; 
             justify-content: center; 
-            gap: 15px; 
+            gap: 10px; 
             margin-top: 25px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         nav a {
             background: #fff;
-            color: #000;
-            padding: 15px 30px;
+            color: #333;
+            padding: 12px 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1em;
-            border: 4px solid #000;
-            box-shadow: 5px 5px 0 #000;
+            font-size: 0.95em;
+            border: 2px solid #333;
             transition: all 0.2s;
         }
         
-        nav a::before {
-            content: '▶ ';
-        }
-        
         nav a:hover { 
-            transform: translate(3px, 3px);
-            box-shadow: 2px 2px 0 #000;
+            background: #333;
+            color: #fff;
         }
-        
-        .nav-math { border-color: #ff3366; }
-        .nav-math:hover { background: #ff3366; color: #fff; }
-        
-        .nav-geo { border-color: #00d4ff; }
-        .nav-geo:hover { background: #00d4ff; color: #fff; }
-        
-        .nav-fisica { border-color: #00c853; }
-        .nav-fisica:hover { background: #00c853; color: #fff; }
-        
-        .nav-quiz { border-color: #ffdd00; }
-        .nav-quiz:hover { background: #ffdd00; }
-        
-        .nav-colors { border-color: #9c27b0; }
-        .nav-colors:hover { background: #9c27b0; color: #fff; }
         
         .container {
             max-width: 1200px;
@@ -99,229 +68,251 @@
             padding: 40px 20px;
         }
         
+        .section {
+            margin-bottom: 50px;
+        }
+        
         .section-title {
             font-family: 'Bangers', cursive;
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 30px;
-            background: #000;
-            color: #fff;
-            padding: 15px;
-            display: inline-block;
-            width: 100%;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #333;
+            color: #2c3e50;
         }
         
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
         
         .card {
             background: #fff;
             padding: 25px;
-            border: 5px solid #000;
-            box-shadow: 8px 8px 0 #000;
+            border: 2px solid #ddd;
             transition: all 0.2s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, transparent 50%, rgba(255,255,255,0.3) 50%);
         }
         
         .card:hover {
-            transform: translate(3px, 3px);
-            box-shadow: 5px 5px 0 #000;
+            border-color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .card h3 { 
             font-family: 'Bangers', cursive;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            padding: 10px;
-            display: inline-block;
+            font-size: 1.5em;
+            margin-bottom: 12px;
+            color: #2c3e50;
         }
         
-        .card-math h3 { background: #ff3366; color: #fff; border: 3px solid #000; }
-        .card-geo h3 { background: #00d4ff; color: #000; border: 3px solid #000; }
-        .card-fisica h3 { background: #00c853; color: #fff; border: 3px solid #000; }
-        
         .card p {
-            line-height: 1.7;
+            color: #666;
+            line-height: 1.6;
             margin-bottom: 15px;
-            font-size: 1.05em;
+            font-size: 0.95em;
         }
         
         .card a {
             display: inline-block;
-            padding: 10px 25px;
-            background: #000;
+            padding: 10px 20px;
+            background: #333;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            border: 3px solid #000;
+            font-size: 0.9em;
             transition: all 0.2s;
         }
         
         .card a:hover {
-            background: #fff;
-            color: #000;
+            background: #2c3e50;
         }
         
-        .features {
-            background: #000;
-            padding: 40px;
-            margin-top: 40px;
-            border: 5px solid #ff3366;
-        }
-        
-        .features h2 {
-            font-family: 'Bangers', cursive;
-            color: #fff;
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .feature-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .feature-item {
-            background: #fff;
-            padding: 20px;
-            border: 4px solid #ff3366;
-            text-align: center;
-        }
-        
-        .feature-item h4 {
-            font-family: 'Bangers', cursive;
-            font-size: 1.5em;
-            color: #ff3366;
+        .icon {
+            font-size: 2em;
             margin-bottom: 10px;
         }
         
         footer {
             text-align: center;
             padding: 30px;
-            background: #000;
-            color: #fff;
-            border-top: 8px solid #ff3366;
-            font-size: 1.2em;
+            background: #2c3e50;
+            color: #bdc3c7;
+            margin-top: 50px;
         }
         
         .mascot {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            font-size: 4em;
-            animation: bounce 1s ease-in-out infinite;
+            font-size: 3em;
             cursor: pointer;
             z-index: 1000;
+            transition: transform 0.3s;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        .mascot:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            nav a { padding: 10px 15px; font-size: 0.85em; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>MAST INTERATTIVO!</h1>
-        <p class="subtitle">★ Matematica • Geometria • Fisica ★</p>
+        <h1>MAST 2026</h1>
+        <p class="subtitle">Portale Interattivo per Tutte le Materie Scolastiche</p>
         <nav>
-            <a href="matematica.html" class="nav-math">MATEMATICA</a>
-            <a href="geometria.html" class="nav-geo">GEOMETRIA</a>
-            <a href="fisica-interattiva.html" class="nav-fisica">FISICA</a>
-            <a href="quiz.html" class="nav-quiz">QUIZ!</a>
-            <a href="colori.html" class="nav-colors">COLORI!</a>
+            <a href="matematica.html">Matematica</a>
+            <a href="geometria.html">Geometria</a>
+            <a href="fisica-interattiva.html">Fisica</a>
+            <a href="scienze.html">Scienze</a>
+            <a href="italiano.html">Italiano</a>
+            <a href="storia.html">Storia</a>
+            <a href="geografia.html">Geografia</a>
+            <a href="filosofia.html">Filosofia</a>
+            <a href="arte.html">Arte</a>
+            <a href="musica.html">Musica</a>
+            <a href="inglese.html">Inglese</a>
+            <a href="quiz.html">Quiz</a>
         </nav>
     </header>
 
     <div class="container">
-        <h2 class="section-title">★ ESPLORA LE SCIENZE! ★</h2>
-        
-        <div class="cards">
-            <div class="card card-math">
-                <h3>MATEMATICA</h3>
-                <p>Calcolatori interattivi per equazioni, sistemi, derivate e integrali! 
-                Risolvi problemi passo dopo passo!</p>
-                <a href="matematica.html">CALCOLA →</a>
-            </div>
+        <div class="section">
+            <h2 class="section-title">Materie Scientifiche</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">📐</div>
+                    <h3>Matematica</h3>
+                    <p>Equazioni, sistemi, potenze, calcoli percentuali e molto altro con risolutori interattivi.</p>
+                    <a href="matematica.html">VAI →</a>
+                </div>
 
-            <div class="card card-geo">
-                <h3>GEOMETRIA</h3>
-                <p>Visualizza forme 2D e 3D! Calcola aree, volumi e perimetri in modo interattivo!</p>
-                <a href="geometria.html">ESPLORA →</a>
-            </div>
+                <div class="card">
+                    <div class="icon">📏</div>
+                    <h3>Geometria</h3>
+                    <p>Visualizza forme 2D e 3D, calcola aree, volumi e perimetri.</p>
+                    <a href="geometria.html">VAI →</a>
+                </div>
 
-            <div class="card card-fisica">
-                <h3>FISICA</h3>
-                <p>Simulazioni di moto, forze ed energia! Visualizza i principi della fisica in azione!</p>
-                <a href="fisica-interattiva.html">SPERIMENTA →</a>
-            </div>
+                <div class="card">
+                    <div class="icon">⚗️</div>
+                    <h3>Fisica</h3>
+                    <p>Simulazioni di moto, forze, energia e elettromagnetismo.</p>
+                    <a href="fisica-interattiva.html">VAI →</a>
+                </div>
 
-            <div class="card" style="border-color: #9c27b0;">
-                <h3 style="background: #9c27b0; color: #fff; border: 3px solid #000;">COLORI</h3>
-                <p>Combinazioni cromatiche perfette! Scopri armonie e palette per i tuoi progetti!</p>
-                <a href="colori.html">SCOPRI →</a>
+                <div class="card">
+                    <div class="icon">🧬</div>
+                    <h3>Scienze</h3>
+                    <p>Biologia, chimica, anatomia e scienze della terra.</p>
+                    <a href="scienze.html">VAI →</a>
+                </div>
             </div>
         </div>
 
-        <div class="features">
-            <h2>★ FUNZIONALITÀ INTERATTIVE ★</h2>
-            <div class="feature-list">
-                <div class="feature-item">
-                    <h4>🧮 CALCOLATORI</h4>
-                    <p>Risolvi automaticamente equazioni e problemi!</p>
+        <div class="section">
+            <h2 class="section-title">Materie Umanistiche</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">📚</div>
+                    <h3>Italiano</h3>
+                    <p>Grammatica, analisi logica, letteratura e scrittura creativa.</p>
+                    <a href="italiano.html">VAI →</a>
                 </div>
-                <div class="feature-item">
-                    <h4>📊 VISUALIZZAZIONI</h4>
-                    <p>Vedi le forme e i grafici prendere vita!</p>
+
+                <div class="card">
+                    <div class="icon">🏛️</div>
+                    <h3>Storia</h3>
+                    <p>Timeline interattive, civiltà antiche e storia moderna.</p>
+                    <a href="storia.html">VAI →</a>
                 </div>
-                <div class="feature-item">
-                    <h4>🎮 QUIZ</h4>
-                    <p>Metti alla prova le tue conoscenze!</p>
+
+                <div class="card">
+                    <div class="icon">🌍</div>
+                    <h3>Geografia</h3>
+                    <p>Mappe interattive, stati, capitali e ambienti naturali.</p>
+                    <a href="geografia.html">VAI →</a>
                 </div>
-                <div class="feature-item">
-                    <h4>🔬 SIMULAZIONI</h4>
-                    <p>Esperimenti virtuali interattivi!</p>
+
+                <div class="card">
+                    <div class="icon">💭</div>
+                    <h3>Filosofia</h3>
+                    <p>Grandi pensatori, correnti filosofiche e concetti chiave.</p>
+                    <a href="filosofia.html">VAI →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Arti e Lingue</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>Arte</h3>
+                    <p>Storia dell'arte, tecniche artistiche e musei virtuali.</p>
+                    <a href="arte.html">VAI →</a>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🎵</div>
+                    <h3>Musica</h3>
+                    <p>Teoria musicale, strumenti, compositori e generi musicali.</p>
+                    <a href="musica.html">VAI →</a>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🇬🇧</div>
+                    <h3>Inglese</h3>
+                    <p>Grammatica, vocabolario, reading e listening interattivo.</p>
+                    <a href="inglese.html">VAI →</a>
+                </div>
+
+                <div class="card">
+                    <div class="icon">❓</div>
+                    <h3>Quiz</h3>
+                    <p>Metti alla prova le tue conoscenze in tutte le materie!</p>
+                    <a href="quiz.html">VAI →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Strumenti Utili</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>Color Mixer</h3>
+                    <p>Combinazioni di colori armoniose per i tuoi progetti.</p>
+                    <a href="colori.html">VAI →</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="mascot" title="Cliccami!" onclick="showTip()">🤖</div>
+    <div class="mascot" onclick="showTip()">🤖</div>
 
     <footer>
-        <p>★ MAST 2026 - Impara divertendoti! ★</p>
+        <p>MAST 2026 - Portale Scolastico Interattivo</p>
     </footer>
 
     <script>
         const tips = [
-            "💡 Sai che la matematica è ovunque? Anche in questo sito!",
-            "💡 La geometria era usata dagli antichi Egizi per costruire le piramidi!",
-            "💡 Einstein disse: 'La fantasia è più importante della conoscenza!'",
-            "💡 Prova i nostri quiz per testare le tue abilità!",
-            "💡 Un cerchio ha infinite linee di simmetria!",
-            "💡 La velocità della luce è circa 300.000 km/s!"
+            "💡 Studiare poco ma spesso è più efficace che studiare tanto una volta sola!",
+            "💡 Fai pause regolari ogni 25-30 minuti di studio.",
+            "💡 Ripeti ad alta voce: aiuta la memorizzazione!",
+            "💡 Crea schemi e mappe concettuali per organizzare le idee.",
+            "💡 Insegna ciò che hai imparato a qualcun altro.",
+            "💡 Cerca di capire, non solo memorizzare!"
         ];
         
         function showTip() {
-            const tip = tips[Math.floor(Math.random() * tips.length)];
-            alert(tip);
+            alert(tips[Math.floor(Math.random() * tips.length)]);
         }
     </script>
 </body>

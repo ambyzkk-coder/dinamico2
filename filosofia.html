@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filosofia - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #2c3e50; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #2c3e50; border-bottom: 2px solid #2c3e50; padding-bottom: 10px; }
+        .philosopher { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #2c3e50; }
+        .philosopher h3 { color: #2c3e50; margin-bottom: 10px; }
+        .philosopher .years { color: #666; font-style: italic; }
+        .quote { font-style: italic; background: #ecf0f1; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #2c3e50; color: #fff; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FILOSOFIA</h1>
+        <p style="color: #bdc3c7; font-size: 1.2em; margin-top: 10px;">Pensatori, Correnti e Concetti</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('antica')" class="active">ANTICA</button>
+            <button onclick="showTab('moderna')">MODERNA</button>
+            <button onclick="showTab('concetti')">CONCETTI</button>
+        </div>
+
+        <div id="antica" class="tab-content active">
+            <div class="section">
+                <h2>FILOSOFIA ANTICA</h2>
+                
+                <div class="philosopher">
+                    <h3>Socrate</h3>
+                    <p class="years">470-399 a.C. - Atene</p>
+                    <p>Padre della filosofia occidentale. Metodo maieutico: far emergere la verità attraverso il dialogo.</p>
+                    <p><strong>Frase celeste:</strong> "So di non sapere"</p>
+                    <div class="quote">"La vita non esaminata non è degna di essere vissuta"</div>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Platone</h3>
+                    <p class="years">428-348 a.C. - Atene</p>
+                    <p>Discepolo di Socrate. Teoria delle Idee: il mondo sensibile è copia del mondo delle Idee.</p>
+                    <p><strong>Opera principale:</strong> La Repubblica, il mito della caverna</p>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Aristotele</h3>
+                    <p class="years">384-322 a.C. - Stagira</p>
+                    <p>Discepolo di Platone, maestro di Alessandro Magno. Logica, etica, politica, metafisica.</p>
+                    <p><strong>Concetti:</strong> Eudaimonia (felicità), virtù come mezzo tra estremi</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="moderna" class="tab-content">
+            <div class="section">
+                <h2>FILOSOFIA MODERNA</h2>
+                
+                <div class="philosopher">
+                    <h3>Cartesio (René Descartes)</h3>
+                    <p class="years">1596-1650 - Francia</p>
+                    <p>Padre del razionalismo. Dubbio metodico e cogito ergo sum.</p>
+                    <div class="quote">"Penso, dunque sono"</div>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Immanuel Kant</h3>
+                    <p class="years">1724-1804 - Germania</p>
+                    <p>Critica della ragion pura. Imperativo categorico come principio morale universale.</p>
+                    <p><strong>Concetto chiave:</strong> L'illuminismo è l'uscita dallo stato di minorità</p>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Friedrich Nietzsche</h3>
+                    <p class="years">1844-1900 - Germania</p>
+                    <p>Critica della morale tradizionale. Superuomo e volontà di potenza.</p>
+                    <div class="quote">"Dio è morto" - crisi dei valori tradizionali</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="concetti" class="tab-content">
+            <div class="section">
+                <h2>CONCETTI FONDAMENTALI</h2>
+                
+                <div class="philosopher">
+                    <h3>Etica</h3>
+                    <p>Studio del bene e del male, del comportamento morale. Come dovremmo agire?</p>
+                    <p><strong>Correnti:</strong> Utilitarismo, Deontologismo, Virtù</p>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Ontologia</h3>
+                    <p>Studio dell'essere, della realtà. Cosa esiste davvero?</p>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Epistemologia</h3>
+                    <p>Teoria della conoscenza. Come conosciamo la realtà? Possiamo conoscerla?</p>
+                </div>
+                
+                <div class="philosopher">
+                    <h3>Libero Arbitrio</h3>
+                    <p>Siamo liberi nelle nostre scelte o determinati? Dibattito tra libertà e necessità.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

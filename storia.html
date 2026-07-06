@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storia - MAST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
+        header { background: #d35400; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
+        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; transition: all 0.2s; }
+        .back:hover { background: #333; color: #fff; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
+        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; transition: all 0.2s; }
+        .nav-tabs button.active, .nav-tabs button:hover { background: #d35400; color: #fff; }
+        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
+        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #d35400; border-bottom: 2px solid #d35400; padding-bottom: 10px; }
+        .timeline { border-left: 4px solid #d35400; padding-left: 20px; margin: 20px 0; }
+        .timeline-item { margin-bottom: 20px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd; }
+        .timeline-item h4 { color: #d35400; margin-bottom: 10px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .quiz-btn { padding: 12px 25px; background: #333; color: #fff; border: none; cursor: pointer; font-weight: bold; margin: 10px 5px 10px 0; }
+        .quiz-btn:hover { background: #d35400; }
+        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #d35400; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>STORIA</h1>
+        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Timeline, Civiltà e Avvenimenti</p>
+        <a href="index.html" class="back">← HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button onclick="showTab('antica')" class="active">ANTICA</button>
+            <button onclick="showTab('medioevo')">MEDIOEVO</button>
+            <button onclick="showTab('moderna')">MODERNA</button>
+            <button onclick="showTab('contemporanea')">CONTEMPORANEA</button>
+        </div>
+
+        <div id="antica" class="tab-content active">
+            <div class="section">
+                <h2>CIVILTÀ ANTICHE</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>3000 a.C. - Egizi</h4>
+                        <p>Piramidi, geroglifici, faraoni. Civiltà del Nilo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>3000 a.C. - Sumeri</h4>
+                        <p>Prima scrittura cuneiforme, città-stato in Mesopotamia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>2000 a.C. - Greci</h4>
+                        <p>Democrazia, filosofia, Olimpiadi. Atene e Sparta.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>753 a.C. - Romani</h4>
+                        <p>Repubblica, Impero, leggi, conquiste. Da Roma al mondo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>QUIZ STORIA ANTICA</h2>
+                <p><strong>Quando fu fondata Roma secondo la leggenda?</strong></p>
+                <button class="quiz-btn" onclick="checkAnswer(1, false)">753 d.C.</button>
+                <button class="quiz-btn" onclick="checkAnswer(1, true)">753 a.C.</button>
+                <button class="quiz-btn" onclick="checkAnswer(1, false)">500 a.C.</button>
+                <div id="answer1" class="result" style="display: none;"></div>
+            </div>
+        </div>
+
+        <div id="medioevo" class="tab-content">
+            <div class="section">
+                <h2>IL MEDIOEVO (476-1492)</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>476 d.C.</h4>
+                        <p>Caduta dell'Impero Romano d'Occidente. Inizio Medioevo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>800 d.C.</h4>
+                        <p>Carlo Magno incoronato Imperatore. Sacro Romano Impero.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1095</h4>
+                        <p>Prime Crociate. Gerusalemme.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1347-1351</h4>
+                        <p>Peste Nera. Un terzo della popolazione europea muore.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1492</h4>
+                        <p>Scoperta dell'America. Fine Medioevo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="moderna" class="tab-content">
+            <div class="section">
+                <h2>ETÀ MODERNA (1492-1815)</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>1492</h4>
+                        <p>Colombo scopre l'America.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1517</h4>
+                        <p>Lutero e la Riforma Protestante.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1789</h4>
+                        <p>Rivoluzione Francese. Caduta della Bastiglia.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1799-1815</h4>
+                        <p>Era Napoleonica. Napoleone Imperatore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contemporanea" class="tab-content">
+            <div class="section">
+                <h2>ETÀ CONTEMPORANEA (1815-oggi)</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>1861</h4>
+                        <p>Unità d'Italia. Vittorio Emanuele II Re.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1914-1918</h4>
+                        <p>Prima Guerra Mondiale.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1939-1945</h4>
+                        <p>Seconda Guerra Mondiale.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1957</h4>
+                        <p>Nasce la CEE (ora UE).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>1989</h4>
+                        <p>Caduta del Muro di Berlino. Fine Guerra Fredda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function checkAnswer(num, correct) {
+            const div = document.getElementById('answer' + num);
+            div.style.display = 'block';
+            if (correct) {
+                div.innerHTML = '✓ Corretto!';
+                div.style.background = '#d4edda';
+                div.style.borderColor = '#28a745';
+            } else {
+                div.innerHTML = '✗ Sbagliato! Riprova.';
+                div.style.background = '#f8d7da';
+                div.style.borderColor = '#dc3545';
+            }
+        }
+    </script>
+</body>
+</html>
