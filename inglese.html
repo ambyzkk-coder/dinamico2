@@ -7,31 +7,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
-        header { background: #2980b9; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
-        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
-        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; }
-        .back:hover { background: #333; color: #fff; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #e8f6ff; background-image: radial-gradient(circle, #74b9ff 1px, transparent 1px), radial-gradient(circle, #55efc4 1px, transparent 1px); background-size: 30px 30px; background-position: 0 0, 15px 15px; color: #2d3436; min-height: 100vh; }
+        header { background: linear-gradient(135deg, #0984e3 0%, #00cec9 100%); padding: 25px 20px; text-align: center; border-bottom: 6px solid #2d3436; position: relative; }
+        header::before { content: '★ ENGLISH ★'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #2d3436; color: #fff; padding: 5px 20px; font-family: 'Bangers', cursive; font-size: 1em; border: 3px solid #fff; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3.5em; text-shadow: 4px 4px 0 #2d3436; letter-spacing: 3px; }
+        .back { display: inline-block; color: #2d3436; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 4px solid #2d3436; font-weight: bold; box-shadow: 5px 5px 0 #2d3436; }
+        .back:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 #2d3436; }
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .section { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
-        .section h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #2980b9; border-bottom: 2px solid #2980b9; padding-bottom: 10px; }
-        .eng-card { background: #f9f9f9; padding: 20px; margin: 15px 0; border-left: 4px solid #2980b9; }
-        .eng-card h3 { color: #2980b9; margin-bottom: 10px; }
-        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
-        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; cursor: pointer; }
-        .nav-tabs button.active, .nav-tabs button:hover { background: #2980b9; color: #fff; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; justify-content: center; }
+        .nav-tabs button { padding: 12px 25px; background: #fff; border: 4px solid #2d3436; font-family: 'Bangers', cursive; font-size: 1.1em; cursor: pointer; box-shadow: 4px 4px 0 #2d3436; }
+        .nav-tabs button.active { background: #0984e3; color: #fff; transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2d3436; }
+        .nav-tabs button:hover { background: #00cec9; }
+        .tool { background: #fff; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; }
+        .tool h2 { font-family: 'Bangers', cursive; font-size: 2em; margin-bottom: 20px; background: #55efc4; color: #2d3436; padding: 10px 20px; display: inline-block; border: 3px solid #2d3436; }
+        .tool label { display: block; font-weight: bold; margin: 15px 0 8px; font-size: 1.1em; }
+        .tool input, .tool select { width: 100%; padding: 12px; font-size: 1.1em; border: 3px solid #2d3436; }
+        .tool button { margin-top: 15px; padding: 15px 30px; font-size: 1.2em; font-family: 'Bangers', cursive; background: #2d3436; color: #fff; border: 4px solid #2d3436; cursor: pointer; }
+        .tool button:hover { background: #0984e3; }
+        .quiz-section { background: #e17055; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; }
+        .quiz-section h2 { font-family: 'Bangers', cursive; font-size: 2.2em; margin-bottom: 20px; color: #fff; text-shadow: 3px 3px 0 #2d3436; }
+        .quiz-question { background: #fff; padding: 20px; border: 4px solid #2d3436; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .quiz-btn { padding: 15px; background: #fff; border: 3px solid #2d3436; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; }
+        .quiz-btn:hover { background: #55efc4; }
+        .quiz-btn.correct { background: #00b894; color: #fff; }
+        .quiz-btn.wrong { background: #d63031; color: #fff; }
+        .game-section { background: #a29bfe; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; }
+        .game-section h2 { font-family: 'Bangers', cursive; font-size: 2.2em; margin-bottom: 20px; color: #fff; text-shadow: 3px 3px 0 #2d3436; }
+        .score-display { font-family: 'Bangers', cursive; font-size: 2em; color: #fff; background: #2d3436; padding: 10px 20px; display: inline-block; margin-bottom: 20px; border: 3px solid #fff; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        input, select { padding: 12px; font-size: 1em; border: 2px solid #ddd; width: 100%; max-width: 400px; margin: 5px 0; }
-        button { padding: 12px 25px; background: #333; color: #fff; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
-        button:hover { background: #2980b9; }
-        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #2980b9; }
+        .vocab-card { background: #dfe6e9; padding: 15px; border: 3px solid #2d3436; margin: 10px 0; }
+        .vocab-card h3 { color: #0984e3; margin-bottom: 10px; font-family: 'Bangers'; }
     </style>
 </head>
 <body>
     <header>
-        <h1>ENGLISH</h1>
-        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Grammar, Vocabulary and Exercises</p>
+        <h1>ENGLISH!</h1>
+        <p style="color: #fff; font-size: 1.3em; text-shadow: 2px 2px 0 #2d3436;">Grammar, Vocabulary, Games!</p>
         <a href="index.html" class="back">← HOME</a>
     </header>
 
@@ -39,19 +52,20 @@
         <div class="nav-tabs">
             <button onclick="showTab('grammar')" class="active">GRAMMAR</button>
             <button onclick="showTab('vocabulary')">VOCABULARY</button>
-            <button onclick="showTab('verbs')">VERBS</button>
+            <button onclick="showTab('quiz')">QUIZ!</button>
+            <button onclick="showTab('games')">GAMES</button>
         </div>
 
         <div id="grammar" class="tab-content active">
-            <div class="section">
+            <div class="tool">
                 <h2>PRESENT SIMPLE</h2>
-                <div class="eng-card">
+                <div class="vocab-card">
                     <h3>Form</h3>
-                    <p><strong>Positive:</strong> Subject + Verb (s/es for he/she/it)</p>
-                    <p><strong>Negative:</strong> Subject + don't/doesn't + Verb</p>
-                    <p><strong>Question:</strong> Do/Does + Subject + Verb?</p>
+                    <p><strong>Positive:</strong> I/You/We/They + verb / He/She/It + verb+s</p>
+                    <p><strong>Negative:</strong> I/You/We/They + don't + verb / He/She/It + doesn't + verb</p>
+                    <p><strong>Question:</strong> Do + I/you/we/they + verb? / Does + he/she/it + verb?</p>
                 </div>
-                <div class="eng-card">
+                <div class="vocab-card">
                     <h3>Examples</h3>
                     <p>I <strong>play</strong> tennis every Sunday.</p>
                     <p>She <strong>plays</strong> tennis every Sunday.</p>
@@ -60,14 +74,14 @@
                 </div>
             </div>
 
-            <div class="section">
+            <div class="tool">
                 <h2>PRESENT CONTINUOUS</h2>
-                <div class="eng-card">
+                <div class="vocab-card">
                     <h3>Form</h3>
-                    <p><strong>Positive:</strong> Subject + am/is/are + Verb-ing</p>
-                    <p><strong>Negative:</strong> Subject + am/is/are + not + Verb-ing</p>
+                    <p><strong>Positive:</strong> Subject + am/is/are + verb-ing</p>
+                    <p><strong>Negative:</strong> Subject + am/is/are + not + verb-ing</p>
                 </div>
-                <div class="eng-card">
+                <div class="vocab-card">
                     <h3>Examples</h3>
                     <p>I <strong>am reading</strong> a book now.</p>
                     <p>She <strong>is watching</strong> TV.</p>
@@ -77,60 +91,63 @@
         </div>
 
         <div id="vocabulary" class="tab-content">
-            <div class="section">
-                <h2>COMMON VOCABULARY</h2>
-                
-                <div class="eng-card">
-                    <h3>Numbers (1-20)</h3>
-                    <p>one, two, three, four, five, six, seven, eight, nine, ten</p>
-                    <p>eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty</p>
-                </div>
-                
-                <div class="eng-card">
-                    <h3>Days of the Week</h3>
-                    <p>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</p>
-                </div>
-                
-                <div class="eng-card">
-                    <h3>Months</h3>
-                    <p>January, February, March, April, May, June, July, August, September, October, November, December</p>
-                </div>
-                
-                <div class="eng-card">
-                    <h3>Colors</h3>
-                    <p>red, blue, green, yellow, orange, purple, pink, black, white, grey, brown</p>
-                </div>
-                
-                <div class="eng-card">
-                    <h3>Family</h3>
-                    <p>mother, father, sister, brother, grandmother, grandfather, aunt, uncle, cousin</p>
-                </div>
+            <div class="tool">
+                <h2>IRREGULAR VERBS</h2>
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <tr style="background: #0984e3; color: #fff;">
+                        <th style="padding: 12px; border: 2px solid #2d3436;">Infinitive</th>
+                        <th style="padding: 12px; border: 2px solid #2d3436;">Past Simple</th>
+                        <th style="padding: 12px; border: 2px solid #2d3436;">Past Participle</th>
+                    </tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">be</td><td style="padding: 10px; border: 2px solid #dfe6e9;">was/were</td><td style="padding: 10px; border: 2px solid #dfe6e9;">been</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">have</td><td style="padding: 10px; border: 2px solid #dfe6e9;">had</td><td style="padding: 10px; border: 2px solid #dfe6e9;">had</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">do</td><td style="padding: 10px; border: 2px solid #dfe6e9;">did</td><td style="padding: 10px; border: 2px solid #dfe6e9;">done</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">go</td><td style="padding: 10px; border: 2px solid #dfe6e9;">went</td><td style="padding: 10px; border: 2px solid #dfe6e9;">gone</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">see</td><td style="padding: 10px; border: 2px solid #dfe6e9;">saw</td><td style="padding: 10px; border: 2px solid #dfe6e9;">seen</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">take</td><td style="padding: 10px; border: 2px solid #dfe6e9;">took</td><td style="padding: 10px; border: 2px solid #dfe6e9;">taken</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">come</td><td style="padding: 10px; border: 2px solid #dfe6e9;">came</td><td style="padding: 10px; border: 2px solid #dfe6e9;">come</td></tr>
+                    <tr><td style="padding: 10px; border: 2px solid #dfe6e9; font-weight: bold;">eat</td><td style="padding: 10px; border: 2px solid #dfe6e9;">ate</td><td style="padding: 10px; border: 2px solid #dfe6e9;">eaten</td></tr>
+                </table>
+            </div>
+
+            <div class="tool">
+                <h2>COMMON WORDS</h2>
+                <div class="vocab-card"><h3>Numbers 1-10</h3><p>one, two, three, four, five, six, seven, eight, nine, ten</p></div>
+                <div class="vocab-card"><h3>Days</h3><p>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</p></div>
+                <div class="vocab-card"><h3>Colors</h3><p>red, blue, green, yellow, orange, purple, pink, black, white</p></div>
+                <div class="vocab-card"><h3>Family</h3><p>mother, father, sister, brother, grandmother, grandfather</p></div>
             </div>
         </div>
 
-        <div id="verbs" class="tab-content">
-            <div class="section">
-                <h2>IRREGULAR VERBS</h2>
-                <div class="eng-card">
-                    <h3>Most Common</h3>
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <tr style="background: #2980b9; color: #fff;">
-                            <th style="padding: 10px; border: 1px solid #333;">Infinitive</th>
-                            <th style="padding: 10px; border: 1px solid #333;">Past Simple</th>
-                            <th style="padding: 10px; border: 1px solid #333;">Past Participle</th>
-                        </tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">be</td><td style="padding: 8px; border: 1px solid #ddd;">was/were</td><td style="padding: 8px; border: 1px solid #ddd;">been</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">have</td><td style="padding: 8px; border: 1px solid #ddd;">had</td><td style="padding: 8px; border: 1px solid #ddd;">had</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">do</td><td style="padding: 8px; border: 1px solid #ddd;">did</td><td style="padding: 8px; border: 1px solid #ddd;">done</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">go</td><td style="padding: 8px; border: 1px solid #ddd;">went</td><td style="padding: 8px; border: 1px solid #ddd;">gone</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">see</td><td style="padding: 8px; border: 1px solid #ddd;">saw</td><td style="padding: 8px; border: 1px solid #ddd;">seen</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">take</td><td style="padding: 8px; border: 1px solid #ddd;">took</td><td style="padding: 8px; border: 1px solid #ddd;">taken</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">come</td><td style="padding: 8px; border: 1px solid #ddd;">came</td><td style="padding: 8px; border: 1px solid #ddd;">come</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">eat</td><td style="padding: 8px; border: 1px solid #ddd;">ate</td><td style="padding: 8px; border: 1px solid #ddd;">eaten</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">write</td><td style="padding: 8px; border: 1px solid #ddd;">wrote</td><td style="padding: 8px; border: 1px solid #ddd;">written</td></tr>
-                        <tr><td style="padding: 8px; border: 1px solid #ddd;">speak</td><td style="padding: 8px; border: 1px solid #ddd;">spoke</td><td style="padding: 8px; border: 1px solid #ddd;">spoken</td></tr>
-                    </table>
+        <div id="quiz" class="tab-content">
+            <div class="quiz-section">
+                <h2>English Quiz!</h2>
+                <div class="score-display">Score: <span id="quiz-score">0</span></div>
+                <div id="quiz-container"></div>
+                <button onclick="startQuiz()" style="padding: 15px 30px; background: #55efc4; color: #2d3436; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.3em; cursor: pointer; margin-top: 20px;">NEW QUIZ!</button>
+            </div>
+        </div>
+
+        <div id="games" class="tab-content">
+            <div class="game-section">
+                <h2>TRANSLATION GAME!</h2>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <p id="trans-word" style="font-size: 2em; text-align: center; margin-bottom: 15px;"></p>
+                    <input type="text" id="trans-answer" placeholder="Translate..." style="font-size: 1.3em; padding: 12px; width: 100%; text-align: center; border: 3px solid #2d3436;">
+                    <p id="trans-result" style="margin-top: 15px; font-size: 1.3em; text-align: center;"></p>
                 </div>
+                <button onclick="newTranslation()" style="margin-top: 15px; padding: 15px 30px; background: #00cec9; color: #fff; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.2em; cursor: pointer;">NEW WORD!</button>
+            </div>
+
+            <div class="game-section" style="background: #fdcb6e;">
+                <h2>WORD SCRAMBLE!</h2>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <p style="font-size: 1.2em; margin-bottom: 10px;">Unscramble this word:</p>
+                    <p id="scramble-word" style="font-size: 2.5em; text-align: center; margin-bottom: 15px; font-family: 'Courier New';"></p>
+                    <input type="text" id="scramble-answer" placeholder="Your answer..." style="font-size: 1.3em; padding: 12px; width: 100%; text-align: center; border: 3px solid #2d3436;">
+                    <p id="scramble-result" style="margin-top: 15px; font-size: 1.3em; text-align: center;"></p>
+                </div>
+                <button onclick="newScramble()" style="margin-top: 15px; padding: 15px 30px; background: #e17055; color: #fff; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.2em; cursor: pointer;">NEW WORD!</button>
             </div>
         </div>
     </div>
@@ -142,6 +159,125 @@
             document.getElementById(tab).classList.add('active');
             event.target.classList.add('active');
         }
+
+        // QUIZ
+        const quizQuestions = [
+            { q: "What is the past of 'go'?", options: ["goed", "went", "gone", "going"], correct: 1 },
+            { q: "Complete: She ___ to school every day.", options: ["go", "goes", "going", "went"], correct: 1 },
+            { q: "What is 'cane' in English?", options: ["cat", "dog", "bird", "fish"], correct: 1 },
+            { q: "Complete: I ___ watching TV now.", options: ["is", "are", "am", "be"], correct: 2 },
+            { q: "What is the plural of 'child'?", options: ["childs", "childes", "children", "childrens"], correct: 2 }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score').textContent = '0';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const container = document.getElementById('quiz-container');
+            if (currentQuestion >= quizQuestions.length) {
+                container.innerHTML = `<div style="background: #fff; padding: 30px; border: 4px solid #2d3436; text-align: center;"><h3 style="font-family: 'Bangers'; font-size: 2em;">QUIZ COMPLETE!</h3><p style="font-size: 1.5em;">Score: ${quizScore}/${quizQuestions.length}</p></div>`;
+                return;
+            }
+            const q = quizQuestions[currentQuestion];
+            container.innerHTML = `<div class="quiz-question"><p><strong>Question ${currentQuestion + 1}:</strong> ${q.q}</p><div class="quiz-options">${q.options.map((opt, i) => `<button class="quiz-btn" onclick="checkQuiz(${i})">${opt}</button>`).join('')}</div></div>`;
+        }
+
+        function checkQuiz(selected) {
+            const q = quizQuestions[currentQuestion];
+            const buttons = document.querySelectorAll('.quiz-btn');
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.correct) btn.classList.add('correct');
+                else if (i === selected) btn.classList.add('wrong');
+            });
+            if (selected === q.correct) {
+                quizScore++;
+                document.getElementById('quiz-score').textContent = quizScore;
+            }
+            setTimeout(() => { currentQuestion++; showQuestion(); }, 1500);
+        }
+
+        // TRANSLATION GAME
+        const translations = [
+            { it: "cane", en: "dog" },
+            { it: "gatto", en: "cat" },
+            { it: "casa", en: "house" },
+            { it: "libro", en: "book" },
+            { it: "scuola", en: "school" },
+            { it: "acqua", en: "water" },
+            { it: "amico", en: "friend" },
+            { it: "tempo", en: "time" }
+        ];
+
+        let currentTrans = null;
+
+        function newTranslation() {
+            currentTrans = translations[Math.floor(Math.random() * translations.length)];
+            document.getElementById('trans-word').textContent = currentTrans.it;
+            document.getElementById('trans-answer').value = '';
+            document.getElementById('trans-result').textContent = '';
+            document.getElementById('trans-answer').focus();
+            
+            document.getElementById('trans-answer').onkeypress = function(e) {
+                if (e.key === 'Enter') checkTranslation();
+            };
+        }
+
+        function checkTranslation() {
+            if (!currentTrans) return;
+            const answer = document.getElementById('trans-answer').value.toLowerCase().trim();
+            if (answer === currentTrans.en) {
+                document.getElementById('trans-result').textContent = '✓ Correct!';
+                document.getElementById('trans-result').style.color = '#00b894';
+            } else {
+                document.getElementById('trans-result').textContent = `✗ It was: ${currentTrans.en}`;
+                document.getElementById('trans-result').style.color = '#d63031';
+            }
+        }
+
+        // SCRAMBLE GAME
+        const scrambleWords = ["school", "teacher", "student", "english", "book", "pencil", "friend", "water", "apple", "green"];
+
+        let currentScramble = null;
+
+        function shuffle(word) {
+            return word.split('').sort(() => Math.random() - 0.5).join('');
+        }
+
+        function newScramble() {
+            currentScramble = scrambleWords[Math.floor(Math.random() * scrambleWords.length)];
+            document.getElementById('scramble-word').textContent = shuffle(currentScramble).toUpperCase();
+            document.getElementById('scramble-answer').value = '';
+            document.getElementById('scramble-result').textContent = '';
+            document.getElementById('scramble-answer').focus();
+            
+            document.getElementById('scramble-answer').onkeypress = function(e) {
+                if (e.key === 'Enter') checkScramble();
+            };
+        }
+
+        function checkScramble() {
+            if (!currentScramble) return;
+            const answer = document.getElementById('scramble-answer').value.toLowerCase().trim();
+            if (answer === currentScramble) {
+                document.getElementById('scramble-result').textContent = '✓ Correct!';
+                document.getElementById('scramble-result').style.color = '#00b894';
+            } else {
+                document.getElementById('scramble-result').textContent = `✗ It was: ${currentScramble}`;
+                document.getElementById('scramble-result').style.color = '#d63031';
+            }
+        }
+
+        startQuiz();
+        newTranslation();
+        newScramble();
     </script>
 </body>
 </html>

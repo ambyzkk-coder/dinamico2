@@ -3,55 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matematica Interattiva</title>
+    <title>Matematica - MAST</title>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
             font-family: 'Comic Neue', cursive, sans-serif;
-            background: #fff;
+            background: #fff5e6;
             background-image: 
-                radial-gradient(circle, #000 1px, transparent 1px),
-                radial-gradient(circle, #000 1px, transparent 1px);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            color: #000;
+                radial-gradient(circle, #ff6b6b 1px, transparent 1px),
+                radial-gradient(circle, #4ecdc4 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            color: #2d3436;
             min-height: 100vh;
         }
         
         header {
-            background: #ff3366;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
             padding: 25px 20px;
             text-align: center;
-            border-bottom: 8px solid #000;
+            border-bottom: 6px solid #2d3436;
+            position: relative;
+        }
+        
+        header::before {
+            content: '★ MATEMATICA ★';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2d3436;
+            color: #fff;
+            padding: 5px 20px;
+            font-family: 'Bangers', cursive;
+            font-size: 1em;
+            border: 3px solid #fff;
         }
         
         h1 { 
             font-family: 'Bangers', cursive;
             color: #fff;
             font-size: 3.5em;
-            text-shadow: 4px 4px 0 #000;
+            text-shadow: 4px 4px 0 #2d3436;
             letter-spacing: 3px;
         }
         
         .back { 
             display: inline-block;
-            color: #000;
+            color: #2d3436;
             text-decoration: none;
             margin-top: 15px;
             padding: 10px 25px;
             background: #fff;
-            border: 4px solid #000;
+            border: 4px solid #2d3436;
             font-weight: bold;
-            box-shadow: 4px 4px 0 #000;
+            box-shadow: 5px 5px 0 #2d3436;
             transition: all 0.2s;
         }
         
         .back:hover { 
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 #000;
-            background: #ffdd00;
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0 #2d3436;
         }
         
         .container {
@@ -60,23 +74,68 @@
             padding: 40px 20px;
         }
         
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        
+        .nav-tabs button {
+            padding: 12px 25px;
+            background: #fff;
+            border: 4px solid #2d3436;
+            font-family: 'Bangers', cursive;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 4px 4px 0 #2d3436;
+        }
+        
+        .nav-tabs button.active {
+            background: #ff6b6b;
+            color: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #2d3436;
+        }
+        
+        .nav-tabs button:hover {
+            background: #feca57;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #2d3436;
+        }
+        
         .tool {
             background: #fff;
             padding: 30px;
             margin-bottom: 30px;
-            border: 5px solid #000;
-            box-shadow: 8px 8px 0 #000;
+            border: 5px solid #2d3436;
+            box-shadow: 10px 10px 0 #2d3436;
+            position: relative;
+        }
+        
+        .tool::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #ff6b6b 30%, transparent 30%);
+            background-size: 10px 10px;
         }
         
         .tool h2 { 
             font-family: 'Bangers', cursive;
             font-size: 2em;
             margin-bottom: 20px;
-            background: #ff3366;
-            color: #fff;
+            background: #feca57;
+            color: #2d3436;
             padding: 10px 20px;
             display: inline-block;
-            border: 3px solid #000;
+            border: 3px solid #2d3436;
+            transform: rotate(-2deg);
         }
         
         .tool label {
@@ -90,14 +149,15 @@
             width: 100%;
             padding: 12px;
             font-size: 1.1em;
-            border: 3px solid #000;
+            border: 3px solid #2d3436;
             font-family: inherit;
+            background: #fff;
         }
         
         .tool input:focus, .tool select:focus {
             outline: none;
-            border-color: #ff3366;
-            box-shadow: 0 0 10px rgba(255,51,102,0.3);
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255,107,107,0.3);
         }
         
         .tool button {
@@ -105,83 +165,111 @@
             padding: 15px 30px;
             font-size: 1.2em;
             font-family: 'Bangers', cursive;
-            background: #000;
+            background: #2d3436;
             color: #fff;
-            border: 4px solid #000;
+            border: 4px solid #2d3436;
             cursor: pointer;
             transition: all 0.2s;
             letter-spacing: 2px;
         }
         
         .tool button:hover {
-            background: #ff3366;
+            background: #ff6b6b;
             transform: scale(1.05);
         }
         
         .result {
             margin-top: 20px;
             padding: 20px;
-            background: #000;
+            background: #2d3436;
             color: #fff;
-            border: 4px solid #ff3366;
+            border: 4px solid #ff6b6b;
             font-size: 1.3em;
             text-align: center;
             font-family: 'Courier New', monospace;
         }
         
-        .formula-display {
-            background: #ffdd00;
-            padding: 15px;
-            border: 3px solid #000;
-            text-align: center;
-            font-size: 1.5em;
-            font-family: 'Courier New', monospace;
-            margin: 15px 0;
+        .quiz-section {
+            background: #e056fd;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 5px solid #2d3436;
+            box-shadow: 10px 10px 0 #2d3436;
         }
         
-        .steps {
-            background: #f0f0f0;
-            padding: 15px;
-            border: 2px solid #000;
+        .quiz-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 3px 3px 0 #2d3436;
+        }
+        
+        .quiz-question {
+            background: #fff;
+            padding: 20px;
+            margin: 15px 0;
+            border: 4px solid #2d3436;
+            font-size: 1.3em;
+        }
+        
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
             margin-top: 15px;
         }
         
-        .steps h4 {
-            font-family: 'Bangers', cursive;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            color: #ff3366;
-        }
-        
-        .steps p {
-            margin: 5px 0;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .nav-tabs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .nav-tabs button {
-            padding: 10px 20px;
+        .quiz-btn {
+            padding: 15px;
             background: #fff;
-            border: 3px solid #000;
+            border: 3px solid #2d3436;
             font-family: 'Bangers', cursive;
             font-size: 1.1em;
             cursor: pointer;
             transition: all 0.2s;
         }
         
-        .nav-tabs button.active {
-            background: #ff3366;
+        .quiz-btn:hover {
+            background: #feca57;
+            transform: scale(1.02);
+        }
+        
+        .quiz-btn.correct {
+            background: #00b894;
             color: #fff;
         }
         
-        .nav-tabs button:hover {
-            background: #ffdd00;
+        .quiz-btn.wrong {
+            background: #d63031;
+            color: #fff;
+        }
+        
+        .game-section {
+            background: #00b894;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 5px solid #2d3436;
+            box-shadow: 10px 10px 0 #2d3436;
+        }
+        
+        .game-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 3px 3px 0 #2d3436;
+        }
+        
+        .score-display {
+            font-family: 'Bangers', cursive;
+            font-size: 2em;
+            color: #fff;
+            background: #2d3436;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 3px solid #fff;
         }
         
         .tab-content {
@@ -191,27 +279,61 @@
         .tab-content.active {
             display: block;
         }
+        
+        .formula-box {
+            background: #dfe6e9;
+            padding: 15px;
+            border: 3px solid #2d3436;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .steps {
+            background: #ffeaa7;
+            padding: 15px;
+            border: 3px solid #2d3436;
+            margin-top: 15px;
+        }
+        
+        .steps h4 {
+            font-family: 'Bangers', cursive;
+            color: #2d3436;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .input-group input {
+            flex: 1;
+            min-width: 120px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>MATEMATICA INTERATTIVA!</h1>
-        <p style="color: #fff; font-size: 1.3em; margin-top: 10px;">★ Calcolatori e Risolutori ★</p>
+        <h1>MATEMATICA!</h1>
+        <p style="color: #fff; font-size: 1.3em; text-shadow: 2px 2px 0 #2d3436;">Calcolatori, Quiz e Giochi!</p>
         <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
         <div class="nav-tabs">
-            <button onclick="showTab('equazioni')" class="active" id="btn-equazioni">EQUAZIONI</button>
-            <button onclick="showTab('sistemi')" id="btn-sistemi">SISTEMI</button>
-            <button onclick="showTab('potenze')" id="btn-potenze">POTENZE</button>
-            <button onclick="showTab('percentuali')" id="btn-percentuali">PERCENTUALI</button>
+            <button onclick="showTab('calcolatori')" class="active">CALCOLATORI</button>
+            <button onclick="showTab('quiz')">QUIZ!</button>
+            <button onclick="showTab('giochi')">GIOCHI</button>
         </div>
 
-        <div id="equazioni" class="tab-content active">
+        <div id="calcolatori" class="tab-content active">
             <div class="tool">
                 <h2>RISOLUTORE EQUAZIONI DI 1° GRADO</h2>
-                <p style="margin-bottom: 20px;">Risolve equazioni nella forma ax + b = 0</p>
+                <p style="margin-bottom: 20px; font-size: 1.1em;">Risolve equazioni nella forma ax + b = 0</p>
                 
                 <label>Coefficiente a:</label>
                 <input type="number" id="eq-a" placeholder="Es: 2" step="any">
@@ -227,7 +349,7 @@
             
             <div class="tool">
                 <h2>EQUAZIONE DI 2° GRADO</h2>
-                <p style="margin-bottom: 20px;">Risolve ax² + bx + c = 0</p>
+                <p style="margin-bottom: 20px; font-size: 1.1em;">Risolve ax² + bx + c = 0</p>
                 
                 <label>Coefficiente a:</label>
                 <input type="number" id="eq2-a" placeholder="Es: 1" step="any">
@@ -243,143 +365,121 @@
                 <div id="eq2-risultato" class="result" style="display: none;"></div>
                 <div id="eq2-passaggi" class="steps" style="display: none;"></div>
             </div>
-        </div>
 
-        <div id="sistemi" class="tab-content">
             <div class="tool">
-                <h2>SISTEMA DI DUE EQUAZIONI</h2>
-                <p style="margin-bottom: 20px;">Risolve sistemi lineari 2x2</p>
+                <h2>POTENZE E RADICI</h2>
                 
-                <div style="background: #f0f0f0; padding: 15px; border: 2px solid #000; margin-bottom: 20px;">
-                    <p style="font-family: 'Courier New', monospace; font-size: 1.2em;">
-                        a₁x + b₁y = c₁<br>
-                        a₂x + b₂y = c₂
-                    </p>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div class="input-group">
                     <div>
-                        <label>a₁:</label>
-                        <input type="number" id="sis-a1" step="any">
-                        <label>b₁:</label>
-                        <input type="number" id="sis-b1" step="any">
-                        <label>c₁:</label>
-                        <input type="number" id="sis-c1" step="any">
+                        <label>Base:</label>
+                        <input type="number" id="pot-base" placeholder="Es: 2" step="any">
                     </div>
                     <div>
-                        <label>a₂:</label>
-                        <input type="number" id="sis-a2" step="any">
-                        <label>b₂:</label>
-                        <input type="number" id="sis-b2" step="any">
-                        <label>c₂:</label>
-                        <input type="number" id="sis-c2" step="any">
+                        <label>Esponente:</label>
+                        <input type="number" id="pot-exp" placeholder="Es: 3" step="any">
                     </div>
                 </div>
+                <button onclick="calcolaPotenza()">CALCOLA POTENZA</button>
                 
-                <button onclick="risolviSistema()">RISOLVI!</button>
-                
-                <div id="sis-risultato" class="result" style="display: none;"></div>
-            </div>
-        </div>
-
-        <div id="potenze" class="tab-content">
-            <div class="tool">
-                <h2>CALCOLATORE POTENZE</h2>
-                
-                <label>Base:</label>
-                <input type="number" id="pot-base" placeholder="Es: 2" step="any">
-                
-                <label>Esponente:</label>
-                <input type="number" id="pot-exp" placeholder="Es: 3" step="any">
-                
-                <button onclick="calcolaPotenza()">CALCOLA!</button>
+                <div class="formula-box">aⁿ = a × a × a × ... (n volte)</div>
                 
                 <div id="pot-risultato" class="result" style="display: none;"></div>
             </div>
-            
+
             <div class="tool">
-                <h2>RADICI</h2>
+                <h2>PERCENTUALI</h2>
                 
-                <label>Numero:</label>
-                <input type="number" id="rad-num" placeholder="Es: 16" step="any">
+                <div class="input-group">
+                    <input type="number" id="perc-val" placeholder="%" style="width: 100px;">
+                    <span style="padding: 12px; font-weight: bold;">% di</span>
+                    <input type="number" id="perc-tot" placeholder="Numero" style="flex: 1;">
+                </div>
+                <button onclick="calcolaPercentuale()">CALCOLA!</button>
                 
-                <label>Indice della radice:</label>
-                <input type="number" id="rad-ind" placeholder="Es: 2 (radice quadrata)" step="any" value="2">
-                
-                <button onclick="calcolaRadice()">CALCOLA!</button>
-                
-                <div id="rad-risultato" class="result" style="display: none;"></div>
+                <div id="perc-risultato" class="result" style="display: none;"></div>
             </div>
         </div>
 
-        <div id="percentuali" class="tab-content">
-            <div class="tool">
-                <h2>CALCOLATORE PERCENTUALI</h2>
+        <div id="quiz" class="tab-content">
+            <div class="quiz-section">
+                <h2>Quiz Matematica!</h2>
+                <div class="score-display">Punteggio: <span id="quiz-score">0</span></div>
                 
-                <label>Calcola il % di un numero:</label>
-                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                    <input type="number" id="perc-val" placeholder="%" style="width: 100px;">
-                    <span>% di</span>
-                    <input type="number" id="perc-tot" placeholder="Numero" style="width: 150px;">
-                </div>
-                <button onclick="calcolaPercentuale()">CALCOLA!</button>
-                <div id="perc-risultato" class="result" style="display: none;"></div>
+                <div id="quiz-container"></div>
+                
+                <button onclick="startQuiz()" style="padding: 15px 30px; background: #feca57; color: #2d3436; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.3em; cursor: pointer; margin-top: 20px;">NUOVO QUIZ!</button>
             </div>
-            
-            <div class="tool">
-                <h2>AUMENTO/DIMINUZIONE %</h2>
+        </div>
+
+        <div id="giochi" class="tab-content">
+            <div class="game-section">
+                <h2>GIOCO: OPERAZIONI VELOCI!</h2>
+                <div class="score-display">Record: <span id="game-record">0</span> | Punti: <span id="game-score">0</span></div>
                 
-                <label>Numero iniziale:</label>
-                <input type="number" id="var-num" step="any">
-                
-                <label>Percentuale di variazione:</label>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" id="var-perc" step="any" style="width: 100px;">
-                    <select id="var-tipo">
-                        <option value="aumento">AUMENTO (+)</option>
-                        <option value="diminuzione">DIMINUZIONE (-)</option>
-                    </select>
+                <div style="background: #fff; padding: 30px; border: 4px solid #2d3436; text-align: center; margin: 20px 0;">
+                    <p style="font-size: 2em; margin-bottom: 20px;" id="game-question">Premi INIZIA per giocare!</p>
+                    <input type="number" id="game-answer" placeholder="Tua risposta" style="font-size: 1.5em; padding: 15px; width: 200px; text-align: center;" disabled>
+                    <br><br>
+                    <button onclick="startGame()" id="game-btn" style="padding: 15px 40px; background: #feca57; color: #2d3436; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.3em; cursor: pointer;">INIZIA!</button>
                 </div>
                 
-                <button onclick="calcolaVariazione()">CALCOLA!</button>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <p style="font-family: 'Bangers'; font-size: 1.3em;">Tempo rimasto: <span id="game-timer">30</span> secondi</p>
+                    <div style="background: #dfe6e9; height: 20px; border: 2px solid #2d3436; margin-top: 10px;">
+                        <div id="timer-bar" style="background: #00b894; height: 100%; width: 100%; transition: width 1s;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-section" style="background: #e17055;">
+                <h2>GIOCO: TABELLINA CHALLENGE!</h2>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <label>Scegli la tabellina:</label>
+                    <select id="tabellina" style="padding: 10px; font-size: 1.1em; border: 3px solid #2d3436; width: 100%;">
+                        <option value="2">Tabellina del 2</option>
+                        <option value="3">Tabellina del 3</option>
+                        <option value="4">Tabellina del 4</option>
+                        <option value="5">Tabellina del 5</option>
+                        <option value="6">Tabellina del 6</option>
+                        <option value="7">Tabellina del 7</option>
+                        <option value="8">Tabellina del 8</option>
+                        <option value="9">Tabellina del 9</option>
+                        <option value="10">Tabellina del 10</option>
+                    </select>
+                    <button onclick="startTabellina()" style="margin-top: 15px; padding: 15px 30px; background: #feca57; color: #2d3436; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.2em; cursor: pointer; width: 100%;">GIOCA!</button>
+                </div>
                 
-                <div id="var-risultato" class="result" style="display: none;"></div>
+                <div id="tabellina-game" style="background: #fff; padding: 20px; border: 4px solid #2d3436; margin-top: 15px; display: none;">
+                    <p id="tab-question" style="font-size: 2em; text-align: center; margin-bottom: 15px;"></p>
+                    <input type="number" id="tab-answer" placeholder="Risposta" style="font-size: 1.3em; padding: 12px; width: 100%; text-align: center; border: 3px solid #2d3436;">
+                    <p id="tab-result" style="margin-top: 15px; font-size: 1.3em; text-align: center;"></p>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.nav-tabs button').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabName).classList.add('active');
-            document.getElementById('btn-' + tabName).classList.add('active');
+        function showTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-tabs button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
         }
-        
+
         function risolviEquazione() {
             const a = parseFloat(document.getElementById('eq-a').value);
             const b = parseFloat(document.getElementById('eq-b').value);
             
-            if (isNaN(a) || isNaN(b)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
-            
-            if (a === 0) {
-                alert('Il coefficiente a non può essere zero!');
-                return;
-            }
+            if (isNaN(a) || isNaN(b)) { alert('Inserisci tutti i valori!'); return; }
+            if (a === 0) { alert('Il coefficiente a non può essere zero!'); return; }
             
             const x = -b / a;
             
-            const risultato = document.getElementById('eq-risultato');
-            const passaggi = document.getElementById('eq-passaggi');
+            document.getElementById('eq-risultato').style.display = 'block';
+            document.getElementById('eq-risultato').innerHTML = `x = ${x.toFixed(4)}`;
             
-            risultato.style.display = 'block';
-            risultato.innerHTML = `x = ${x.toFixed(4)}`;
-            
-            passaggi.style.display = 'block';
-            passaggi.innerHTML = `
+            document.getElementById('eq-passaggi').style.display = 'block';
+            document.getElementById('eq-passaggi').innerHTML = `
                 <h4>PASSAGGI:</h4>
                 <p>${a}x + (${b}) = 0</p>
                 <p>${a}x = ${-b}</p>
@@ -387,150 +487,261 @@
                 <p>x = ${x.toFixed(4)}</p>
             `;
         }
-        
+
         function risolviEquazione2() {
             const a = parseFloat(document.getElementById('eq2-a').value);
             const b = parseFloat(document.getElementById('eq2-b').value);
             const c = parseFloat(document.getElementById('eq2-c').value);
             
-            if (isNaN(a) || isNaN(b) || isNaN(c)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
-            
-            if (a === 0) {
-                alert('Il coefficiente a non può essere zero!');
-                return;
-            }
+            if (isNaN(a) || isNaN(b) || isNaN(c)) { alert('Inserisci tutti i valori!'); return; }
+            if (a === 0) { alert('Il coefficiente a non può essere zero!'); return; }
             
             const delta = b * b - 4 * a * c;
-            const risultato = document.getElementById('eq2-risultato');
-            const passaggi = document.getElementById('eq2-passaggi');
             
-            risultato.style.display = 'block';
-            passaggi.style.display = 'block';
+            document.getElementById('eq2-risultato').style.display = 'block';
+            document.getElementById('eq2-passaggi').style.display = 'block';
             
             let html = '<h4>PASSAGGI:</h4>';
-            html += `<p>Equazione: ${a}x² + (${b})x + (${c}) = 0</p>`;
             html += `<p>Δ = b² - 4ac = ${b}² - 4(${a})(${c}) = ${delta.toFixed(4)}</p>`;
             
             if (delta > 0) {
                 const x1 = (-b + Math.sqrt(delta)) / (2 * a);
                 const x2 = (-b - Math.sqrt(delta)) / (2 * a);
-                risultato.innerHTML = `x₁ = ${x1.toFixed(4)}<br>x₂ = ${x2.toFixed(4)}`;
-                html += `<p>Δ > 0 → Due soluzioni reali distinte</p>`;
-                html += `<p>x₁ = (-b + √Δ) / 2a = ${x1.toFixed(4)}</p>`;
-                html += `<p>x₂ = (-b - √Δ) / 2a = ${x2.toFixed(4)}</p>`;
+                document.getElementById('eq2-risultato').innerHTML = `x₁ = ${x1.toFixed(4)}<br>x₂ = ${x2.toFixed(4)}`;
             } else if (delta === 0) {
                 const x = -b / (2 * a);
-                risultato.innerHTML = `x = ${x.toFixed(4)} (due soluzioni coincidenti)`;
-                html += `<p>Δ = 0 → Due soluzioni reali coincidenti</p>`;
-                html += `<p>x = -b / 2a = ${x.toFixed(4)}</p>`;
+                document.getElementById('eq2-risultato').innerHTML = `x = ${x.toFixed(4)} (due soluzioni coincidenti)`;
             } else {
-                risultato.innerHTML = `Nessuna soluzione reale (Δ < 0)`;
-                html += `<p>Δ < 0 → Nessuna soluzione reale</p>`;
+                document.getElementById('eq2-risultato').innerHTML = `Nessuna soluzione reale (Δ < 0)`;
             }
             
-            passaggi.innerHTML = html;
+            document.getElementById('eq2-passaggi').innerHTML = html;
         }
-        
-        function risolviSistema() {
-            const a1 = parseFloat(document.getElementById('sis-a1').value);
-            const b1 = parseFloat(document.getElementById('sis-b1').value);
-            const c1 = parseFloat(document.getElementById('sis-c1').value);
-            const a2 = parseFloat(document.getElementById('sis-a2').value);
-            const b2 = parseFloat(document.getElementById('sis-b2').value);
-            const c2 = parseFloat(document.getElementById('sis-c2').value);
-            
-            if ([a1, b1, c1, a2, b2, c2].some(isNaN)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
-            
-            const det = a1 * b2 - a2 * b1;
-            const risultato = document.getElementById('sis-risultato');
-            risultato.style.display = 'block';
-            
-            if (det === 0) {
-                risultato.innerHTML = 'Sistema indeterminato o impossibile!';
-            } else {
-                const x = (c1 * b2 - c2 * b1) / det;
-                const y = (a1 * c2 - a2 * c1) / det;
-                risultato.innerHTML = `x = ${x.toFixed(4)}<br>y = ${y.toFixed(4)}`;
-            }
-        }
-        
+
         function calcolaPotenza() {
             const base = parseFloat(document.getElementById('pot-base').value);
             const exp = parseFloat(document.getElementById('pot-exp').value);
             
-            if (isNaN(base) || isNaN(exp)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
+            if (isNaN(base) || isNaN(exp)) { alert('Inserisci tutti i valori!'); return; }
             
             const risultato = Math.pow(base, exp);
-            const risultatoDiv = document.getElementById('pot-risultato');
-            risultatoDiv.style.display = 'block';
-            risultatoDiv.innerHTML = `${base}<sup>${exp}</sup> = ${risultato}`;
+            document.getElementById('pot-risultato').style.display = 'block';
+            document.getElementById('pot-risultato').innerHTML = `${base}<sup>${exp}</sup> = ${risultato}`;
         }
-        
-        function calcolaRadice() {
-            const num = parseFloat(document.getElementById('rad-num').value);
-            const ind = parseFloat(document.getElementById('rad-ind').value);
-            
-            if (isNaN(num) || isNaN(ind)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
-            
-            if (num < 0 && ind % 2 === 0) {
-                alert('Impossibile calcolare radice pari di numero negativo!');
-                return;
-            }
-            
-            const risultato = Math.pow(num, 1/ind);
-            const risultatoDiv = document.getElementById('rad-risultato');
-            risultatoDiv.style.display = 'block';
-            risultatoDiv.innerHTML = `<sup>${ind}</sup>√${num} = ${risultato.toFixed(6)}`;
-        }
-        
+
         function calcolaPercentuale() {
             const perc = parseFloat(document.getElementById('perc-val').value);
             const tot = parseFloat(document.getElementById('perc-tot').value);
             
-            if (isNaN(perc) || isNaN(tot)) {
-                alert('Inserisci tutti i valori!');
-                return;
-            }
+            if (isNaN(perc) || isNaN(tot)) { alert('Inserisci tutti i valori!'); return; }
             
             const risultato = (perc / 100) * tot;
-            const risultatoDiv = document.getElementById('perc-risultato');
-            risultatoDiv.style.display = 'block';
-            risultatoDiv.innerHTML = `${perc}% di ${tot} = ${risultato.toFixed(4)}`;
+            document.getElementById('perc-risultato').style.display = 'block';
+            document.getElementById('perc-risultato').innerHTML = `${perc}% di ${tot} = ${risultato.toFixed(4)}`;
         }
-        
-        function calcolaVariazione() {
-            const num = parseFloat(document.getElementById('var-num').value);
-            const perc = parseFloat(document.getElementById('var-perc').value);
-            const tipo = document.getElementById('var-tipo').value;
+
+        // QUIZ
+        const quizQuestions = [
+            { q: "Quanto fa 15 × 8?", options: ["120", "130", "115", "125"], correct: 0 },
+            { q: "Quanto vale √144?", options: ["11", "12", "13", "14"], correct: 1 },
+            { q: "Quanto fa 2⁵?", options: ["16", "32", "64", "128"], correct: 1 },
+            { q: "Qual è il MCD di 12 e 18?", options: ["3", "6", "9", "2"], correct: 1 },
+            { q: "Quanto fa (3 + 4) × 2?", options: ["10", "14", "11", "12"], correct: 1 },
+            { q: "Quanto vale 25% di 80?", options: ["15", "20", "25", "30"], correct: 1 },
+            { q: "Quanto fa 7² + 3²?", options: ["52", "58", "100", "10"], correct: 1 },
+            { q: "Quanto fa -5 + (-3)?", options: ["-8", "-2", "2", "8"], correct: 0 }
+        ];
+
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score').textContent = '0';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const container = document.getElementById('quiz-container');
+            if (currentQuestion >= quizQuestions.length) {
+                container.innerHTML = `
+                    <div style="background: #fff; padding: 30px; border: 4px solid #2d3436; text-align: center;">
+                        <h3 style="font-family: 'Bangers'; font-size: 2em;">QUIZ COMPLETATO!</h3>
+                        <p style="font-size: 1.5em;">Punteggio finale: ${quizScore}/${quizQuestions.length}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = quizQuestions[currentQuestion];
+            container.innerHTML = `
+                <div class="quiz-question">
+                    <p><strong>Domanda ${currentQuestion + 1}/${quizQuestions.length}:</strong> ${q.q}</p>
+                    <div class="quiz-options">
+                        ${q.options.map((opt, i) => `<button class="quiz-btn" onclick="checkQuiz(${i})">${opt}</button>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function checkQuiz(selected) {
+            const q = quizQuestions[currentQuestion];
+            const buttons = document.querySelectorAll('.quiz-btn');
             
-            if (isNaN(num) || isNaN(perc)) {
-                alert('Inserisci tutti i valori!');
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.correct) btn.classList.add('correct');
+                else if (i === selected) btn.classList.add('wrong');
+            });
+            
+            if (selected === q.correct) {
+                quizScore++;
+                document.getElementById('quiz-score').textContent = quizScore;
+            }
+            
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion();
+            }, 1500);
+        }
+
+        // GIOCO OPERAZIONI
+        let gameScore = 0;
+        let gameRecord = 0;
+        let gameTime = 30;
+        let gameInterval = null;
+        let gameActive = false;
+        let currentAnswer = 0;
+
+        function startGame() {
+            if (gameActive) return;
+            
+            gameActive = true;
+            gameScore = 0;
+            gameTime = 30;
+            document.getElementById('game-score').textContent = '0';
+            document.getElementById('game-answer').disabled = false;
+            document.getElementById('game-answer').value = '';
+            document.getElementById('game-btn').textContent = 'IN CORSO...';
+            document.getElementById('game-btn').disabled = true;
+            
+            generateQuestion();
+            
+            gameInterval = setInterval(() => {
+                gameTime--;
+                document.getElementById('game-timer').textContent = gameTime;
+                document.getElementById('timer-bar').style.width = (gameTime / 30 * 100) + '%';
+                
+                if (gameTime <= 0) {
+                    endGame();
+                }
+            }, 1000);
+            
+            document.getElementById('game-answer').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && gameActive) {
+                    checkGameAnswer();
+                }
+            });
+        }
+
+        function generateQuestion() {
+            const ops = ['+', '-', '×'];
+            const op = ops[Math.floor(Math.random() * ops.length)];
+            let a, b;
+            
+            if (op === '×') {
+                a = Math.floor(Math.random() * 10) + 1;
+                b = Math.floor(Math.random() * 10) + 1;
+                currentAnswer = a * b;
+            } else if (op === '+') {
+                a = Math.floor(Math.random() * 50) + 1;
+                b = Math.floor(Math.random() * 50) + 1;
+                currentAnswer = a + b;
+            } else {
+                a = Math.floor(Math.random() * 50) + 10;
+                b = Math.floor(Math.random() * a);
+                currentAnswer = a - b;
+            }
+            
+            document.getElementById('game-question').textContent = `${a} ${op} ${b} = ?`;
+            document.getElementById('game-answer').value = '';
+            document.getElementById('game-answer').focus();
+        }
+
+        function checkGameAnswer() {
+            const answer = parseInt(document.getElementById('game-answer').value);
+            if (answer === currentAnswer) {
+                gameScore++;
+                document.getElementById('game-score').textContent = gameScore;
+                generateQuestion();
+            }
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            gameActive = false;
+            document.getElementById('game-answer').disabled = true;
+            document.getElementById('game-btn').textContent = 'RIGIOCA!';
+            document.getElementById('game-btn').disabled = false;
+            
+            if (gameScore > gameRecord) {
+                gameRecord = gameScore;
+                document.getElementById('game-record').textContent = gameRecord;
+            }
+            
+            document.getElementById('game-question').textContent = `Tempo scaduto! Punti: ${gameScore}`;
+        }
+
+        // TABELLINA GAME
+        let tabScore = 0;
+        let tabCurrent = 0;
+        let tabAnswer = 0;
+
+        function startTabellina() {
+            const n = parseInt(document.getElementById('tabellina').value);
+            tabScore = 0;
+            tabCurrent = 0;
+            
+            document.getElementById('tabellina-game').style.display = 'block';
+            nextTabellina(n);
+        }
+
+        function nextTabellina(n) {
+            if (tabCurrent >= 10) {
+                document.getElementById('tab-question').textContent = `Completato! Punti: ${tabScore}/10`;
+                document.getElementById('tab-answer').style.display = 'none';
                 return;
             }
             
-            const variazione = (perc / 100) * num;
-            const risultato = tipo === 'aumento' ? num + variazione : num - variazione;
-            const segno = tipo === 'aumento' ? '+' : '-';
+            tabCurrent++;
+            const m = Math.floor(Math.random() * 10) + 1;
+            tabAnswer = n * m;
             
-            const risultatoDiv = document.getElementById('var-risultato');
-            risultatoDiv.style.display = 'block';
-            risultatoDiv.innerHTML = `
-                ${segno}${perc}% di ${num} = ${segno}${variazione.toFixed(4)}<br>
-                Risultato: ${risultato.toFixed(4)}
-            `;
+            document.getElementById('tab-question').textContent = `${n} × ${m} = ?`;
+            document.getElementById('tab-answer').value = '';
+            document.getElementById('tab-answer').style.display = 'block';
+            document.getElementById('tab-result').textContent = '';
+            document.getElementById('tab-answer').focus();
+            
+            document.getElementById('tab-answer').onkeypress = function(e) {
+                if (e.key === 'Enter') {
+                    const ans = parseInt(this.value);
+                    if (ans === tabAnswer) {
+                        tabScore++;
+                        document.getElementById('tab-result').textContent = '✓ Corretto!';
+                        document.getElementById('tab-result').style.color = '#00b894';
+                    } else {
+                        document.getElementById('tab-result').textContent = `✗ Era ${tabAnswer}`;
+                        document.getElementById('tab-result').style.color = '#d63031';
+                    }
+                    setTimeout(() => nextTabellina(n), 1000);
+                }
+            };
         }
+
+        // Inizializza quiz
+        startQuiz();
     </script>
 </body>
 </html>

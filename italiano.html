@@ -7,46 +7,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Comic Neue', cursive, sans-serif; background: #f5f5f5; color: #333; min-height: 100vh; }
-        header { background: #8e44ad; padding: 25px 20px; text-align: center; border-bottom: 4px solid #333; }
-        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3em; }
-        .back { display: inline-block; color: #333; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 2px solid #333; font-weight: bold; transition: all 0.2s; }
-        .back:hover { background: #333; color: #fff; }
+        body { font-family: 'Comic Neue', cursive, sans-serif; background: #fff5f6; background-image: radial-gradient(circle, #fd79a8 1px, transparent 1px), radial-gradient(circle, #74b9ff 1px, transparent 1px); background-size: 30px 30px; background-position: 0 0, 15px 15px; color: #2d3436; min-height: 100vh; }
+        header { background: linear-gradient(135deg, #a29bfe 0%, #fd79a8 100%); padding: 25px 20px; text-align: center; border-bottom: 6px solid #2d3436; position: relative; }
+        header::before { content: '★ ITALIANO ★'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #2d3436; color: #fff; padding: 5px 20px; font-family: 'Bangers', cursive; font-size: 1em; border: 3px solid #fff; }
+        h1 { font-family: 'Bangers', cursive; color: #fff; font-size: 3.5em; text-shadow: 4px 4px 0 #2d3436; letter-spacing: 3px; }
+        .back { display: inline-block; color: #2d3436; text-decoration: none; margin-top: 15px; padding: 10px 25px; background: #fff; border: 4px solid #2d3436; font-weight: bold; box-shadow: 5px 5px 0 #2d3436; transition: all 0.2s; }
+        .back:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 #2d3436; }
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
-        .nav-tabs button { padding: 12px 20px; background: #fff; border: 2px solid #333; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; transition: all 0.2s; }
-        .nav-tabs button.active, .nav-tabs button:hover { background: #8e44ad; color: #fff; }
-        .tool { background: #fff; padding: 25px; margin-bottom: 25px; border: 2px solid #ddd; }
-        .tool h2 { font-family: 'Bangers', cursive; font-size: 1.8em; margin-bottom: 20px; color: #8e44ad; border-bottom: 2px solid #8e44ad; padding-bottom: 10px; }
-        .tool label { display: block; font-weight: bold; margin: 15px 0 8px; }
-        .tool input, .tool select, .tool textarea { width: 100%; padding: 12px; font-size: 1em; border: 2px solid #ddd; font-family: inherit; }
-        .tool button { margin-top: 15px; padding: 12px 25px; font-size: 1.1em; font-family: 'Bangers', cursive; background: #333; color: #fff; border: none; cursor: pointer; transition: all 0.2s; }
-        .tool button:hover { background: #8e44ad; }
-        .result { margin-top: 15px; padding: 15px; background: #f0f0f0; border: 2px solid #8e44ad; }
-        .example { background: #f9f9f9; padding: 15px; border-left: 4px solid #8e44ad; margin: 15px 0; }
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; justify-content: center; }
+        .nav-tabs button { padding: 12px 25px; background: #fff; border: 4px solid #2d3436; font-family: 'Bangers', cursive; font-size: 1.1em; cursor: pointer; transition: all 0.2s; box-shadow: 4px 4px 0 #2d3436; }
+        .nav-tabs button.active { background: #a29bfe; color: #fff; transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2d3436; }
+        .nav-tabs button:hover { background: #fd79a8; color: #fff; }
+        .tool { background: #fff; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; position: relative; }
+        .tool h2 { font-family: 'Bangers', cursive; font-size: 2em; margin-bottom: 20px; background: #fdcb6e; color: #2d3436; padding: 10px 20px; display: inline-block; border: 3px solid #2d3436; transform: rotate(-2deg); }
+        .tool label { display: block; font-weight: bold; margin: 15px 0 8px; font-size: 1.1em; }
+        .tool input, .tool select, .tool textarea { width: 100%; padding: 12px; font-size: 1.1em; border: 3px solid #2d3436; font-family: inherit; background: #fff; }
+        .tool button { margin-top: 15px; padding: 15px 30px; font-size: 1.2em; font-family: 'Bangers', cursive; background: #2d3436; color: #fff; border: 4px solid #2d3436; cursor: pointer; transition: all 0.2s; letter-spacing: 2px; }
+        .tool button:hover { background: #a29bfe; transform: scale(1.05); }
+        .result { margin-top: 15px; padding: 15px; background: #2d3436; color: #fff; border: 4px solid #a29bfe; font-size: 1.2em; text-align: center; }
+        .quiz-section { background: #00cec9; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; }
+        .quiz-section h2 { font-family: 'Bangers', cursive; font-size: 2.2em; margin-bottom: 20px; color: #fff; text-shadow: 3px 3px 0 #2d3436; }
+        .quiz-question { background: #fff; padding: 20px; margin: 15px 0; border: 4px solid #2d3436; font-size: 1.2em; }
+        .quiz-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .quiz-btn { padding: 15px; background: #fff; border: 3px solid #2d3436; font-family: 'Bangers', cursive; font-size: 1em; cursor: pointer; transition: all 0.2s; }
+        .quiz-btn:hover { background: #fdcb6e; transform: scale(1.02); }
+        .quiz-btn.correct { background: #00b894; color: #fff; }
+        .quiz-btn.wrong { background: #d63031; color: #fff; }
+        .game-section { background: #fdcb6e; padding: 30px; margin-bottom: 30px; border: 5px solid #2d3436; box-shadow: 10px 10px 0 #2d3436; }
+        .game-section h2 { font-family: 'Bangers', cursive; font-size: 2.2em; margin-bottom: 20px; color: #2d3436; text-shadow: 2px 2px 0 #fff; }
+        .score-display { font-family: 'Bangers', cursive; font-size: 2em; color: #fff; background: #2d3436; padding: 10px 20px; display: inline-block; margin-bottom: 20px; border: 3px solid #fff; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        .example { background: #ffeaa7; padding: 15px; border-left: 5px solid #fd79a8; margin: 15px 0; }
+        .example h4 { font-family: 'Bangers', cursive; color: #2d3436; margin-bottom: 10px; font-size: 1.3em; }
     </style>
 </head>
 <body>
     <header>
-        <h1>ITALIANO</h1>
-        <p style="color: #fff; font-size: 1.2em; margin-top: 10px;">Grammatica, Analisi e Letteratura</p>
-        <a href="index.html" class="back">← HOME</a>
+        <h1>ITALIANO!</h1>
+        <p style="color: #fff; font-size: 1.3em; text-shadow: 2px 2px 0 #2d3436;">Grammatica, Quiz e Giochi!</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
         <div class="nav-tabs">
             <button onclick="showTab('grammatica')" class="active">GRAMMATICA</button>
-            <button onclick="showTab('analisi')">ANALISI</button>
-            <button onclick="showTab('letteratura')">LETTERATURA</button>
-            <button onclick="showTab('scrittura')">SCRITTURA</button>
+            <button onclick="showTab('quiz')">QUIZ!</button>
+            <button onclick="showTab('giochi')">GIOCHI</button>
         </div>
 
         <div id="grammatica" class="tab-content active">
             <div class="tool">
                 <h2>CONIUGATORE VERBI</h2>
-                <label>Verbo:</label>
+                <label>Verbo (amare, temere, partire):</label>
                 <input type="text" id="verbo" placeholder="Es: amare">
                 <label>Tempo:</label>
                 <select id="tempo">
@@ -55,120 +68,61 @@
                     <option value="passato_prossimo">Passato Prossimo</option>
                     <option value="futuro">Futuro Semplice</option>
                 </select>
-                <button onclick="coniuga()">CONIUGA</button>
+                <button onclick="coniuga()">CONIUGA!</button>
                 <div id="coniugazione" class="result" style="display: none;"></div>
             </div>
 
-            <div class="tool">
-                <h2>TIPI DI FRASE</h2>
-                <p>Inserisci una frase per analizzarne il tipo:</p>
-                <label>Frase:</label>
-                <input type="text" id="frase-tipo" placeholder="Es: Come stai?">
-                <button onclick="analizzaFrase()">ANALIZZA</button>
-                <div id="tipo-frase" class="result" style="display: none;"></div>
-                
-                <div class="example">
-                    <h4>Tipi di Frase:</h4>
-                    <ul>
-                        <li><strong>Dichiarativa:</strong> afferma qualcosa (Mario mangia)</li>
-                        <li><strong>Interrogativa:</strong> fa una domanda (Come stai?)</li>
-                        <li><strong>Esclamativa:</strong> esprime un'emozione (Che bello!)</li>
-                        <li><strong>Imperativa:</strong> dà un ordine (Mangia!)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div id="analisi" class="tab-content">
             <div class="tool">
                 <h2>ANALISI GRAMMATICALE</h2>
                 <label>Parola da analizzare:</label>
                 <input type="text" id="parola" placeholder="Es: bellissimi">
                 <button onclick="analisiGrammaticale()">ANALIZZA</button>
                 <div id="analisi-gramm" class="result" style="display: none;"></div>
+                <div class="example">
+                    <h4>Esempi disponibili:</h4>
+                    <p>bellissimi, libro, correndo, velocemente, casa, bello</p>
+                </div>
             </div>
 
             <div class="tool">
                 <h2>ANALISI LOGICA</h2>
-                <div class="example">
-                    <h4>Elementi principali:</h4>
-                    <ul>
-                        <li><strong>Soggetto:</strong> chi compie l'azione</li>
-                        <li><strong>Predicato:</strong> verbo (azione)</li>
-                        <li><strong>Oggetto:</strong> subisce l'azione</li>
-                        <li><strong>Complementi:</strong> specificano circostanze</li>
-                    </ul>
-                </div>
-                <label>Frase:</label>
+                <label>Frase semplice:</label>
                 <input type="text" id="frase-logica" placeholder="Es: Mario mangia la mela">
                 <button onclick="analisiLogica()">ANALIZZA</button>
                 <div id="analisi-log" class="result" style="display: none;"></div>
             </div>
         </div>
 
-        <div id="letteratura" class="tab-content">
-            <div class="tool">
-                <h2>FIGURE RETORICHE</h2>
-                <label>Seleziona una figura retorica:</label>
-                <select id="figura" onchange="mostraFigura()">
-                    <option value="">Scegli...</option>
-                    <option value="metafora">Metafora</option>
-                    <option value="similitudine">Similitudine</option>
-                    <option value="metonimia">Metonimia</option>
-                    <option value="ossimoro">Ossimoro</option>
-                    <option value="iperbole">Iperbole</option>
-                    <option value="allitterazione">Allitterazione</option>
-                    <option value="anafora">Anafora</option>
-                    <option value="personificazione">Personificazione</option>
-                </select>
-                <div id="figura-info" class="result" style="display: none;"></div>
-            </div>
-
-            <div class="tool">
-                <h2>PERIODI LETTERARI</h2>
-                <div class="example">
-                    <h4>Cronologia:</h4>
-                    <ul>
-                        <li><strong>Duecento:</strong> Scuola Siciliana, Dolce Stil Novo</li>
-                        <li><strong>Trecento:</strong> Dante, Petrarca, Boccaccio</li>
-                        <li><strong>Umanesimo:</strong> 1400-1500</li>
-                        <li><strong>Rinascimento:</strong> 1500-1600</li>
-                        <li><strong>Barocco:</strong> 1600</li>
-                        <li><strong>Illuminismo:</strong> 1700</li>
-                        <li><strong>Romanticismo:</strong> 1800</li>
-                        <li><strong>Decadentismo:</strong> fine 1800</li>
-                        <li><strong>Modernismo:</strong> 1900</li>
-                    </ul>
-                </div>
+        <div id="quiz" class="tab-content">
+            <div class="quiz-section">
+                <h2>Quiz Italiano!</h2>
+                <div class="score-display">Punteggio: <span id="quiz-score">0</span></div>
+                
+                <div id="quiz-container"></div>
+                
+                <button onclick="startQuiz()" style="padding: 15px 30px; background: #fdcb6e; color: #2d3436; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.3em; cursor: pointer; margin-top: 20px;">NUOVO QUIZ!</button>
             </div>
         </div>
 
-        <div id="scrittura" class="tab-content">
-            <div class="tool">
-                <h2>GENERATORE DI IDEE</h2>
-                <label>Tipo di testo:</label>
-                <select id="tipo-testo">
-                    <option value="narrativo">Testo Narrativo</option>
-                    <option value="descrittivo">Testo Descrittivo</option>
-                    <option value="argomentativo">Testo Argomentativo</option>
-                    <option value="espositivo">Testo Espositivo</option>
-                </select>
-                <button onclick="generaIdea()">GENERA IDEA</button>
-                <div id="idea" class="result" style="display: none;"></div>
+        <div id="giochi" class="tab-content">
+            <div class="game-section">
+                <h2>GIOCO: COMPLETA LA FRASE!</h2>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <p id="phrase-question" style="font-size: 1.5em; text-align: center; margin-bottom: 15px;"></p>
+                    <div id="phrase-options" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;"></div>
+                    <p id="phrase-result" style="margin-top: 15px; font-size: 1.3em; text-align: center;"></p>
+                </div>
+                <button onclick="startPhraseGame()" style="margin-top: 15px; padding: 15px 30px; background: #a29bfe; color: #fff; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.2em; cursor: pointer;">NUOVA FRASE!</button>
             </div>
 
-            <div class="tool">
-                <h2>SCHEMA TESTO ARGOMENTATIVO</h2>
-                <div class="example">
-                    <h4>Struttura:</h4>
-                    <ol>
-                        <li><strong>Introduzione:</strong> Presenta l'argomento</li>
-                        <li><strong>Tesi:</strong> La tua opinione</li>
-                        <li><strong>Argomenti PRO:</strong> A favore della tesi</li>
-                        <li><strong>Argomenti CONTRO:</strong> Antitesi (da confutare)</li>
-                        <li><strong>Conclusione:</strong> Rafforza la tesi</li>
-                    </ol>
+            <div class="game-section" style="background: #fd79a8;">
+                <h2>GIOCO: SINONIMI E CONTRARI!</h2>
+                <div style="background: #fff; padding: 20px; border: 4px solid #2d3436;">
+                    <p id="syn-question" style="font-size: 1.5em; text-align: center; margin-bottom: 15px;"></p>
+                    <div id="syn-options" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"></div>
+                    <p id="syn-result" style="margin-top: 15px; font-size: 1.3em; text-align: center;"></p>
                 </div>
+                <button onclick="startSynGame()" style="margin-top: 15px; padding: 15px 30px; background: #00cec9; color: #fff; border: 4px solid #2d3436; font-family: 'Bangers'; font-size: 1.2em; cursor: pointer;">NUOVA PAROLA!</button>
             </div>
         </div>
     </div>
@@ -184,7 +138,6 @@
         function coniuga() {
             const verbo = document.getElementById('verbo').value.toLowerCase().trim();
             const tempo = document.getElementById('tempo').value;
-            
             if (!verbo) { alert('Inserisci un verbo!'); return; }
             
             const coniugazioni = {
@@ -211,27 +164,11 @@
             let coniugato = coniugazioni[verbo];
             if (coniugato) {
                 document.getElementById('coniugazione').style.display = 'block';
-                document.getElementById('coniugazione').innerHTML = 
-                    `<strong>${tempo.replace('_', ' ').toUpperCase()}:</strong><br>` +
-                    coniugato[tempo].join('<br>');
+                document.getElementById('coniugazione').innerHTML = `<strong>${tempo.replace('_', ' ').toUpperCase()}:</strong><br>` + coniugato[tempo].join('<br>');
             } else {
                 document.getElementById('coniugazione').style.display = 'block';
-                document.getElementById('coniugazione').innerHTML = 
-                    'Verbo non trovato. Esempi disponibili: amare, temere, partire';
+                document.getElementById('coniugazione').innerHTML = 'Verbo non trovato. Prova: amare, temere, partire';
             }
-        }
-
-        function analizzaFrase() {
-            const frase = document.getElementById('frase-tipo').value.trim();
-            if (!frase) { alert('Inserisci una frase!'); return; }
-            
-            let tipo = 'Dichiarativa';
-            if (frase.includes('?')) tipo = 'Interrogativa';
-            else if (frase.includes('!')) tipo = 'Esclamativa';
-            else if (frase.split(' ').length <= 3 && !frase.includes('.')) tipo = 'Possibilmente Imperativa';
-            
-            document.getElementById('tipo-frase').style.display = 'block';
-            document.getElementById('tipo-frase').innerHTML = `<strong>Tipo:</strong> ${tipo}`;
         }
 
         function analisiGrammaticale() {
@@ -248,106 +185,112 @@
             };
             
             document.getElementById('analisi-gramm').style.display = 'block';
-            document.getElementById('analisi-gramm').innerHTML = analisi[parola] || 
-                'Parola non presente nel database. Esempi: bellissimi, libro, correndo, velocemente, casa, bello';
+            document.getElementById('analisi-gramm').innerHTML = analisi[parola] || 'Parola non nel database. Prova: bellissimi, libro, correndo...';
         }
 
         function analisiLogica() {
             const frase = document.getElementById('frase-logica').value.trim();
             if (!frase) { alert('Inserisci una frase!'); return; }
-            
             const parti = frase.split(' ');
             if (parti.length < 3) {
                 document.getElementById('analisi-log').style.display = 'block';
-                document.getElementById('analisi-log').innerHTML = 'La frase è troppo corta per un\'analisi completa.';
+                document.getElementById('analisi-log').innerHTML = 'Frase troppo corta!';
                 return;
             }
-            
             document.getElementById('analisi-log').style.display = 'block';
-            document.getElementById('analisi-log').innerHTML = `
-                <strong>Analisi approssimativa:</strong><br>
-                <span style="color: #8e44ad;">Soggetto:</span> ${parti[0]}<br>
-                <span style="color: #27ae60;">Predicato:</span> ${parti[1]}<br>
-                <span style="color: #e74c3c;">Oggetto:</span> ${parti.slice(2).join(' ')}<br>
-                <br><em>(Analisi semplificata - può variare)</em>
-            `;
+            document.getElementById('analisi-log').innerHTML = `<strong>Soggetto:</strong> ${parti[0]}<br><strong>Predicato:</strong> ${parti[1]}<br><strong>Oggetto:</strong> ${parti.slice(2).join(' ')}<br><em>(Analisi semplificata)</em>`;
         }
 
-        function mostraFigura() {
-            const figura = document.getElementById('figura').value;
-            if (!figura) return;
-            
-            const info = {
-                metafora: {
-                    def: 'Identificazione tra due termini sulla base di una somiglianza.',
-                    es: 'Il cuore di pietra (= insensibile)'
-                },
-                similitudine: {
-                    def: 'Confronto esplicito tra due termini usando "come" o "simile a".',
-                    es: 'Era veloce come il vento'
-                },
-                metonimia: {
-                    def: 'Sostituzione di un termine con un altro che ha relazione con esso.',
-                    es: 'Leggere Dante (= le opere di Dante)'
-                },
-                ossimoro: {
-                    def: 'Accostamento di due termini contrastanti.',
-                    es: 'Silenzio assordante, dolce amaro'
-                },
-                iperbole: {
-                    def: 'Esagerazione per enfasi.',
-                    es: 'Ho aspettato un\'eternità'
-                },
-                allitterazione: {
-                    def: 'Ripetizione di suoni iniziali.',
-                    es: 'Il mare mosso muove mille moti'
-                },
-                anafora: {
-                    def: 'Ripetizione di parole all\'inizio di versi o frasi.',
-                    es: 'Per me si va... Per me si va...'
-                },
-                personificazione: {
-                    def: 'Attribuzione di qualità umane a oggetti o animali.',
-                    es: 'Il vento sussurrava tra gli alberi'
-                }
-            };
-            
-            const f = info[figura];
-            document.getElementById('figura-info').style.display = 'block';
-            document.getElementById('figura-info').innerHTML = `
-                <strong>Definizione:</strong> ${f.def}<br><br>
-                <strong>Esempio:</strong> <em>"${f.es}"</em>
-            `;
-        }
-
-        const ideeNarrative = [
-            'Un ragazzo scopre di poter viaggiare nel tempo, ma solo all\'indietro di 5 minuti.',
-            'L\'ultimo abitante di un villaggio di montagna riceve una lettera misteriosa.',
-            'Due amici ritrovano un vecchio diario che cambia il loro passato.',
-            'Un animale domestico racconta la sua vita con una famiglia particolare.',
-            'Una città dove i sogni diventano realtà al risveglio.'
+        // QUIZ
+        const quizQuestions = [
+            { q: "Qual è il plurale di 'libro'?", options: ["libri", "libra", "libro", "librie"], correct: 0 },
+            { q: "Che tipo di parola è 'velocemente'?", options: ["Aggettivo", "Avverbio", "Sostantivo", "Verbo"], correct: 1 },
+            { q: "Quale è un verbo irregolare?", options: ["cantare", "essere", "parlare", "mangiare"], correct: 1 },
+            { q: "'Molto bello' è:", options: ["Comparativo", "Superlativo relativo", "Superlativo assoluto", "Grado positivo"], correct: 2 },
+            { q: "Nella frase 'Mario mangia la mela', chi è il soggetto?", options: ["la mela", "mangia", "Mario", "la"], correct: 2 }
         ];
 
-        function generaIdea() {
-            const tipo = document.getElementById('tipo-testo').value;
-            let idea = '';
-            
-            if (tipo === 'narrativo') {
-                idea = ideeNarrative[Math.floor(Math.random() * ideeNarrative.length)];
-            } else if (tipo === 'descrittivo') {
-                const luoghi = ['Una vecchia biblioteca abbandonata', 'Una piazza di un piccolo paese', 'Una spiaggia all\'alba', 'Una stanza piena di ricordi'];
-                idea = `Descrivi: ${luoghi[Math.floor(Math.random() * luoghi.length)]}`;
-            } else if (tipo === 'argomentativo') {
-                const temi = ['L\'importanza dello sport a scuola', 'I social network: opportunità o rischio?', 'La tecnologia nella vita quotidiana', 'L\'ambiente e le nostre scelte'];
-                idea = `Argomenta su: "${temi[Math.floor(Math.random() * temi.length)]}"`;
-            } else {
-                const argomenti = ['La storia della tua città', 'Come funziona un vulcano', 'Il ciclo dell\'acqua', 'Le tradizioni del Natale'];
-                idea = `Esponi: ${argomenti[Math.floor(Math.random() * argomenti.length)]}`;
-            }
-            
-            document.getElementById('idea').style.display = 'block';
-            document.getElementById('idea').innerHTML = `<strong>Idea per il tuo testo:</strong><br>${idea}`;
+        let currentQuestion = 0;
+        let quizScore = 0;
+
+        function startQuiz() {
+            currentQuestion = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score').textContent = '0';
+            showQuestion();
         }
+
+        function showQuestion() {
+            const container = document.getElementById('quiz-container');
+            if (currentQuestion >= quizQuestions.length) {
+                container.innerHTML = `<div style="background: #fff; padding: 30px; border: 4px solid #2d3436; text-align: center;"><h3 style="font-family: 'Bangers'; font-size: 2em;">QUIZ COMPLETATO!</h3><p style="font-size: 1.5em;">Punteggio: ${quizScore}/${quizQuestions.length}</p></div>`;
+                return;
+            }
+            const q = quizQuestions[currentQuestion];
+            container.innerHTML = `<div class="quiz-question"><p><strong>Domanda ${currentQuestion + 1}:</strong> ${q.q}</p><div class="quiz-options">${q.options.map((opt, i) => `<button class="quiz-btn" onclick="checkQuiz(${i})">${opt}</button>`).join('')}</div></div>`;
+        }
+
+        function checkQuiz(selected) {
+            const q = quizQuestions[currentQuestion];
+            const buttons = document.querySelectorAll('.quiz-btn');
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.correct) btn.classList.add('correct');
+                else if (i === selected) btn.classList.add('wrong');
+            });
+            if (selected === q.correct) {
+                quizScore++;
+                document.getElementById('quiz-score').textContent = quizScore;
+            }
+            setTimeout(() => { currentQuestion++; showQuestion(); }, 1500);
+        }
+
+        // GIOCHI
+        const phrases = [
+            { phrase: "Il sole ___ in cielo.", options: ["brilla", "mangia", "dorme", "nuota"], correct: 0 },
+            { phrase: "Marco ___ i compiti.", options: ["mangia", "fa", "beve", "guida"], correct: 1 },
+            { phrase: "L'acqua ___ nel mare.", options: ["vola", "corre", "nuota", "cammina"], correct: 2 },
+            { phrase: "Il gatto ___ il topo.", options: ["insegue", "legge", "scrive", "canta"], correct: 0 }
+        ];
+
+        function startPhraseGame() {
+            const p = phrases[Math.floor(Math.random() * phrases.length)];
+            document.getElementById('phrase-question').textContent = p.phrase;
+            document.getElementById('phrase-result').textContent = '';
+            document.getElementById('phrase-options').innerHTML = p.options.map(opt => 
+                `<button onclick="checkPhrase('${opt}', '${p.options[p.correct]}')" style="padding: 15px 25px; background: #fff; border: 3px solid #2d3436; font-family: 'Bangers'; font-size: 1.1em; cursor: pointer;">${opt}</button>`
+            ).join('');
+        }
+
+        function checkPhrase(selected, correct) {
+            document.getElementById('phrase-result').textContent = selected === correct ? '✓ Corretto!' : `✗ Era: ${correct}`;
+            document.getElementById('phrase-result').style.color = selected === correct ? '#00b894' : '#d63031';
+        }
+
+        const synonims = [
+            { word: "Bello", type: "sinonimo", options: ["Brutto", "Carino", "Cattivo", "Grande"], correct: 1 },
+            { word: "Allegro", type: "contrario", options: ["Triste", "Contento", "Felice", "Brillante"], correct: 0 },
+            { word: "Piccolo", type: "sinonimo", options: ["Grande", "Minuscolo", "Alto", "Largo"], correct: 1 },
+            { word: "Veloce", type: "contrario", options: ["Lento", "Rapido", "Corrente", "Dinamico"], correct: 0 }
+        ];
+
+        function startSynGame() {
+            const s = synonims[Math.floor(Math.random() * synonims.length)];
+            document.getElementById('syn-question').textContent = `Trova il ${s.type} di "${s.word}"`;
+            document.getElementById('syn-result').textContent = '';
+            document.getElementById('syn-options').innerHTML = s.options.map(opt => 
+                `<button onclick="checkSyn('${opt}', '${s.options[s.correct]}')" style="padding: 15px; background: #fff; border: 3px solid #2d3436; font-family: 'Bangers'; font-size: 1em; cursor: pointer;">${opt}</button>`
+            ).join('');
+        }
+
+        function checkSyn(selected, correct) {
+            document.getElementById('syn-result').textContent = selected === correct ? '✓ Corretto!' : `✗ Era: ${correct}`;
+            document.getElementById('syn-result').style.color = selected === correct ? '#00b894' : '#d63031';
+        }
+
+        startQuiz();
+        startPhraseGame();
+        startSynGame();
     </script>
 </body>
 </html>
