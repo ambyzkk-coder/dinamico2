@@ -156,6 +156,95 @@
             transform: scale(1.1);
         }
         
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: none;
+            cursor: pointer;
+        }
+        
+        .popup-overlay.show {
+            display: block;
+        }
+        
+        .popup-container {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background: #fff;
+            border: 5px solid #2d3436;
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 320px;
+            z-index: 9999;
+            display: none;
+            animation: popupIn 0.3s ease;
+            box-shadow: 10px 10px 0 #2d3436;
+        }
+        
+        .popup-container.show {
+            display: block;
+        }
+        
+        @keyframes popupIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #dfe6e9;
+        }
+        
+        .popup-title {
+            font-family: 'Bangers', cursive;
+            font-size: 1.5em;
+            color: #2d3436;
+        }
+        
+        .popup-close {
+            width: 35px;
+            height: 35px;
+            background: #d63031;
+            color: #fff;
+            border: 3px solid #2d3436;
+            border-radius: 50%;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            line-height: 1;
+        }
+        
+        .popup-close:hover {
+            background: #e74c3c;
+            transform: scale(1.1);
+        }
+        
+        .popup-content {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2d3436;
+        }
+        
+        .popup-emoji {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
         .stats-section {
             background: #2c3e50;
             color: #fff;
@@ -397,6 +486,16 @@
     </div>
 
     <div class="mascot" onclick="showTip()">🤖</div>
+    
+    <div class="popup-overlay" id="popupOverlay" onclick="closeTip()"></div>
+    <div class="popup-container" id="popupContainer">
+        <div class="popup-header">
+            <span class="popup-title">💡 Curiosità!</span>
+            <button class="popup-close" onclick="closeTip()">×</button>
+        </div>
+        <div class="popup-emoji">🤓</div>
+        <div class="popup-content" id="popupContent"></div>
+    </div>
 
     <footer>
         <p>MAST 2026 - Portale Scolastico Interattivo</p>
@@ -404,16 +503,37 @@
 
     <script>
         const tips = [
-            "💡 Studiare poco ma spesso è più efficace che studiare tanto una volta sola!",
-            "💡 Fai pause regolari ogni 25-30 minuti di studio.",
-            "💡 Ripeti ad alta voce: aiuta la memorizzazione!",
-            "💡 Crea schemi e mappe concettuali per organizzare le idee.",
-            "💡 Insegna ciò che hai imparato a qualcun altro.",
-            "💡 Cerca di capire, non solo memorizzare!"
+            "Studiare poco ma spesso è più efficace che studiare tanto una volta sola!",
+            "Fai pause regolari ogni 25-30 minuti di studio.",
+            "Ripeti ad alta voce: aiuta la memorizzazione!",
+            "Crea schemi e mappe concettuali per organizzare le idee.",
+            "Insegna ciò che hai imparato a qualcun altro.",
+            "Cerca di capire, non solo memorizzare!",
+            "Dormire bene aiuta il cervello a consolidare ciò che hai studiato!",
+            "L'attività fisica migliora la concentrazione!",
+            "Bere acqua mantiene il cervello idratato e attivo!",
+            "La matematica è ovunque: in natura, nell'arte, nella musica!",
+            "Gli antichi greci studiavano la matematica per allenare la mente!",
+            "La pizza può essere divisa in parti uguali grazie alla geometria!",
+            "Il primo computer è stato inventato da un matematico!",
+            "Il cervello umano ha circa 86 miliardi di neuroni!"
         ];
         
+        const emojis = ["🤓", "📚", "🧠", "💡", "✨", "🎯", "🚀", "⭐", "🎓", "🔬"];
+        
         function showTip() {
-            alert(tips[Math.floor(Math.random() * tips.length)]);
+            const tip = tips[Math.floor(Math.random() * tips.length)];
+            const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            document.getElementById('popupContent').textContent = tip;
+            document.getElementById('popupOverlay').classList.add('show');
+            document.getElementById('popupContainer').classList.add('show');
+            document.querySelector('.popup-emoji').textContent = emoji;
+        }
+        
+        function closeTip() {
+            document.getElementById('popupOverlay').classList.remove('show');
+            document.getElementById('popupContainer').classList.remove('show');
         }
         
         function registerVisit() {
