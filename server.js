@@ -37,6 +37,54 @@ app.get('/api/db-test', async (req, res) => {
     }
 });
 
+app.post('/api/visit', async (req, res) => {
+    const { page, userAgent, referrer } = req.body;
+    try {
+        await pool.query(
+            'INSERT INTO visits (page, user_agent, referrer, created_at) VALUES ($1, $2, $3, NOW())',
+            [page || 'home', userAgent || '', referrer || '']
+        );
+        res.json({ status: 'ok' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/click', async (req, res) => {
+    const { subject, page } = req.body;
+    try {
+        await pool.query(
+            'INSERT INTO subject_clicks (subject, page, created_at) VALUES ($1, $2, NOW())',
+            [subject, page || 'home']
+        );
+        res.json({ status: 'ok' });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get('/api/stats', async (req, res) => {
+    try {
+        const totalVisits = await pool.query('SELECT COUNT(*) as count FROM visits');
+        const uniqueVisits = await pool.query('SELECT COUNT(DISTINCT DATE(created_at)) as count FROM visits');
+        const clicksBySubject = await pool.query(`
+            SELECT subject, COUNT(*) as clicks,
+                   ROUND(COUNT(*) * 100.0 / NULLIF((SELECT COUNT(*) FROM subject_clicks), 0), 2) as percentage
+            FROM subject_clicks
+            GROUP BY subject
+            ORDER BY clicks DESC
+        `);
+        
+        res.json({
+            totalVisits: parseInt(totalVisits.rows[0].count),
+            uniqueDays: parseInt(uniqueVisits.rows[0].count),
+            subjectStats: clicksBySubject.rows
+        });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 app.get('/api/quiz-scores', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM quiz_scores ORDER BY score DESC LIMIT 10');
@@ -62,6 +110,25 @@ app.post('/api/quiz-scores', async (req, res) => {
 const initDb = async () => {
     try {
         await pool.query(`
+            CREATE TABLE IF NOT EXISTS visits (
+                id SERIAL PRIMARY KEY,
+                page VARCHAR(100),
+                user_agent TEXT,
+                referrer TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+        
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS subject_clicks (
+                id SERIAL PRIMARY KEY,
+                subject VARCHAR(100),
+                page VARCHAR(100),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        `);
+        
+        await pool.query(`
             CREATE TABLE IF NOT EXISTS quiz_scores (
                 id SERIAL PRIMARY KEY,
                 name VARCHAR(100),
@@ -71,9 +138,10 @@ const initDb = async () => {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         `);
-        console.log('Tabella quiz_scores creata/verificata');
+        
+        console.log('Tabelle database create/verificate');
     } catch (err) {
-        console.error('Errore creazione tabella:', err.message);
+        console.error('Errore creazione tabelle:', err.message);
     }
 };
 
