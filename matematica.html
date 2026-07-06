@@ -18,6 +18,44 @@
             background-position: 0 0, 15px 15px;
             color: #2d3436;
             min-height: 100vh;
+            padding-top: 60px;
+        }
+        
+        /* MENU FISSO */
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #2d3436;
+            padding: 10px 15px;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-bottom: 4px solid #ff6b6b;
+        }
+        
+        .fixed-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            background: #636e72;
+            border: 2px solid #fff;
+            font-family: 'Bangers', cursive;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+        
+        .fixed-nav a:hover {
+            background: #ff6b6b;
+            transform: translateY(-2px);
+        }
+        
+        .fixed-nav a.active {
+            background: #ff6b6b;
+            border-color: #feca57;
         }
         
         header {
@@ -115,17 +153,6 @@
             position: relative;
         }
         
-        .tool::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #ff6b6b 30%, transparent 30%);
-            background-size: 10px 10px;
-        }
-        
         .tool h2 { 
             font-family: 'Bangers', cursive;
             font-size: 2em;
@@ -152,12 +179,6 @@
             border: 3px solid #2d3436;
             font-family: inherit;
             background: #fff;
-        }
-        
-        .tool input:focus, .tool select:focus {
-            outline: none;
-            border-color: #ff6b6b;
-            box-shadow: 0 0 0 3px rgba(255,107,107,0.3);
         }
         
         .tool button {
@@ -314,13 +335,33 @@
             flex: 1;
             min-width: 120px;
         }
+        
+        @media (max-width: 768px) {
+            .fixed-nav a { padding: 6px 10px; font-size: 0.75em; }
+            body { padding-top: 80px; }
+        }
     </style>
 </head>
 <body>
+    <!-- MENU FISSO -->
+    <nav class="fixed-nav">
+        <a href="index.html">🏠 HOME</a>
+        <a href="matematica.html" class="active">📐 MATE</a>
+        <a href="geometria.html">📏 GEO</a>
+        <a href="fisica-interattiva.html">⚗️ FISICA</a>
+        <a href="scienze.html">🧬 SCIENZE</a>
+        <a href="italiano.html">📚 ITA</a>
+        <a href="storia.html">🏛️ STORIA</a>
+        <a href="geografia.html">🌍 GEOG</a>
+        <a href="filosofia.html">💭 FILO</a>
+        <a href="arte.html">🎨 ARTE</a>
+        <a href="musica.html">🎵 MUSICA</a>
+        <a href="inglese.html">🇬🇧 ENG</a>
+    </nav>
+
     <header>
         <h1>MATEMATICA!</h1>
         <p style="color: #fff; font-size: 1.3em; text-shadow: 2px 2px 0 #2d3436;">Calcolatori, Quiz e Giochi!</p>
-        <a href="index.html" class="back">← TORNA ALLA HOME</a>
     </header>
 
     <div class="container">
