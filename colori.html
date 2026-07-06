@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Mixer - Combinazioni Perfette</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Comic Neue', cursive, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #ffe66d, #ff6b6b);
+            background-size: 400% 400%;
+            animation: gradientBG 5s ease infinite;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid #000;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        h1 { 
+            font-family: 'Bangers', cursive;
+            color: #fff;
+            font-size: 3.5em;
+            text-shadow: 4px 4px 0 #000;
+            letter-spacing: 3px;
+        }
+        
+        .back { 
+            display: inline-block;
+            color: #000;
+            text-decoration: none;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: #fff;
+            border: 4px solid #000;
+            font-weight: bold;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.2s;
+        }
+        
+        .back:hover { 
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 #000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .main-section {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .main-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .color-picker-section {
+            background: #16213e;
+            padding: 25px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+        }
+        
+        .color-picker-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #4ecdc4;
+        }
+        
+        .color-input-group {
+            margin-bottom: 25px;
+        }
+        
+        .color-input-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .color-display {
+            width: 100%;
+            height: 80px;
+            border: 4px solid #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .color-display:hover {
+            transform: scale(1.02);
+        }
+        
+        input[type="color"] {
+            width: 100%;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1em;
+            border: 3px solid #fff;
+            border-radius: 8px;
+            background: #0f3460;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+        
+        .scheme-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .scheme-btn {
+            padding: 12px;
+            font-family: 'Bangers', cursive;
+            font-size: 0.95em;
+            border: 3px solid #fff;
+            background: #0f3460;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+            border-radius: 8px;
+        }
+        
+        .scheme-btn:hover {
+            background: #4ecdc4;
+            color: #000;
+        }
+        
+        .scheme-btn.active {
+            background: #ff6b6b;
+            border-color: #ffe66d;
+        }
+        
+        .wheel-section {
+            background: #16213e;
+            padding: 25px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .wheel-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffe66d;
+        }
+        
+        canvas {
+            border: 4px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .results-section {
+            background: #16213e;
+            padding: 25px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .results-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2em;
+            margin-bottom: 25px;
+            color: #ff6b6b;
+        }
+        
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        
+        .color-card {
+            background: #0f3460;
+            border: 3px solid #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .color-preview {
+            height: 120px;
+            position: relative;
+        }
+        
+        .color-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .color-info h4 {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .color-info p {
+            font-size: 0.9em;
+            color: #bbb;
+        }
+        
+        .copy-btn {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #4ecdc4;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #ffe66d;
+        }
+        
+        .suggestions-section {
+            background: #16213e;
+            padding: 25px;
+            border: 4px solid #fff;
+            border-radius: 15px;
+        }
+        
+        .suggestions-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #4ecdc4;
+        }
+        
+        .suggestions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .suggestion-card {
+            background: #0f3460;
+            padding: 20px;
+            border: 3px solid #fff;
+            border-radius: 10px;
+        }
+        
+        .suggestion-card h3 {
+            font-family: 'Bangers', cursive;
+            color: #ffe66d;
+            margin-bottom: 15px;
+        }
+        
+        .mini-palette {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px;
+        }
+        
+        .mini-color {
+            flex: 1;
+            height: 40px;
+            border-radius: 5px;
+            border: 2px solid #fff;
+        }
+        
+        .random-btn {
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-family: 'Bangers', cursive;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: #fff;
+            border: 4px solid #fff;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.2s;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+        }
+        
+        .random-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255,107,107,0.5);
+        }
+        
+        .harmony-info {
+            background: #0f3460;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid #4ecdc4;
+        }
+        
+        .harmony-info h3 {
+            font-family: 'Bangers', cursive;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4ecdc4;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            display: block;
+            animation: fadeInOut 2s;
+        }
+        
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            20%, 80% { opacity: 1; }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0f3460;
+            margin-top: 40px;
+            border-top: 4px solid #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>COLOR MIXER!</h1>
+        <p style="font-size: 1.3em;">★ Scopri le combinazioni perfette ★</p>
+        <a href="index.html" class="back">← TORNA ALLA HOME</a>
+    </header>
+
+    <div class="container">
+        <div class="main-section">
+            <div class="color-picker-section">
+                <h2>SCEGLI IL COLORE</h2>
+                
+                <div class="color-input-group">
+                    <label>Colore selezionato:</label>
+                    <div class="color-display" id="colorDisplay" onclick="document.getElementById('colorPicker').click()"></div>
+                    <input type="color" id="colorPicker" value="#ff6b6b" onchange="updateColor(this.value)">
+                    <input type="text" id="hexInput" value="#FF6B6B" onchange="updateFromHex(this.value)" style="margin-top: 10px;">
+                </div>
+                
+                <h3 style="margin-bottom: 15px; color: #ffe66d;">TIPO DI ARMONIA:</h3>
+                
+                <div class="scheme-buttons">
+                    <button class="scheme-btn active" onclick="setScheme('complementary')">COMPLEMENTARE</button>
+                    <button class="scheme-btn" onclick="setScheme('analogous')">ANALOGO</button>
+                    <button class="scheme-btn" onclick="setScheme('triadic')">TRIADICO</button>
+                    <button class="scheme-btn" onclick="setScheme('split')">SPLIT</button>
+                    <button class="scheme-btn" onclick="setScheme('tetradic')">TETRADICO</button>
+                    <button class="scheme-btn" onclick="setScheme('monochromatic')">MONOCROMATICO</button>
+                </div>
+                
+                <button class="random-btn" onclick="randomColor()">RANDOM COLOR!</button>
+            </div>
+            
+            <div class="wheel-section">
+                <h2>RUOTA DEI COLORI</h2>
+                <canvas id="colorWheel" width="350" height="350"></canvas>
+                <p style="margin-top: 15px; color: #bbb;">Clicca sulla ruota per selezionare un colore</p>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <h2>LA TUA PALETTE</h2>
+            <div class="palette" id="palette"></div>
+            
+            <div class="harmony-info" id="harmonyInfo">
+                <h3>COMPLEMENTARE</h3>
+                <p>Colori opposti sulla ruota. Alto contrasto e impatto visivo forte. Ideale per design audaci e accattivanti.</p>
+            </div>
+        </div>
+
+        <div class="suggestions-section">
+            <h2>ABBINAMENTI POPOLARI</h2>
+            <div class="suggestions-grid" id="suggestions"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Colore copiato!</div>
+
+    <footer>
+        <p>★ MAST 2026 - Color Mixer ★</p>
+    </footer>
+
+    <script>
+        let currentColor = { h: 0, s: 100, l: 70 };
+        let currentScheme = 'complementary';
+        
+        const popularPalettes = [
+            { name: "Sunset Vibes", colors: ["#FF6B6B", "#FFE66D", "#4ECDC4", "#1A535C"] },
+            { name: "Ocean Dream", colors: ["#0077B6", "#00B4D8", "#90E0EF", "#CAF0F8"] },
+            { name: "Forest Mood", colors: ["#2D6A4F", "#40916C", "#52B788", "#95D5B2"] },
+            { name: "Berry Mix", colors: ["#7B2CBF", "#9D4EDD", "#C77DFF", "#E0AAFF"] },
+            { name: "Citrus Fresh", colors: ["#FF9F1C", "#FFBF69", "#CBF3F0", "#2EC4B6"] },
+            { name: "Night Sky", colors: ["#1A1A2E", "#16213E", "#0F3460", "#E94560"] },
+            { name: "Earth Tones", colors: ["#8B4513", "#D2691E", "#DEB887", "#F5DEB3"] },
+            { name: "Candy Pop", colors: ["#FF6FD8", "#3813C2", "#00FFC6", "#FFF94F"] }
+        ];
+        
+        const harmonyDescriptions = {
+            complementary: {
+                title: "COMPLEMENTARE",
+                desc: "Colori opposti sulla ruota. Alto contrasto e impatto visivo forte. Ideale per design audaci e accattivanti."
+            },
+            analogous: {
+                title: "ANALOGO",
+                desc: "Colori adiacenti sulla ruota. Armonia naturale e riposante. Perfetto per design eleganti e sofisticati."
+            },
+            triadic: {
+                title: "TRIADICO",
+                desc: "Tre colori equidistanti. Equilibrio vibrante e dinamico. Ottimo per design giovanili e creativi."
+            },
+            split: {
+                title: "SPLIT COMPLEMENTARE",
+                desc: "Un colore più i due adiacenti al suo complementare. Contrasto morbido ma interessante."
+            },
+            tetradic: {
+                title: "TETRADICO",
+                desc: "Quattro colori formano un rettangolo. Ricchezza cromatica, richiede equilibrio."
+            },
+            monochromatic: {
+                title: "MONOCROMATICO",
+                desc: "Variazioni di un solo colore. Elegante e professionale. Ideale per brand minimalisti."
+            }
+        };
+        
+        function hexToHSL(hex) {
+            let r = parseInt(hex.slice(1, 3), 16) / 255;
+            let g = parseInt(hex.slice(3, 5), 16) / 255;
+            let b = parseInt(hex.slice(5, 7), 16) / 255;
+            
+            let max = Math.max(r, g, b), min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            
+            if (max === min) {
+                h = s = 0;
+            } else {
+                let d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                switch (max) {
+                    case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                    case g: h = ((b - r) / d + 2) / 6; break;
+                    case b: h = ((r - g) / d + 4) / 6; break;
+                }
+            }
+            
+            return { h: h * 360, s: s * 100, l: l * 100 };
+        }
+        
+        function hslToHex(h, s, l) {
+            s /= 100;
+            l /= 100;
+            
+            let c = (1 - Math.abs(2 * l - 1)) * s;
+            let x = c * (1 - Math.abs((h / 60) % 2 - 1));
+            let m = l - c / 2;
+            let r = 0, g = 0, b = 0;
+            
+            if (0 <= h && h < 60) { r = c; g = x; b = 0; }
+            else if (60 <= h && h < 120) { r = x; g = c; b = 0; }
+            else if (120 <= h && h < 180) { r = 0; g = c; b = x; }
+            else if (180 <= h && h < 240) { r = 0; g = x; b = c; }
+            else if (240 <= h && h < 300) { r = x; g = 0; b = c; }
+            else if (300 <= h && h < 360) { r = c; g = 0; b = x; }
+            
+            r = Math.round((r + m) * 255).toString(16).padStart(2, '0');
+            g = Math.round((g + m) * 255).toString(16).padStart(2, '0');
+            b = Math.round((b + m) * 255).toString(16).padStart(2, '0');
+            
+            return `#${r}${g}${b}`.toUpperCase();
+        }
+        
+        function updateColor(hex) {
+            currentColor = hexToHSL(hex);
+            document.getElementById('colorDisplay').style.backgroundColor = hex;
+            document.getElementById('hexInput').value = hex.toUpperCase();
+            document.getElementById('colorPicker').value = hex;
+            generatePalette();
+        }
+        
+        function updateFromHex(hex) {
+            if (/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+                updateColor(hex);
+            }
+        }
+        
+        function setScheme(scheme) {
+            currentScheme = scheme;
+            document.querySelectorAll('.scheme-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            const info = harmonyDescriptions[scheme];
+            document.getElementById('harmonyInfo').innerHTML = `<h3>${info.title}</h3><p>${info.desc}</p>`;
+            
+            generatePalette();
+        }
+        
+        function generatePalette() {
+            const colors = [];
+            const { h, s, l } = currentColor;
+            
+            switch (currentScheme) {
+                case 'complementary':
+                    colors.push({ h, s, l });
+                    colors.push({ h: (h + 180) % 360, s, l });
+                    break;
+                    
+                case 'analogous':
+                    colors.push({ h, s, l });
+                    colors.push({ h: (h + 30) % 360, s, l });
+                    colors.push({ h: (h + 330) % 360, s, l });
+                    break;
+                    
+                case 'triadic':
+                    colors.push({ h, s, l });
+                    colors.push({ h: (h + 120) % 360, s, l });
+                    colors.push({ h: (h + 240) % 360, s, l });
+                    break;
+                    
+                case 'split':
+                    colors.push({ h, s, l });
+                    colors.push({ h: (h + 150) % 360, s, l });
+                    colors.push({ h: (h + 210) % 360, s, l });
+                    break;
+                    
+                case 'tetradic':
+                    colors.push({ h, s, l });
+                    colors.push({ h: (h + 90) % 360, s, l });
+                    colors.push({ h: (h + 180) % 360, s, l });
+                    colors.push({ h: (h + 270) % 360, s, l });
+                    break;
+                    
+                case 'monochromatic':
+                    colors.push({ h, s, l: Math.min(l + 20, 90) });
+                    colors.push({ h, s, l });
+                    colors.push({ h, s, l: Math.max(l - 20, 20) });
+                    colors.push({ h, s: Math.max(s - 30, 30), l: Math.max(l - 10, 30) });
+                    break;
+            }
+            
+            displayPalette(colors);
+        }
+        
+        function displayPalette(colors) {
+            const container = document.getElementById('palette');
+            container.innerHTML = '';
+            
+            colors.forEach((color, index) => {
+                const hex = hslToHex(color.h, color.s, color.l);
+                const card = document.createElement('div');
+                card.className = 'color-card';
+                card.innerHTML = `
+                    <div class="color-preview" style="background-color: ${hex}"></div>
+                    <div class="color-info">
+                        <h4>${hex}</h4>
+                        <p>H: ${Math.round(color.h)}° S: ${Math.round(color.s)}% L: ${Math.round(color.l)}%</p>
+                        <button class="copy-btn" onclick="copyColor('${hex}')">COPIA</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+        
+        function copyColor(hex) {
+            navigator.clipboard.writeText(hex).then(() => {
+                const toast = document.getElementById('toast');
+                toast.textContent = `${hex} copiato!`;
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 2000);
+            });
+        }
+        
+        function randomColor() {
+            const h = Math.random() * 360;
+            const s = 50 + Math.random() * 50;
+            const l = 40 + Math.random() * 30;
+            const hex = hslToHex(h, s, l);
+            updateColor(hex);
+        }
+        
+        function drawColorWheel() {
+            const canvas = document.getElementById('colorWheel');
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = 160;
+            
+            for (let angle = 0; angle < 360; angle++) {
+                const startAngle = (angle - 1) * Math.PI / 180;
+                const endAngle = (angle + 1) * Math.PI / 180;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.closePath();
+                
+                const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, radius);
+                gradient.addColorStop(0, '#fff');
+                gradient.addColorStop(0.5, `hsl(${angle}, 100%, 50%)`);
+                gradient.addColorStop(1, `hsl(${angle}, 100%, 25%)`);
+                
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+            
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, Math.PI * 2);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+        
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left - canvas.width / 2;
+            const y = e.clientY - rect.top - canvas.height / 2;
+            
+            const angle = Math.atan2(y, x) * 180 / Math.PI;
+            const h = (angle + 360) % 360;
+            
+            const distance = Math.sqrt(x * x + y * y);
+            const s = Math.min(distance / 160 * 100, 100);
+            const l = 50;
+            
+            const hex = hslToHex(h, s, l);
+            updateColor(hex);
+        });
+        
+        function displaySuggestions() {
+            const container = document.getElementById('suggestions');
+            container.innerHTML = '';
+            
+            popularPalettes.forEach(palette => {
+                const card = document.createElement('div');
+                card.className = 'suggestion-card';
+                card.innerHTML = `
+                    <h3>${palette.name}</h3>
+                    <div class="mini-palette">
+                        ${palette.colors.map(c => `<div class="mini-color" style="background-color: ${c}"></div>`).join('')}
+                    </div>
+                `;
+                card.onclick = () => {
+                    updateColor(palette.colors[0]);
+                };
+                card.style.cursor = 'pointer';
+                container.appendChild(card);
+            });
+        }
+        
+        drawColorWheel();
+        updateColor('#FF6B6B');
+        displaySuggestions();
+    </script>
+</body>
+</html>
